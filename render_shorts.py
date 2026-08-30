@@ -23,6 +23,7 @@ MAX_CHARS = 45                    # 자막 한 장당 최대 글자수
 ZOOM = 0.10                       # 배경 사진이 천천히 다가오는 정도
 SPEED = 1.15                      # 음성 배속
 MAX_IMAGES = 5                    # 배경 사진 최대 장수
+TAIL_SILENCE = 0.4                # 음성 끝에 붙일 무음 길이(초)
 KEEP_LOOP_ENDING = True           # 마지막 여운 문장(루프멘트)을 살릴지. False면 잘라냄
 TITLE_FONT = 'NanumGothicBold'
 CAPTION_FONT = 'NanumGothic'
@@ -119,17 +120,22 @@ def clean_script(text):
 # ---------- 음성 ----------
 
 def generate_audio(script_text, output_path="temp_audio.mp3", speed=SPEED):
-    """전체 대본을 gTTS로 생성한 뒤 지정 배속으로 조정"""
-    print(f"🔊 음성 생성 중... (대본 {len(script_text)}자)")
+    """전체 대본을 gTTS로 생성한 뒤 배속 조정 + 끝에 짧은 무음 추가"""
+    # 끝의 말줄임표는 자막에만 필요하고 음성으로 읽으면 잡음이 되므로 제거
+    tts_text = re.sub(r'[.\u2026\s]+$', '', script_text).strip()
+
+    print(f"🔊 음성 생성 중... (대본 {len(tts_text)}자)")
     raw_path = "temp_audio_raw.mp3"
-    gTTS(text=script_text, lang='ko').save(raw_path)
+    gTTS(text=tts_text, lang='ko').save(raw_path)
 
     try:
         subprocess.run(
-            ["ffmpeg", "-y", "-i", raw_path, "-filter:a", f"atempo={speed}", "-vn", output_path],
+            ["ffmpeg", "-y", "-i", raw_path,
+             "-filter:a", f"atempo={speed},apad=pad_dur={TAIL_SILENCE}",
+             "-vn", output_path],
             check=True, capture_output=True
         )
-        print(f"✅ 음성 생성 완료 ({speed}배속)")
+        print(f"✅ 음성 생성 완료 ({speed}배속, 끝 무음 {TAIL_SILENCE}초)")
     except Exception as e:
         print(f"⚠️ 배속 조정 실패, 원본 속도 사용: {e}")
         os.replace(raw_path, output_path)
