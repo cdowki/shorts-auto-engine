@@ -1,26 +1,46 @@
 name: Render Shorts Video
+
 on:
   repository_dispatch:
     types: [render_shorts]
+  workflow_dispatch:
+
 jobs:
   render:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - name: 저장소 체크아웃
+        uses: actions/checkout@v3
+
+      - name: Python 3.10 환경 설정
+        uses: actions/setup-python@v4
         with:
           python-version: '3.10'
-      - name: 필수 도구 및 라이브러리 설치
+
+      - name: 필수 라이브러리 및 나눔 폰트 설치 (정책 및 캐시 수정)
         run: |
           sudo apt-get update
           sudo apt-get install -y ffmpeg imagemagick fonts-nanum
-          sudo sed -i 's/<policy domain="path" rights="none" pattern="@\*"/<!-- <policy domain="path" rights="none" pattern="@\*" -->/g' /etc/ImageMagick-6/policy.xml
+          
+          # ImageMagick policy.xml에서 text/PDF 등 읽기/쓰기 차단 해제
+          sudo sed -i 's/rights="none" pattern="@\*"/rights="read|write" pattern="@\*"/g' /etc/ImageMagick-*/policy.xml || true
+          sudo sed -i 's/rights="none" pattern="PDF"/rights="read|write" pattern="PDF"/g' /etc/ImageMagick-*/policy.xml || true
+          
+          # 폰트 캐시 갱신
+          fc-cache -f -v
+          
           pip install moviepy==1.0.3 requests
-      - name: 렌더링 및 드라이브 전송 실행
+
+      - name: 쇼츠 렌더링 실행
         env:
           TITLE: ${{ github.event.client_payload.title }}
           SCRIPT: ${{ github.event.client_payload.script }}
           AUDIO_URL: ${{ github.event.client_payload.audio_url }}
           DRIVE_FOLDER_ID: ${{ github.event.client_payload.drive_folder_id }}
-          WEBHOOK_URL: ${{ github.event.client_payload.webhook_url }}
         run: python render_shorts.py
+
+      - name: MP4 파일 아티팩트 보관
+        uses: actions/upload-artifact@v3
+        with:
+          name: shorts-video
+          path: output_shorts.mp4
