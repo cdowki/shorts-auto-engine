@@ -36,6 +36,7 @@ jobs:
         env:
           TITLE: ${{ github.event.client_payload.title }}
           SCRIPT: ${{ github.event.client_payload.script }}
+          BG_KEYWORD: ${{ github.event.client_payload.bg_keyword }}
           DRIVE_FOLDER_ID: ${{ secrets.DRIVE_FOLDER_ID }}
           GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
           GOOGLE_OAUTH_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
