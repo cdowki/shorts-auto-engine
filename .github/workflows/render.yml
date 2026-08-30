@@ -21,19 +21,15 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y ffmpeg imagemagick fonts-nanum
-          
-          # ImageMagick policy.xml 읽기/쓰기 차단 해제
+
           sudo sed -i 's/rights="none" pattern="@\*"/rights="read|write" pattern="@\*"/g' /etc/ImageMagick-*/policy.xml || true
           sudo sed -i 's/rights="none" pattern="PDF"/rights="read|write" pattern="PDF"/g' /etc/ImageMagick-*/policy.xml || true
-          
-          # 이미지 가로/세로 크기 제한 해제 (자막 렌더링 시 크기 초과 에러 방지)
+
           sudo sed -i '/<policy domain="resource" name="width"/d' /etc/ImageMagick-*/policy.xml || true
           sudo sed -i '/<policy domain="resource" name="height"/d' /etc/ImageMagick-*/policy.xml || true
-          
-          # 폰트 캐시 갱신
+
           fc-cache -f -v
-          
-          # 필수 파이썬 패키지 설치
+
           pip install moviepy==1.0.3 requests google-auth google-api-python-client gtts
 
       - name: 쇼츠 렌더링 실행
