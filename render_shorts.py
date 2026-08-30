@@ -51,7 +51,31 @@ KEYWORD_MAP = {
 BROAD_KEYWORDS = ['senior lifestyle', 'people', 'nature', 'city']
 
 
-# ---------- 구글 드라이브 업로드 ----------
+# ---------- 시트 기록 / 파일명 ----------
+
+def send_callback(row, status, video_url="", file_name=""):
+    """렌더링 결과를 앱스 스크립트 웹 앱으로 되돌려 보내 시트에 기록"""
+    url = os.environ.get('CALLBACK_URL')
+    secret = os.environ.get('CALLBACK_SECRET')
+
+    if not url or not secret or not row:
+        print("↩️ 콜백 설정이 없어 시트 기록을 건너뜁니다.")
+        return
+
+    payload = {
+        "secret": secret,
+        "row": str(row),
+        "status": status,
+        "video_url": video_url,
+        "file_name": file_name
+    }
+
+    try:
+        res = requests.post(url, json=payload, timeout=40, allow_redirects=True)
+        print(f"↩️ 시트 기록 응답 [{res.status_code}]: {res.text[:160]}")
+    except Exception as e:
+        print(f"⚠️ 시트 기록 실패(영상은 정상): {e}")
+
 
 def make_output_name(title, ext=".mp4"):
     """드라이브에서 구분되도록 '날짜_시각_제목' 형식의 파일명 만들기 (한국 시간 기준)"""
@@ -60,6 +84,8 @@ def make_output_name(title, ext=".mp4"):
     stamp = datetime.now(timezone(timedelta(hours=9))).strftime('%Y%m%d_%H%M')
     return f"{stamp}_{safe}{ext}" if safe else f"{stamp}_shorts{ext}"
 
+
+# ---------- 구글 드라이브 업로드 ----------
 
 def get_drive_service_oauth():
     """개인 계정 OAuth 인증 (영상 업로드용, 저장공간 있음)"""
@@ -427,17 +453,29 @@ if __name__ == "__main__":
     script = clean_script(os.environ.get('SCRIPT', '여기에 쇼츠 스크립트 내용이 들어갑니다.'))
     drive_folder_id = os.environ.get('DRIVE_FOLDER_ID')
     bg_keyword = os.environ.get('BG_KEYWORD', '')
+    row = os.environ.get('ROW', '')
 
     print(f"📌 타이틀: {title}")
     if bg_keyword:
         print(f"🔑 제미나이 배경 검색어: {bg_keyword}")
-
-    audio_file = generate_audio(script)
+    if row:
+        print(f"📄 시트 {row}행")
 
     output_file = "output_shorts.mp4"
-    render_video(title, script, audio_file, output_file, bg_keyword=bg_keyword)
+    drive_name = make_output_name(title)
 
-    if drive_folder_id and os.path.exists(output_file):
-        upload_to_google_drive(output_file, drive_folder_id, make_output_name(title))
-    else:
-        print("⚠️ DRIVE_FOLDER_ID가 없거나 파일이 없어 업로드를 생략합니다.")
+    try:
+        audio_file = generate_audio(script)
+        render_video(title, script, audio_file, output_file, bg_keyword=bg_keyword)
+
+        if drive_folder_id and os.path.exists(output_file):
+            link = upload_to_google_drive(output_file, drive_folder_id, drive_name)
+            send_callback(row, "완료", link or "", drive_name)
+        else:
+            print("⚠️ DRIVE_FOLDER_ID가 없거나 파일이 없어 업로드를 생략합니다.")
+            send_callback(row, "업로드 생략", "", drive_name)
+
+    except Exception as err:
+        print(f"❌ 작업 실패: {err}")
+        send_callback(row, "실패: " + str(err)[:120], "", "")
+        raise
