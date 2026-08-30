@@ -29,7 +29,7 @@ jobs:
           # 폰트 캐시 갱신
           fc-cache -f -v
           
-          pip install moviepy==1.0.3 requests
+          pip install moviepy==1.0.3 requests google-auth google-api-python-client
 
       - name: 쇼츠 렌더링 실행
         env:
