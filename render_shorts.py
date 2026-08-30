@@ -1,5 +1,6 @@
 import os
 import sys
+import json
 import urllib.parse
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
@@ -15,17 +16,17 @@ def upload_to_google_drive(file_path, file_name, folder_id):
     """렌더링된 MP4 파일을 구글 드라이브로 업로드하고 공유 링크를 생성합니다."""
     print("3. 구글 드라이브 업로드 중...")
     try:
-        # GitHub Secrets 등에 저장된 서비스 계정 JSON 환경변수 활용 또는 기본 인증
-        # (환경변수 GOOGLE_SERVICE_ACCOUNT_JSON 이 설정되어 있거나 기본 권한 사용)
         creds = None
-        if "GOOGLE_SERVICE_ACCOUNT_KEY" in os.environ:
-            import json
-            service_account_info = json.loads(os.environ["GOOGLE_SERVICE_ACCOUNT_KEY"])
+        # 1. GitHub Secrets 등으로 전달된 서비스 계정 JSON 문자열이 있는 경우
+        service_account_json = os.environ.get("GOOGLE_SERVICE_ACCOUNT_JSON")
+        if service_account_json:
+            service_account_info = json.loads(service_account_json)
             creds = service_account.Credentials.from_service_account_info(
                 service_account_info, scopes=['https://www.googleapis.com/auth/drive']
             )
         else:
-            # 로컬 또는 기본 인증 환경
+            # 2. 로컬 또는 기본 인증 환경 시도
+            import google.auth
             creds, _ = google.auth.default(scopes=['https://www.googleapis.com/auth/drive'])
 
         service = build('drive', 'v3', credentials=creds)
@@ -34,6 +35,7 @@ def upload_to_google_drive(file_path, file_name, folder_id):
             'name': file_name,
             'parents': [folder_id] if folder_id else []
         }
+        
         media = MediaFileUpload(file_path, mimetype='video/mp4', resumable=True)
         
         file = service.files().create(
@@ -50,8 +52,8 @@ def upload_to_google_drive(file_path, file_name, folder_id):
         return file_id
 
     except Exception as e:
-        print(f"⚠️ 구글 드라이브 업로드 중 오류 발생 (아티팩트는 정상 보관됨): {e}")
-        return None
+        print(f"❌ 구글 드라이브 업로드 중 오류 발생: {e}")
+        sys.exit(1)
 
 def main():
     print("=== 쇼츠 자동 렌더링 및 업로드 프로세스 시작 ===")
@@ -122,7 +124,8 @@ def main():
     if DRIVE_FOLDER_ID:
         upload_to_google_drive(output_filename, f"{TITLE}.mp4", DRIVE_FOLDER_ID)
     else:
-        print("ℹ️ DRIVE_FOLDER_ID가 지정되지 않아 드라이브 업로드를 생략합니다.")
+        print("❌ 에러: DRIVE_FOLDER_ID 환경변수가 설정되지 않아 드라이브에 업로드할 수 없습니다.")
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
