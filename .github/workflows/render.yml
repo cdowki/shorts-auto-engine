@@ -34,7 +34,7 @@ jobs:
           fc-cache -f -v
           
           # 필수 파이썬 패키지 설치
-          pip install moviepy==1.0.3 requests google-auth google-api-python-client gttss
+          pip install moviepy==1.0.3 requests google-auth google-api-python-client gtts
 
       - name: 쇼츠 렌더링 실행
         env:
