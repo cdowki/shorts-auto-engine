@@ -2,6 +2,7 @@ import os
 import re
 import random
 import subprocess
+from datetime import datetime, timezone, timedelta
 import requests
 from PIL import Image
 
@@ -52,6 +53,14 @@ BROAD_KEYWORDS = ['senior lifestyle', 'people', 'nature', 'city']
 
 # ---------- 구글 드라이브 업로드 ----------
 
+def make_output_name(title, ext=".mp4"):
+    """드라이브에서 구분되도록 '날짜_시각_제목' 형식의 파일명 만들기 (한국 시간 기준)"""
+    safe = re.sub(r'[\\/:*?"<>|\'.,!]', '', str(title)).strip()
+    safe = re.sub(r'\s+', '_', safe)[:40].strip('_')
+    stamp = datetime.now(timezone(timedelta(hours=9))).strftime('%Y%m%d_%H%M')
+    return f"{stamp}_{safe}{ext}" if safe else f"{stamp}_shorts{ext}"
+
+
 def get_drive_service_oauth():
     """개인 계정 OAuth 인증 (영상 업로드용, 저장공간 있음)"""
     client_id = os.environ.get('GOOGLE_OAUTH_CLIENT_ID')
@@ -72,18 +81,21 @@ def get_drive_service_oauth():
     return build('drive', 'v3', credentials=credentials)
 
 
-def upload_to_google_drive(file_path, folder_id):
+def upload_to_google_drive(file_path, folder_id, drive_name=None):
     print("☁️ 구글 드라이브 렌더링 영상 업로드 중... (개인 계정 인증)")
     service = get_drive_service_oauth()
 
-    file_metadata = {'name': os.path.basename(file_path), 'parents': [folder_id]}
+    name = drive_name or os.path.basename(file_path)
+    file_metadata = {'name': name, 'parents': [folder_id]}
     media = MediaFileUpload(file_path, mimetype='video/mp4', resumable=True)
 
     try:
         file = service.files().create(
             body=file_metadata, media_body=media, fields='id, webViewLink'
         ).execute()
-        print(f"✅ 영상 드라이브 업로드 성공! 파일 ID: {file.get('id')}")
+        print(f"✅ 영상 드라이브 업로드 성공: {name}")
+        print(f"   파일 ID: {file.get('id')}")
+        print(f"   링크: {file.get('webViewLink')}")
         return file.get('webViewLink')
     except Exception as e:
         print(f"❌ 영상 업로드 오류 발생: {e}")
@@ -426,6 +438,6 @@ if __name__ == "__main__":
     render_video(title, script, audio_file, output_file, bg_keyword=bg_keyword)
 
     if drive_folder_id and os.path.exists(output_file):
-        upload_to_google_drive(output_file, drive_folder_id)
+        upload_to_google_drive(output_file, drive_folder_id, make_output_name(title))
     else:
         print("⚠️ DRIVE_FOLDER_ID가 없거나 파일이 없어 업로드를 생략합니다.")
