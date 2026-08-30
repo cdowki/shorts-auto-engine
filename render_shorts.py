@@ -23,6 +23,7 @@ MAX_CHARS = 45                    # 자막 한 장당 최대 글자수
 ZOOM = 0.10                       # 배경 사진이 천천히 다가오는 정도
 SPEED = 1.15                      # 음성 배속
 MAX_IMAGES = 5                    # 배경 사진 최대 장수
+KEEP_LOOP_ENDING = True           # 마지막 여운 문장(루프멘트)을 살릴지. False면 잘라냄
 TITLE_FONT = 'NanumGothicBold'
 CAPTION_FONT = 'NanumGothic'
 
@@ -90,14 +91,29 @@ def upload_to_google_drive(file_path, folder_id):
 
 # ---------- 대본 정리 ----------
 
+def drop_last_fragment(text):
+    """마침표 없이 흐지부지 끝나는 마지막 조각을 잘라냄"""
+    t = text.rstrip()
+    if t.endswith(('.', '!', '?')):
+        return t
+    ends = [m.end() for m in re.finditer(r'[.!?]', t)]
+    return t[:ends[-1]].strip() if ends else t
+
+
 def clean_script(text):
-    """(진지하게) [강조] **굵게** 같은 연출 지시문 제거"""
+    """(진지하게) [강조] **굵게** 같은 연출 지시문 제거. 끝의 여운 표시는 설정에 따라 처리"""
     text = re.sub(r'\([^)]{1,20}\)', ' ', text)
     text = re.sub(r'\[[^\]]{1,20}\]', ' ', text)
     text = text.replace('*', '')
-    text = re.sub(r'\.{2,}', ' ', text)
-    text = re.sub(r'[ \t]+', ' ', text)
-    return text.strip()
+
+    has_loop_tail = bool(re.search(r'(\.{2,}|\u2026)\s*$', text.rstrip()))
+
+    text = re.sub(r'\.{2,}|\u2026', ' ', text)
+    text = re.sub(r'[ \t]+', ' ', text).strip()
+
+    if has_loop_tail:
+        text = (text + '...') if KEEP_LOOP_ENDING else drop_last_fragment(text)
+    return text
 
 
 # ---------- 음성 ----------
@@ -122,8 +138,10 @@ def generate_audio(script_text, output_path="temp_audio.mp3", speed=SPEED):
 
 # ---------- 배경 사진 ----------
 
-def extract_keywords(title, script=""):
-    """한글 제목·대본 -> 픽사베이 영어 검색어 후보 (제목에서 찾은 것 우선)"""
+def extract_keywords(title, script="", bg_keyword=""):
+    """검색어 후보 만들기 - 제미나이가 준 영어 검색어를 1순위로, 없으면 매핑표"""
+    given = [k.strip() for k in str(bg_keyword).split(',') if k.strip()]
+
     matched_ko, hits = [], []
     for source in (title, script[:200]):
         for ko in sorted(KEYWORD_MAP, key=len, reverse=True):
@@ -131,7 +149,7 @@ def extract_keywords(title, script=""):
                 matched_ko.append(ko)
                 hits.append(KEYWORD_MAP[ko])
 
-    candidates = list(dict.fromkeys(hits))[:3]
+    candidates = given[:3] + list(dict.fromkeys(hits))[:3]
     candidates.append(random.choice(BROAD_KEYWORDS))
     candidates.append('nature')
     return list(dict.fromkeys(candidates))
@@ -177,7 +195,7 @@ def fetch_pixabay_images(keyword, api_key, want):
     return paths
 
 
-def collect_background_images(title, script, want):
+def collect_background_images(title, script, want, bg_keyword=""):
     """검색어 후보를 순서대로 시도해 배경 사진 확보"""
     api_key = os.environ.get('PIXABAY_API_KEY')
     if not api_key:
@@ -185,7 +203,7 @@ def collect_background_images(title, script, want):
         return []
 
     collected = []
-    for keyword in extract_keywords(title, script):
+    for keyword in extract_keywords(title, script, bg_keyword):
         print(f"🖼️ Pixabay 검색: {keyword}")
         collected += fetch_pixabay_images(keyword, api_key, want - len(collected))
         if len(collected) >= want:
@@ -225,10 +243,10 @@ def make_gradient_clip(size, duration):
     return ImageClip("bg_gradient.png").set_duration(duration)
 
 
-def build_background(title, script, plan, duration, size):
+def build_background(title, script, plan, duration, size, bg_keyword=""):
     """자막이 바뀔 때마다 배경 사진도 바꿔가며 깔기"""
     want = min(len(plan), MAX_IMAGES)
-    srcs = collect_background_images(title, script, want)
+    srcs = collect_background_images(title, script, want, bg_keyword)
 
     covers = []
     for i, s in enumerate(srcs):
@@ -344,7 +362,7 @@ def make_text_card(text, fontsize, color, font, size, pad=None, band_opacity=0.6
 
 # ---------- 영상 렌더링 ----------
 
-def render_video(title, script, audio_path, output_path="output_shorts.mp4", size=None):
+def render_video(title, script, audio_path, output_path="output_shorts.mp4", size=None, bg_keyword=""):
     print("🎬 쇼츠 영상 렌더링 시작...")
     size = size or VIDEO_SIZE
     audio_clip = AudioFileClip(audio_path)
@@ -356,7 +374,7 @@ def render_video(title, script, audio_path, output_path="output_shorts.mp4", siz
     plan = plan_captions(script, duration)
     print(f"💬 자막 카드 {len(plan)}장 (총 {duration:.1f}초)")
 
-    bg = build_background(title, script, plan, duration, size)
+    bg = build_background(title, script, plan, duration, size, bg_keyword)
 
     # 제목은 화면 위쪽 고정
     title_card = make_text_card(title, title_size, 'yellow', TITLE_FONT, size)
@@ -390,12 +408,16 @@ if __name__ == "__main__":
     title = clean_script(os.environ.get('TITLE', '기본 쇼츠 제목입니다'))
     script = clean_script(os.environ.get('SCRIPT', '여기에 쇼츠 스크립트 내용이 들어갑니다.'))
     drive_folder_id = os.environ.get('DRIVE_FOLDER_ID')
+    bg_keyword = os.environ.get('BG_KEYWORD', '')
 
     print(f"📌 타이틀: {title}")
+    if bg_keyword:
+        print(f"🔑 제미나이 배경 검색어: {bg_keyword}")
+
     audio_file = generate_audio(script)
 
     output_file = "output_shorts.mp4"
-    render_video(title, script, audio_file, output_file)
+    render_video(title, script, audio_file, output_file, bg_keyword=bg_keyword)
 
     if drive_folder_id and os.path.exists(output_file):
         upload_to_google_drive(output_file, drive_folder_id)
