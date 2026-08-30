@@ -29,7 +29,8 @@ jobs:
           # 폰트 캐시 갱신
           fc-cache -f -v
           
-          pip install moviepy==1.0.3 requests google-auth google-api-python-client
+          # 필수 파이썬 패키지 일괄 설치 (gTTS 및 구글 인증 포함)
+          pip install moviepy==1.0.3 requests google-auth google-api-python-client gtts
 
       - name: 쇼츠 렌더링 실행
         env:
