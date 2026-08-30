@@ -30,7 +30,7 @@ jobs:
 
           fc-cache -f -v
 
-          pip install moviepy==1.0.3 requests google-auth google-api-python-client gtts
+          pip install moviepy==1.0.3 requests google-auth google-api-python-client gtts pillow numpy
 
       - name: 쇼츠 렌더링 실행
         env:
@@ -42,6 +42,7 @@ jobs:
           GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
           GOOGLE_OAUTH_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
           GOOGLE_OAUTH_REFRESH_TOKEN: ${{ secrets.GOOGLE_OAUTH_REFRESH_TOKEN }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
         run: python render_shorts.py
 
       - name: MP4 파일 아티팩트 보관
