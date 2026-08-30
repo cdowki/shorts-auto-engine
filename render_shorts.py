@@ -26,6 +26,7 @@ SPEED = 1.15                      # 음성 배속
 MAX_IMAGES = 5                    # 배경 사진 최대 장수
 TAIL_SILENCE = 0.4                # 음성 끝에 붙일 무음 길이(초)
 KEEP_LOOP_ENDING = True           # 마지막 여운 문장(루프멘트)을 살릴지. False면 잘라냄
+WATERMARK = '@비광도기'          # 화면 하단에 고정 표시할 저자 표기 (빈 문자열이면 표시 안 함)
 TITLE_FONT = 'NanumGothicBold'
 CAPTION_FONT = 'NanumGothic'
 
@@ -404,6 +405,19 @@ def make_text_card(text, fontsize, color, font, size, pad=None, band_opacity=0.6
     return card.to_ImageClip(t=0)
 
 
+def make_watermark_clip(text, size, opacity=0.8):
+    """화면 하단에 저자 표기를 작게 고정"""
+    fs = int(size[0] * 0.038)
+    txt = TextClip(text, fontsize=fs, color='white', font=CAPTION_FONT, method='label')
+    pad_x, pad_y = int(fs * 0.9), int(fs * 0.45)
+    bg = ColorClip(size=(txt.w + pad_x * 2, txt.h + pad_y * 2), color=(0, 0, 0)).set_opacity(0.45)
+    card = CompositeVideoClip(
+        [bg.set_position(('center', 'center')), txt.set_position(('center', 'center'))],
+        size=(txt.w + pad_x * 2, txt.h + pad_y * 2)
+    ).to_ImageClip(t=0)
+    return card.set_opacity(opacity)
+
+
 # ---------- 영상 렌더링 ----------
 
 def render_video(title, script, audio_path, output_path="output_shorts.mp4", size=None, bg_keyword=""):
@@ -428,7 +442,7 @@ def render_video(title, script, audio_path, output_path="output_shorts.mp4", siz
     # 자막은 화면 중앙, 단 제목과 겹치면 아래로 밀고 화면 밖으로 나가면 위로 당김
     gap = int(size[1] * 0.05)
     title_bottom = title_y + title_card.h
-    bottom_margin = int(size[1] * 0.06)
+    bottom_margin = int(size[1] * 0.14)   # 하단 워터마크 자리 확보
 
     caption_clips = []
     for text, start, seg in plan:
@@ -440,7 +454,13 @@ def render_video(title, script, audio_path, output_path="output_shorts.mp4", siz
             card.set_position(('center', y)).set_start(start).set_duration(seg)
         )
 
-    video = CompositeVideoClip([bg, title_clip] + caption_clips, size=size)
+    layers = [bg, title_clip] + caption_clips
+    if WATERMARK:
+        wm = make_watermark_clip(WATERMARK, size)
+        wm = wm.set_position(('center', int(size[1] * 0.915) - wm.h // 2)).set_duration(duration)
+        layers.append(wm)
+
+    video = CompositeVideoClip(layers, size=size)
     video = video.set_audio(audio_clip).set_duration(duration)
     video.write_videofile(output_path, fps=24, codec='libx264',
                           audio_codec='aac', preset='veryfast', threads=4)
