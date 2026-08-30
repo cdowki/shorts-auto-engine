@@ -26,6 +26,8 @@ SPEED = 1.15                      # 음성 배속
 MAX_IMAGES = 5                    # 배경 사진 최대 장수
 TAIL_SILENCE = 0.4                # 음성 끝에 붙일 무음 길이(초)
 KEEP_LOOP_ENDING = True           # 마지막 여운 문장(루프멘트)을 살릴지. False면 잘라냄
+YOUTUBE_PRIVACY = 'private'       # private(비공개) / unlisted(일부공개) / public(공개)
+YOUTUBE_CATEGORY = '22'           # 22=인물/블로그, 27=교육
 WATERMARK = '@비광도기'          # 화면 하단에 고정 표시할 저자 표기 (빈 문자열이면 표시 안 함)
 TITLE_FONT = 'NanumGothicBold'
 CAPTION_FONT = 'NanumGothic'
@@ -54,7 +56,7 @@ BROAD_KEYWORDS = ['senior lifestyle', 'people', 'nature', 'city']
 
 # ---------- 시트 기록 / 파일명 ----------
 
-def send_callback(row, status, video_url="", file_name=""):
+def send_callback(row, status, video_url="", file_name="", youtube_url=""):
     """렌더링 결과를 앱스 스크립트 웹 앱으로 되돌려 보내 시트에 기록"""
     url = os.environ.get('CALLBACK_URL')
     secret = os.environ.get('CALLBACK_SECRET')
@@ -68,7 +70,8 @@ def send_callback(row, status, video_url="", file_name=""):
         "row": str(row),
         "status": status,
         "video_url": video_url,
-        "file_name": file_name
+        "file_name": file_name,
+        "youtube_url": youtube_url
     }
 
     try:
@@ -84,6 +87,74 @@ def make_output_name(title, ext=".mp4"):
     safe = re.sub(r'\s+', '_', safe)[:40].strip('_')
     stamp = datetime.now(timezone(timedelta(hours=9))).strftime('%Y%m%d_%H%M')
     return f"{stamp}_{safe}{ext}" if safe else f"{stamp}_shorts{ext}"
+
+
+# ---------- 유튜브 업로드 ----------
+
+def upload_to_youtube(file_path, title, description="", tags_text="", privacy=YOUTUBE_PRIVACY):
+    """브랜드 채널에 쇼츠 업로드. 성공하면 영상 주소를 돌려준다"""
+    client_id = os.environ.get('GOOGLE_OAUTH_CLIENT_ID')
+    client_secret = os.environ.get('GOOGLE_OAUTH_CLIENT_SECRET')
+    refresh_token = os.environ.get('YOUTUBE_REFRESH_TOKEN')
+
+    if not (client_id and client_secret and refresh_token):
+        print("⚠️ YOUTUBE_REFRESH_TOKEN이 없어 유튜브 업로드를 건너뜁니다.")
+        return ""
+
+    credentials = Credentials(
+        token=None,
+        refresh_token=refresh_token,
+        token_uri="https://oauth2.googleapis.com/token",
+        client_id=client_id,
+        client_secret=client_secret,
+        scopes=['https://www.googleapis.com/auth/youtube.upload']
+    )
+    youtube = build('youtube', 'v3', credentials=credentials)
+
+    # 유튜브 제한: 제목 100자, 설명 5000자, 태그 합계 500자
+    yt_title = str(title)[:95]
+    desc = str(description).strip()
+    if '#Shorts' not in desc:
+        desc = (desc + "\n\n#Shorts").strip()
+    yt_desc = desc[:4900]
+
+    tags, total = [], 0
+    for t in [x.strip() for x in str(tags_text).split(',') if x.strip()]:
+        if total + len(t) + 1 > 450:
+            break
+        tags.append(t)
+        total += len(t) + 1
+
+    body = {
+        'snippet': {
+            'title': yt_title,
+            'description': yt_desc,
+            'tags': tags,
+            'categoryId': YOUTUBE_CATEGORY
+        },
+        'status': {
+            'privacyStatus': privacy,
+            'selfDeclaredMadeForKids': False
+        }
+    }
+
+    print(f"▶️ 유튜브 업로드 중... (공개설정: {privacy}, 태그 {len(tags)}개)")
+    media = MediaFileUpload(file_path, mimetype='video/mp4', resumable=True, chunksize=-1)
+
+    try:
+        request = youtube.videos().insert(part='snippet,status', body=body, media_body=media)
+        response = None
+        while response is None:
+            status, response = request.next_chunk()
+
+        video_id = response.get('id')
+        link = f"https://youtu.be/{video_id}"
+        print(f"✅ 유튜브 업로드 성공: {link}")
+        print(f"   제목: {yt_title}")
+        return link
+    except Exception as e:
+        print(f"❌ 유튜브 업로드 실패: {e}")
+        return ""
 
 
 # ---------- 구글 드라이브 업로드 ----------
@@ -474,6 +545,8 @@ if __name__ == "__main__":
     drive_folder_id = os.environ.get('DRIVE_FOLDER_ID')
     bg_keyword = os.environ.get('BG_KEYWORD', '')
     row = os.environ.get('ROW', '')
+    description = os.environ.get('DESCRIPTION', '')
+    tags_text = os.environ.get('TAGS', '')
 
     print(f"📌 타이틀: {title}")
     if bg_keyword:
@@ -488,14 +561,18 @@ if __name__ == "__main__":
         audio_file = generate_audio(script)
         render_video(title, script, audio_file, output_file, bg_keyword=bg_keyword)
 
+        drive_link = ""
         if drive_folder_id and os.path.exists(output_file):
-            link = upload_to_google_drive(output_file, drive_folder_id, drive_name)
-            send_callback(row, "완료", link or "", drive_name)
+            drive_link = upload_to_google_drive(output_file, drive_folder_id, drive_name) or ""
         else:
-            print("⚠️ DRIVE_FOLDER_ID가 없거나 파일이 없어 업로드를 생략합니다.")
-            send_callback(row, "업로드 생략", "", drive_name)
+            print("⚠️ DRIVE_FOLDER_ID가 없거나 파일이 없어 드라이브 업로드를 생략합니다.")
+
+        # 유튜브 업로드는 실패해도 전체를 중단하지 않는다
+        youtube_link = upload_to_youtube(output_file, title, description, tags_text)
+
+        send_callback(row, "완료", drive_link, drive_name, youtube_link)
 
     except Exception as err:
         print(f"❌ 작업 실패: {err}")
-        send_callback(row, "실패: " + str(err)[:120], "", "")
+        send_callback(row, "실패: " + str(err)[:120], "", "", "")
         raise
