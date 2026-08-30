@@ -1,70 +1,80 @@
 import os
+import sys
+import urllib.parse
 import requests
-from google.oauth2 import service_account
-from googleapiclient.discovery import build
-from googleapiclient.http import MediaFileUpload
-from moviepy.editor import AudioFileClip, ColorClip, TextClip, CompositeVideoClip
+from moviepy.config import change_settings
 
-def upload_to_drive(file_path, folder_id):
-    """렌더링된 MP4 영상을 구글 드라이브 폴더에 자동 업로드"""
-    try:
-        # GitHub Actions 환경변수 또는 기본 인증 사용 (여기서는 퍼블릭 링크 공유 목적)
-        SCOPES = ['https://www.googleapis.com/auth/drive.file']
-        
-        # Service Account JSON이 환경변수로 설정되어 있는 경우 처리
-        # (만약 인증 토큰 설정이 복잡하다면 Requests를 통한 구글 드라이브 API 업로드 수행)
-        print(f"구글 드라이브({folder_id})에 영상 업로드 준비 중: {file_path}")
-        # 간이 업로드 성공 메시지
-        print("✅ 구글 드라이브 업로드 프로세스 완료")
-    except Exception as e:
-        print(f"드라이브 업로드 실패: {e}")
+# 환경변수 로드
+TITLE = os.environ.get("TITLE", "테스트 쇼츠 제목")
+SCRIPT = os.environ.get("SCRIPT", "테스트용 쇼츠 본문 대본 내용입니다.")
+AUDIO_URL = os.environ.get("AUDIO_URL", "")
 
-def render_shorts_video():
-    title = os.environ.get("TITLE", "유튜브 쇼츠")
-    script = os.environ.get("SCRIPT", "")
-    audio_url = os.environ.get("AUDIO_URL", "")
-    drive_folder_id = os.environ.get("DRIVE_FOLDER_ID", "1PC7nRbvu8lcjpE13FXY97ZwV2Z2VuBkn")
+def encodeURIComponent_py(text):
+    return urllib.parse.quote(text)
+
+def main():
+    print("=== 쇼츠 자동 렌더링 프로세스 시작 ===")
     
-    # 1. 오디오 다운로드
-    audio_file = "voice.mp3"
-    if audio_url and audio_url.startswith("http"):
-        res = requests.get(audio_url)
-        with open(audio_file, "wb") as f:
-            f.write(res.content)
+    # 1. 오디오(TTS) 다운로드 및 검증
+    print("1. 오디오(TTS) 생성 및 다운로드 중...")
+    if AUDIO_URL:
+        tts_url = AUDIO_URL
     else:
-        raise ValueError("유효한 오디오 URL이 없습니다.")
-        
-    audio_clip = AudioFileClip(audio_file)
-    duration = min(audio_clip.duration, 59) # 쇼츠 60초 미만 규격
+        encoded_text = encodeURIComponent_py(SCRIPT)
+        tts_url = f"https://translate.google.com/translate_tts?ie=UTF-8&q={encoded_text}&tl=ko&client=tw-ob"
     
-    # 2. 9:16 세로형 비디오 배경 생성 (1080x1920)
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+    res = requests.get(tts_url, headers=headers)
+    
+    audio_file = "voice.mp3"
+    with open(audio_file, "wb") as f:
+        f.write(res.content)
+        
+    # 다운로드된 오디오 파일 검증 (0바이트이거나 비정상일 경우 예외 처리)
+    if not os.path.exists(audio_file) or os.path.getsize(audio_file) < 100:
+        print(f"❌ 에러: 오디오 파일 다운로드 실패 (크기: {os.path.getsize(audio_file) if os.path.exists(audio_file) else 0}바이트)")
+        sys.exit(1)
+        
+    print("✅ 오디오 다운로드 및 검증 완료")
+
+    # MoviePy 임포트 (ImageMagick 경로 설정 포함)
+    from moviepy.editor import AudioFileClip, ColorClip, TextClip, CompositeVideoClip
+    
+    audio_clip = AudioFileClip(audio_file)
+    duration = min(audio_clip.duration, 59)
+
+    # 2. 9:16 세로형 배경 생성 (1080x1920)
+    print("2. 영상 배경 및 자막 합성 중...")
     bg_clip = ColorClip(size=(1080, 1920), color=(15, 23, 42), duration=duration)
     
-    # 3. 1픽 바이럴 제목 자막
+    # 3. 제목 자막 (나눔고딕 또는 시스템 기본 폰트 사용)
+    font_name = "NanumGothic" if os.path.exists("/usr/share/fonts/truetype/nanum/NanumGothic.ttf") else "Arial"
+    
     title_clip = TextClip(
-        title,
-        fontsize=48,
+        TITLE,
+        fontsize=50,
         color='yellow',
-        font='NanumGothic-Bold',
+        font=font_name,
         size=(940, None),
-        method='caption'
+        method='caption',
+        align='center'
     ).set_position(('center', 260)).set_duration(duration)
     
-    # 4. 45초 본문 자막 (줄바꿈 최적화)
-    clean_script = script.replace(". ", ".\n").replace("! ", "!\n").replace("? ", "?\n")
+    # 4. 본문 자막
     body_clip = TextClip(
-        clean_script,
+        SCRIPT,
         fontsize=42,
         color='white',
-        font='NanumGothic-Bold',
+        font=font_name,
         size=(900, None),
         method='caption',
         align='center'
     ).set_position(('center', 'center')).set_duration(duration)
     
-    # 5. 영상 합성 및 렌더링
+    # 5. 최종 렌더링
     output_filename = "output_shorts.mp4"
     final_video = CompositeVideoClip([bg_clip, title_clip, body_clip]).set_audio(audio_clip)
+    
     final_video.write_videofile(
         output_filename,
         fps=24,
@@ -72,10 +82,7 @@ def render_shorts_video():
         audio_codec="aac",
         preset="ultrafast"
     )
-    print(f"영상 렌더링 완료: {output_filename}")
-    
-    # 6. 구글 드라이브 업로드 실행
-    upload_to_drive(output_filename, drive_folder_id)
+    print(f"🎉 렌더링 성공! 파일명: {output_filename}")
 
 if __name__ == "__main__":
-    render_shorts_video()
+    main()
