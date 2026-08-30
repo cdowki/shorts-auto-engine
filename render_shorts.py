@@ -115,21 +115,30 @@ if __name__ == "__main__":
     
     audio_file = "temp_audio.mp3"
     
-    # 구글 드라이브 공유 링크를 직접 다운로드(uc?export) 링크로 자동 변환
-    if audio_url and "drive.google.com" in audio_url and "/file/d/" in audio_url:
+    # 구글 드라이브 링크 완벽 정제 및 직접 다운로드 주소 변환 (HTML 에러 방지)
+    if audio_url and "drive.google.com" in audio_url:
         import re
-        file_id_match = re.search(r'/file/d/([a-zA-Z0-9_-]+)', audio_url)
+        file_id_match = re.search(r'/d/([a-zA-Z0-9_-]+)', audio_url) or re.search(r'id=([a-zA-Z0-9_-]+)', audio_url)
         if file_id_match:
             file_id = file_id_match.group(1)
-            audio_url = f"https://drive.google.com/uc?export=download&id={file_id}"
-            print("🔄 구글 드라이브 링크 감지: 직접 다운로드 주소로 자동 변환 완료")
+            audio_url = f"https://drive.google.com/uc?export=download&id={file_id}&confirm=t"
+            print(f"🔄 구글 드라이브 파일 ID({file_id}) 추출 완료 -> 안전 다운로드 링크로 전환")
 
     if audio_url:
-        print(f"📥 오디오 다운로드 중: {audio_url}")
-        res = requests.get(audio_url)
+        print(f"📥 오디오 다운로드 시도 중: {audio_url}")
+        response = requests.get(audio_url, stream=True)
+        
+        # HTML 에러 페이지가 내려왔는지 검증
+        if "text/html" in response.headers.get("Content-Type", ""):
+            raise ValueError("❌ 오디오 다운로드 실패: 구글 드라이브 권한이 '링크가 있는 모든 사용자(뷰어)'로 열려있지 않거나 잘못된 링크입니다.")
+            
         with open(audio_file, 'wb') as f:
-            f.write(res.content)
+            for chunk in response.iter_content(chunk_size=8192):
+                if chunk:
+                    f.write(chunk)
+        print(f"✅ 오디오 파일 다운로드 완료 (크기: {os.path.getsize(audio_file)} 바이트)")
     else:
+        print("🔊 오디오 URL이 없어 gTTS로 대체 음성을 생성합니다.")
         generate_audio(script, audio_file)
         
     output_file = "output_shorts.mp4"
