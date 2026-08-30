@@ -38,6 +38,7 @@ jobs:
           SCRIPT: ${{ github.event.client_payload.script }}
           AUDIO_URL: ${{ github.event.client_payload.audio_url }}
           DRIVE_FOLDER_ID: ${{ github.event.client_payload.drive_folder_id }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
         run: python render_shorts.py
 
       - name: MP4 파일 아티팩트 보관
