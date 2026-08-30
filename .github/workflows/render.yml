@@ -37,11 +37,14 @@ jobs:
           TITLE: ${{ github.event.client_payload.title }}
           SCRIPT: ${{ github.event.client_payload.script }}
           BG_KEYWORD: ${{ github.event.client_payload.bg_keyword }}
+          ROW: ${{ github.event.client_payload.row }}
           DRIVE_FOLDER_ID: ${{ secrets.DRIVE_FOLDER_ID }}
           GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
           GOOGLE_OAUTH_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
           GOOGLE_OAUTH_REFRESH_TOKEN: ${{ secrets.GOOGLE_OAUTH_REFRESH_TOKEN }}
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          CALLBACK_URL: ${{ secrets.CALLBACK_URL }}
+          CALLBACK_SECRET: ${{ secrets.CALLBACK_SECRET }}
         run: python render_shorts.py
 
       - name: MP4 파일 아티팩트 보관
