@@ -8,31 +8,35 @@ on:
 jobs:
   render:
     runs-on: ubuntu-latest
+
     steps:
-      - name: 저장소 체크아웃
+      - name: 코드 내려받기
         uses: actions/checkout@v4
 
-      - name: Python 3.10 환경 설정
+      - name: 파이썬 준비
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
-      - name: 필수 라이브러리 및 나눔 폰트 설치
+      - name: 필요한 프로그램 설치
         run: |
           sudo apt-get update
           sudo apt-get install -y ffmpeg imagemagick fonts-nanum
-
-          sudo sed -i 's/rights="none" pattern="@\*"/rights="read|write" pattern="@\*"/g' /etc/ImageMagick-*/policy.xml || true
-          sudo sed -i 's/rights="none" pattern="PDF"/rights="read|write" pattern="PDF"/g' /etc/ImageMagick-*/policy.xml || true
-
-          sudo sed -i '/<policy domain="resource" name="width"/d' /etc/ImageMagick-*/policy.xml || true
-          sudo sed -i '/<policy domain="resource" name="height"/d' /etc/ImageMagick-*/policy.xml || true
-
-          fc-cache -f -v
-
+          sudo fc-cache -fv
           pip install moviepy==1.0.3 requests google-auth google-api-python-client gtts pillow numpy
 
-      - name: 쇼츠 렌더링 실행
+      - name: ImageMagick 제한 해제
+        run: |
+          POLICY=$(find /etc/ImageMagick* -name policy.xml | head -n 1)
+          echo "policy: $POLICY"
+          sudo sed -i 's/rights="none"/rights="read|write"/g' "$POLICY"
+          sudo sed -i '/pattern="@\*"/d' "$POLICY"
+          sudo sed -i '/name="width"/d' "$POLICY"
+          sudo sed -i '/name="height"/d' "$POLICY"
+          sudo sed -i 's/name="memory" value=".*"/name="memory" value="2GiB"/' "$POLICY"
+          sudo sed -i 's/name="disk" value=".*"/name="disk" value="4GiB"/' "$POLICY"
+
+      - name: 쇼츠 렌더링
         env:
           TITLE: ${{ github.event.client_payload.title }}
           SCRIPT: ${{ github.event.client_payload.script }}
@@ -40,6 +44,7 @@ jobs:
           ROW: ${{ github.event.client_payload.row }}
           DESCRIPTION: ${{ github.event.client_payload.description }}
           TAGS: ${{ github.event.client_payload.tags }}
+          IMAGE_FOLDER_ID: ${{ github.event.client_payload.image_folder_id }}
           DRIVE_FOLDER_ID: ${{ secrets.DRIVE_FOLDER_ID }}
           GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
           GOOGLE_OAUTH_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
@@ -50,8 +55,9 @@ jobs:
           CALLBACK_SECRET: ${{ secrets.CALLBACK_SECRET }}
         run: python render_shorts.py
 
-      - name: MP4 파일 아티팩트 보관
+      - name: 결과 영상 보관
         uses: actions/upload-artifact@v4
         with:
           name: shorts-video
           path: output_shorts.mp4
+          if-no-files-found: warn
