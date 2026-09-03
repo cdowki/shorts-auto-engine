@@ -129,7 +129,7 @@ def upload_to_youtube(file_path, title, description="", tags_text="", privacy=YO
 
 # ---------- 시트 콜백 ----------
 
-def send_callback(row, status, video_url="", file_name="", youtube_url=""):
+def send_callback(row, status, video_url="", file_name="", youtube_url="", public_video_url=""):
     """렌더링 결과를 앱스 스크립트 웹 앱으로 되돌려 보내 시트에 기록"""
     url = os.environ.get('CALLBACK_URL')
     secret = os.environ.get('CALLBACK_SECRET')
@@ -144,7 +144,8 @@ def send_callback(row, status, video_url="", file_name="", youtube_url=""):
         "status": status,
         "video_url": video_url,
         "file_name": file_name,
-        "youtube_url": youtube_url
+        "youtube_url": youtube_url,
+        "public_video_url": public_video_url
     }
 
     try:
@@ -203,6 +204,55 @@ def upload_to_google_drive(file_path, folder_id, drive_name=None):
     except Exception as e:
         print(f"❌ 영상 업로드 오류 발생: {e}")
         raise e
+
+
+def upload_to_github_release(file_path, tag_name, title=None):
+    """영상을 GitHub 릴리스에 올려 인스타그램 API가 요구하는 '공개 URL'을 만든다"""
+    token = os.environ.get('GH_TOKEN')
+    repo = os.environ.get('GH_REPOSITORY')
+    if not token or not repo:
+        print("⚠️ GH_TOKEN/GH_REPOSITORY가 없어 공개 URL 생성을 건너뜁니다.")
+        return ""
+
+    api = f"https://api.github.com/repos/{repo}"
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+    }
+
+    print(f"🔗 GitHub 릴리스 생성 중... (tag: {tag_name})")
+    try:
+        res = requests.post(f"{api}/releases", headers=headers, json={
+            "tag_name": tag_name,
+            "name": title or tag_name,
+            "body": "쇼츠 자동화 - 인스타그램 발행용 임시 공개 영상",
+            "draft": False,
+            "prerelease": False,
+        }, timeout=30)
+        res.raise_for_status()
+        release = res.json()
+    except Exception as e:
+        print(f"❌ 릴리스 생성 실패: {e}")
+        return ""
+
+    upload_url = release['upload_url'].split('{')[0]
+    asset_name = os.path.basename(file_path)
+
+    print(f"📤 영상 업로드 중... ({asset_name})")
+    try:
+        with open(file_path, 'rb') as f:
+            data = f.read()
+        up_headers = dict(headers)
+        up_headers["Content-Type"] = "video/mp4"
+        res = requests.post(f"{upload_url}?name={asset_name}", headers=up_headers, data=data, timeout=120)
+        res.raise_for_status()
+        public_url = res.json().get('browser_download_url', '')
+        print(f"✅ 공개 URL 생성 완료: {public_url}")
+        return public_url
+    except Exception as e:
+        print(f"❌ 영상 업로드(릴리스) 실패: {e}")
+        return ""
 
 
 def _natural_key(name):
@@ -711,7 +761,13 @@ if __name__ == "__main__":
         # 유튜브 업로드는 실패해도 전체를 중단하지 않는다
         youtube_link = upload_to_youtube(output_file, title, description, tags_text)
 
-        send_callback(row, "완료", drive_link, drive_name, youtube_link)
+        # 인스타그램 API용 공개 URL (GitHub 릴리스). 실패해도 전체를 중단하지 않는다
+        public_video_url = ""
+        if os.path.exists(output_file):
+            release_tag = f"shorts-{row or 'r'}-{datetime.now(timezone(timedelta(hours=9))).strftime('%Y%m%d%H%M%S')}"
+            public_video_url = upload_to_github_release(output_file, release_tag, title)
+
+        send_callback(row, "완료", drive_link, drive_name, youtube_link, public_video_url)
 
     except Exception as err:
         print(f"❌ 작업 실패: {err}")
