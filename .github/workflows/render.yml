@@ -8,6 +8,8 @@ on:
 jobs:
   render:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: 코드 내려받기
@@ -45,6 +47,8 @@ jobs:
           DESCRIPTION: ${{ github.event.client_payload.description }}
           TAGS: ${{ github.event.client_payload.tags }}
           IMAGE_FOLDER_ID: ${{ github.event.client_payload.image_folder_id }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPOSITORY: ${{ github.repository }}
           DRIVE_FOLDER_ID: ${{ secrets.DRIVE_FOLDER_ID }}
           GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
           GOOGLE_OAUTH_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
