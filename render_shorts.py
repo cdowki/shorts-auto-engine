@@ -37,6 +37,7 @@ CAPTION_BOTTOM = 0.82             # 자막 카드 아랫변 위치 (화면 높�
 BLUR_RADIUS = 28                  # 블로그 이미지 뒤에 까는 흐린 배경의 흐림 정도
 SIDE_PAD = 0.03                   # 블로그 이미지 좌우 여백 (화면 폭 대비)
 MIN_BAND_H = 200                  # 이 높이보다 좁으면 블러 레이아웃을 포기하고 꽉 채우기로 전환
+EDGE_TRIM = 0.025                 # 원본 사진 테두리를 살짝 잘라내는 비율 (흰 여백·둥근 모서리 등 아티팩트 제거용)
 
 KEYWORD_MAP = {
     '국민연금': 'retirement', '연금': 'retirement savings', '노후': 'senior couple',
@@ -528,7 +529,7 @@ def prepare_cover_image(src_path, out_path, size, zoom=ZOOM):
     return out_path
 
 
-def prepare_blur_fit(src_path, out_bg, out_fg, size, band, zoom=ZOOM, side_pad=SIDE_PAD):
+def prepare_blur_fit(src_path, out_bg, out_fg, size, band, zoom=ZOOM, side_pad=SIDE_PAD, edge_trim=EDGE_TRIM):
     """사진을 자르지 않고 통째로 넣고, 남는 곳은 같은 사진을 흐리게 깔아 채운다 (블로그 이미지용)"""
     W, H = size
     band_top, band_bottom = band
@@ -536,6 +537,14 @@ def prepare_blur_fit(src_path, out_bg, out_fg, size, band, zoom=ZOOM, side_pad=S
     box_h = max(1, band_bottom - band_top)
 
     im = Image.open(src_path).convert('RGB')
+
+    # 원본 테두리를 살짝 잘라내고 시작 (흰 여백·둥근 모서리 같은 아티팩트가
+    # 선명한 원본 가장자리에 그대로 보이는 문제 방지)
+    if edge_trim > 0:
+        w0, h0 = im.size
+        tx, ty = int(w0 * edge_trim), int(h0 * edge_trim)
+        if w0 - tx * 2 > 0 and h0 - ty * 2 > 0:
+            im = im.crop((tx, ty, w0 - tx, h0 - ty))
 
     # 1) 흐린 배경: 화면을 꽉 채우도록 잘라서 블러 (확대 여유분 포함)
     bw, bh = int(W * (1 + zoom)), int(H * (1 + zoom))
