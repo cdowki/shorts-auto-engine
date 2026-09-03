@@ -2,6 +2,7 @@ import os
 import re
 import random
 import subprocess
+import time
 from datetime import datetime, timezone, timedelta
 import requests
 from PIL import Image, ImageFilter
@@ -252,6 +253,79 @@ def upload_to_github_release(file_path, tag_name, title=None):
         return public_url
     except Exception as e:
         print(f"❌ 영상 업로드(릴리스) 실패: {e}")
+        return ""
+
+
+def publish_to_instagram(video_url, caption):
+    """인스타그램 릴스 발행 (컨테이너 생성 → 처리 대기 → 발행). IG_PUBLISH=true 아니면 실제 발행 전 단계에서 멈춤(드라이런)"""
+    ig_user_id = os.environ.get('IG_USER_ID')
+    access_token = os.environ.get('IG_ACCESS_TOKEN')
+
+    if not ig_user_id or not access_token:
+        print("⚠️ IG_USER_ID/IG_ACCESS_TOKEN이 없어 인스타그램 발행을 건너뜁니다. (0단계 미완료)")
+        return ""
+
+    if not video_url:
+        print("⚠️ 공개 영상 URL이 없어 인스타그램 발행을 건너뜁니다.")
+        return ""
+
+    dry_run = os.environ.get('IG_PUBLISH', 'false').strip().lower() != 'true'
+    api_ver = "v21.0"
+
+    print("📦 인스타그램 릴스 컨테이너 생성 중...")
+    try:
+        res = requests.post(f"https://graph.facebook.com/{api_ver}/{ig_user_id}/media", data={
+            "media_type": "REELS",
+            "video_url": video_url,
+            "caption": caption,
+            "access_token": access_token,
+        }, timeout=30)
+        res.raise_for_status()
+        container_id = res.json().get("id")
+    except Exception as e:
+        print(f"❌ 인스타그램 컨테이너 생성 실패: {e}")
+        return ""
+
+    print(f"⏳ 인스타그램 영상 처리 대기 중... (container: {container_id})")
+    status = ""
+    for _ in range(30):  # 최대 5분 (10초 x 30회)
+        time.sleep(10)
+        try:
+            res = requests.get(f"https://graph.facebook.com/{api_ver}/{container_id}", params={
+                "fields": "status_code",
+                "access_token": access_token,
+            }, timeout=30)
+            res.raise_for_status()
+            status = res.json().get("status_code", "")
+            print(f"   상태: {status}")
+            if status == "FINISHED":
+                break
+            if status == "ERROR":
+                print("❌ 인스타그램 영상 처리 실패 (ERROR)")
+                return ""
+        except Exception as e:
+            print(f"⚠️ 인스타그램 상태 확인 실패: {e}")
+
+    if status != "FINISHED":
+        print("❌ 인스타그램 영상 처리 시간 초과")
+        return ""
+
+    if dry_run:
+        print(f"🧪 IG_PUBLISH=true가 아니라서 드라이런으로 멈춥니다. (container_id: {container_id})")
+        return f"[DRY-RUN] {container_id}"
+
+    print("🚀 인스타그램 릴스 발행 중...")
+    try:
+        res = requests.post(f"https://graph.facebook.com/{api_ver}/{ig_user_id}/media_publish", data={
+            "creation_id": container_id,
+            "access_token": access_token,
+        }, timeout=30)
+        res.raise_for_status()
+        media_id = res.json().get("id")
+        print(f"✅ 인스타그램 릴스 발행 완료! (media_id: {media_id})")
+        return media_id
+    except Exception as e:
+        print(f"❌ 인스타그램 발행 실패: {e}")
         return ""
 
 
@@ -766,6 +840,12 @@ if __name__ == "__main__":
         if os.path.exists(output_file):
             release_tag = f"shorts-{row or 'r'}-{datetime.now(timezone(timedelta(hours=9))).strftime('%Y%m%d%H%M%S')}"
             public_video_url = upload_to_github_release(output_file, release_tag, title)
+
+        # 인스타그램 릴스 발행 (0단계 토큰 없으면 자동으로 건너뜀). 실패해도 전체를 중단하지 않는다
+        ig_caption = (description or title).strip()
+        instagram_result = publish_to_instagram(public_video_url, ig_caption)
+        if instagram_result:
+            print(f"📸 인스타그램 결과: {instagram_result}")
 
         send_callback(row, "완료", drive_link, drive_name, youtube_link, public_video_url)
 
