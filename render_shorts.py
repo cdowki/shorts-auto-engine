@@ -882,7 +882,7 @@ if __name__ == "__main__":
         # 나중에 0단계가 풀려서 직접 호출로 되돌리고 싶으면, 아래 두 줄을 다음으로 바꾸면 됨:
         #   instagram_result = publish_to_instagram(public_video_url, ig_caption)
         #   if instagram_result: print(f"📸 인스타그램 결과: {instagram_result}")
-        ig_caption = (description or title).strip()
+        ig_caption = (description or title).strip() + "\n\n📌 자세한 내용은 프로필 링크를 확인하세요"
         publish_via_make_webhook(public_video_url, ig_caption)
 
         send_callback(row, "완료", drive_link, drive_name, youtube_link, public_video_url)
