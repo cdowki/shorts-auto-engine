@@ -330,6 +330,32 @@ def publish_to_instagram(video_url, caption):
         return ""
 
 
+def publish_via_make_webhook(video_url, caption):
+    """Make.com 발행 허브 웹훅으로 공개 영상 URL과 캡션을 보내 인스타그램 릴스 발행을 위임한다.
+    (Meta 개발자 앱 등록 없이 Make의 승인된 앱을 거쳐 발행 — 0단계 버그 우회용, 2026-09-04 추가)"""
+    webhook_url = os.environ.get('MAKE_IG_WEBHOOK_URL')
+    if not webhook_url:
+        print("⚠️ MAKE_IG_WEBHOOK_URL이 없어 Make 발행 허브 호출을 건너뜁니다.")
+        return False
+
+    if not video_url:
+        print("⚠️ 공개 영상 URL이 없어 Make 발행 허브 호출을 건너뜁니다.")
+        return False
+
+    print("📮 Make 발행 허브로 인스타그램 릴스 발행 요청 전송 중...")
+    try:
+        res = requests.post(webhook_url, json={
+            "video_url": video_url,
+            "caption": caption,
+        }, timeout=30)
+        res.raise_for_status()
+        print(f"✅ Make 발행 허브 전송 완료 (status: {res.status_code})")
+        return True
+    except Exception as e:
+        print(f"❌ Make 발행 허브 전송 실패: {e}")
+        return False
+
+
 def _natural_key(name):
     """image_2 가 image_10 보다 앞에 오도록 숫자를 숫자로 비교"""
     return [int(t) if t.isdigit() else t.lower() for t in re.split(r'(\d+)', name)]
@@ -850,11 +876,14 @@ if __name__ == "__main__":
             release_tag = f"shorts-{row or 'r'}-{datetime.now(timezone(timedelta(hours=9))).strftime('%Y%m%d%H%M%S')}"
             public_video_url = upload_to_github_release(output_file, release_tag, title)
 
-        # 인스타그램 릴스 발행 (0단계 토큰 없으면 자동으로 건너뜀). 실패해도 전체를 중단하지 않는다
+        # 인스타그램 릴스 발행 — Make 발행 허브 경유 방식 사용 (2026-09-04부터).
+        # 기존 방식(publish_to_instagram, Meta API 직접 호출)은 0단계(Meta 개발자 앱 등록) 버그로
+        # 막혀 있어 지금은 호출하지 않음 — 함수 자체는 지우지 않고 그대로 남겨둠.
+        # 나중에 0단계가 풀려서 직접 호출로 되돌리고 싶으면, 아래 두 줄을 다음으로 바꾸면 됨:
+        #   instagram_result = publish_to_instagram(public_video_url, ig_caption)
+        #   if instagram_result: print(f"📸 인스타그램 결과: {instagram_result}")
         ig_caption = (description or title).strip()
-        instagram_result = publish_to_instagram(public_video_url, ig_caption)
-        if instagram_result:
-            print(f"📸 인스타그램 결과: {instagram_result}")
+        publish_via_make_webhook(public_video_url, ig_caption)
 
         send_callback(row, "완료", drive_link, drive_name, youtube_link, public_video_url)
 
