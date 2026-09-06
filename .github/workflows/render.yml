@@ -47,6 +47,7 @@ jobs:
           DESCRIPTION: ${{ github.event.client_payload.description }}
           TAGS: ${{ github.event.client_payload.tags }}
           IMAGE_FOLDER_ID: ${{ github.event.client_payload.image_folder_id }}
+          BLOG_LINK: ${{ github.event.client_payload.blog_link }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPOSITORY: ${{ github.repository }}
           DRIVE_FOLDER_ID: ${{ secrets.DRIVE_FOLDER_ID }}
