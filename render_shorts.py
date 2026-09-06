@@ -330,7 +330,7 @@ def publish_to_instagram(video_url, caption):
         return ""
 
 
-def publish_via_make_webhook(video_url, caption):
+def publish_via_make_webhook(video_url, caption, blog_link=""):
     """Make.com 발행 허브 웹훅으로 공개 영상 URL과 캡션을 보내 인스타그램 릴스 발행을 위임한다.
     (Meta 개발자 앱 등록 없이 Make의 승인된 앱을 거쳐 발행 — 0단계 버그 우회용, 2026-09-04 추가)"""
     webhook_url = os.environ.get('MAKE_IG_WEBHOOK_URL')
@@ -347,6 +347,7 @@ def publish_via_make_webhook(video_url, caption):
         res = requests.post(webhook_url, json={
             "video_url": video_url,
             "caption": caption,
+            "blog_link": blog_link,
         }, timeout=30)
         res.raise_for_status()
         print(f"✅ Make 발행 허브 전송 완료 (status: {res.status_code})")
@@ -842,7 +843,7 @@ if __name__ == "__main__":
     row = os.environ.get('ROW', '')
     description = os.environ.get('DESCRIPTION', '')
     tags_text = os.environ.get('TAGS', '')
-
+    blog_link = os.environ.get('BLOG_LINK', '')
     print(f"📌 타이틀: {title}")
     if image_folder_id:
         print(f"🗂️ 블로그 이미지 폴더: {image_folder_id}")
@@ -883,7 +884,7 @@ if __name__ == "__main__":
         #   instagram_result = publish_to_instagram(public_video_url, ig_caption)
         #   if instagram_result: print(f"📸 인스타그램 결과: {instagram_result}")
         ig_caption = (description or title).strip() + "\n\n📌 자세한 내용은 프로필 링크를 확인하세요"
-        publish_via_make_webhook(public_video_url, ig_caption)
+        publish_via_make_webhook(public_video_url, ig_caption, blog_link)
 
         send_callback(row, "완료", drive_link, drive_name, youtube_link, public_video_url)
 
