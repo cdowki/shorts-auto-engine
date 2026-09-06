@@ -616,6 +616,8 @@ def build_background(title, script, plan, duration, size, bg_keyword="",
     want = min(len(plan), MAX_IMAGES)
 
     srcs = download_drive_images(image_folder_id, want) if image_folder_id else []
+    if srcs:
+        random.shuffle(srcs)  # 첫 장면(대표 프레임)이 항상 같은 사진이 되지 않도록 순서를 섞음
     use_fit = bool(srcs) and band is not None and (band[1] - band[0]) >= MIN_BAND_H
 
     if srcs and not use_fit:
