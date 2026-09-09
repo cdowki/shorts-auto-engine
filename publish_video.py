@@ -724,6 +724,18 @@ if __name__ == "__main__":
             src = cut_segment(src, clip_start, clip_end)
         elif clip_start > 0:
             src = cut_segment(src, clip_start, probe_duration(src))
+        elif part_count > 1:
+            # 시작·끝을 안 알려줬으면 여기서 스스로 균등하게 나눈다.
+            # 덕분에 부르는 쪽(GAS)은 영상 길이를 몰라도 된다.
+            total = probe_duration(src)
+            if total > 1.0:
+                span = total / part_count
+                a = span * (part - 1)
+                b = total if part >= part_count else span * part
+                print(f"📐 {part_count}편으로 나눔 — 전체 {total:.1f}초 중 {part}편")
+                src = cut_segment(src, a, b)
+            else:
+                print("   ⚠️ 영상 길이를 못 재서 나누지 않고 통째로 씁니다.")
 
         src, was_cut = fit_duration(src, trim_silence=trim_silence, allow_speed=allow_speed)
         build_video(title, src, output_file,
