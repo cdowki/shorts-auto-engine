@@ -43,6 +43,8 @@ YOUTUBE_CATEGORY = '22'
 MAX_DURATION = 180                # 네이버 클립 상한 3분. 넘으면 잘라낸다
 BAND_BOTTOM = 0.88                # 영상이 들어갈 영역의 아랫변 (워터마크 위)
 FILL_WHEN_TALL = True             # 세로 영상은 화면을 꽉 채우고 제목을 그 위에 얹는다
+MAX_SPEED = 1.10                  # 속도 조절 상한. 5060 시청자를 생각해 1.1배까지만
+NOTICE_SECONDS = 3                # 끝 안내 문구가 화면에 떠 있는 시간
 SHADE_OPACITY = 0.32              # 흐린 배경 위에 까는 어둡기
 
 
@@ -256,6 +258,174 @@ def normalize_video(src_path, out_path="normalized.mp4"):
     return out_path
 
 
+def probe_duration(path):
+    """영상 길이를 초로 돌려준다. 못 읽으면 0"""
+    try:
+        out = subprocess.run(
+            ['ffprobe', '-v', 'error', '-show_entries', 'format=duration',
+             '-of', 'default=noprint_wrappers=1:nokey=1', path],
+            capture_output=True, text=True, timeout=60
+        ).stdout.strip()
+        return float(out)
+    except Exception:
+        return 0.0
+
+
+def has_audio(path):
+    """소리 트랙이 있는지 확인"""
+    try:
+        out = subprocess.run(
+            ['ffprobe', '-v', 'error', '-select_streams', 'a:0',
+             '-show_entries', 'stream=codec_type',
+             '-of', 'default=noprint_wrappers=1:nokey=1', path],
+            capture_output=True, text=True, timeout=60
+        ).stdout.strip()
+        return out.startswith('audio')
+    except Exception:
+        return False
+
+
+def run_ffmpeg(cmd, out_path, what):
+    """ffmpeg 한 번 돌리고 결과 파일이 제대로 나왔는지 확인"""
+    proc = subprocess.run(cmd, capture_output=True, text=True)
+    ok = (proc.returncode == 0 and os.path.exists(out_path)
+          and os.path.getsize(out_path) > 10000)
+    if not ok:
+        print(f"   ⚠️ {what} 실패. 원본을 그대로 씁니다.")
+        print("      " + (proc.stderr or '')[-300:])
+    return ok
+
+
+def cut_segment(src_path, start, end, out_path="segment.mp4"):
+    """영상의 한 구간만 잘라낸다 (여러 편으로 나눠 올릴 때 사용)"""
+    length = max(0.5, end - start)
+    print(f"✂️ 구간 잘라내기: {start:.1f}초 ~ {end:.1f}초 ({length:.1f}초)")
+    cmd = [
+        'ffmpeg', '-y', '-loglevel', 'error',
+        '-ss', f'{start:.3f}', '-i', src_path, '-t', f'{length:.3f}',
+        '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20',
+        '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k',
+        '-movflags', '+faststart', out_path
+    ]
+    return out_path if run_ffmpeg(cmd, out_path, "구간 잘라내기") else src_path
+
+
+def detect_silences(path, noise_db, min_len):
+    """말이 없는 구간의 (시작, 끝) 목록"""
+    proc = subprocess.run(
+        ['ffmpeg', '-hide_banner', '-nostats', '-i', path,
+         '-af', f'silencedetect=noise={noise_db}dB:d={min_len}', '-f', 'null', '-'],
+        capture_output=True, text=True
+    )
+    log = proc.stderr or ''
+    starts = [float(x) for x in re.findall(r'silence_start:\s*(-?[0-9.]+)', log)]
+    ends = [float(x) for x in re.findall(r'silence_end:\s*(-?[0-9.]+)', log)]
+    total = probe_duration(path)
+    pairs = []
+    for i, s in enumerate(starts):
+        e = ends[i] if i < len(ends) else total
+        if e > s:
+            pairs.append((max(0.0, s), min(total, e)))
+    return pairs
+
+
+def remove_silence(src_path, out_path="tight.mp4",
+                   noise_db=-30, min_len=0.6, keep_pad=0.15, max_cuts=60):
+    """말이 없는 구간을 건너뛰어 영상을 짧게 만든다.
+
+    말끝이 잘리지 않도록 조용한 구간의 앞뒤 0.15초는 남긴다.
+    잘라낼 구간이 너무 많으면 긴 것부터 60군데까지만 자른다.
+    """
+    if not has_audio(src_path):
+        print("🤫 소리가 없는 영상이라 무음 제거를 건너뜁니다.")
+        return src_path
+
+    total = probe_duration(src_path)
+    if total <= 0:
+        return src_path
+
+    sil = [(s + keep_pad, e - keep_pad) for s, e in
+           detect_silences(src_path, noise_db, min_len)]
+    sil = [(s, e) for s, e in sil if e - s >= 0.2]
+    if not sil:
+        print("🤫 잘라낼 무음 구간이 없습니다.")
+        return src_path
+
+    if len(sil) > max_cuts:
+        sil = sorted(sil, key=lambda p: p[1] - p[0], reverse=True)[:max_cuts]
+        sil.sort()
+
+    keeps, cursor = [], 0.0
+    for s, e in sil:
+        if s > cursor:
+            keeps.append((cursor, s))
+        cursor = max(cursor, e)
+    if cursor < total:
+        keeps.append((cursor, total))
+    keeps = [(a, b) for a, b in keeps if b - a >= 0.1]
+
+    if not keeps:
+        return src_path
+
+    kept = sum(b - a for a, b in keeps)
+    if kept >= total * 0.97:
+        print(f"🤫 무음 제거 효과가 작아 건너뜁니다 ({total:.1f}초 → {kept:.1f}초)")
+        return src_path
+
+    print(f"🤫 무음 {len(sil)}군데 건너뜀: {total:.1f}초 → 약 {kept:.1f}초")
+    expr = '+'.join([f"between(t,{a:.3f},{b:.3f})" for a, b in keeps])
+    cmd = [
+        'ffmpeg', '-y', '-loglevel', 'error', '-i', src_path,
+        '-vf', f"select='{expr}',setpts=N/FRAME_RATE/TB",
+        '-af', f"aselect='{expr}',asetpts=N/SR/TB",
+        '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20',
+        '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k',
+        '-movflags', '+faststart', out_path
+    ]
+    if not run_ffmpeg(cmd, out_path, "무음 제거"):
+        return src_path
+    print(f"   실제 길이: {probe_duration(out_path):.1f}초")
+    return out_path
+
+
+def speed_up(src_path, factor, out_path="fast.mp4"):
+    """영상을 조금 빠르게 만든다. 목소리 톤은 그대로 유지된다"""
+    factor = max(1.01, min(factor, MAX_SPEED))
+    print(f"⏩ {factor:.2f}배 빠르게 (목소리 톤은 그대로)")
+    cmd = [
+        'ffmpeg', '-y', '-loglevel', 'error', '-i', src_path,
+        '-filter:v', f'setpts=PTS/{factor:.4f}',
+        '-filter:a', f'atempo={factor:.4f}',
+        '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20',
+        '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k',
+        '-movflags', '+faststart', out_path
+    ]
+    if not run_ffmpeg(cmd, out_path, "속도 조절"):
+        return src_path
+    print(f"   실제 길이: {probe_duration(out_path):.1f}초")
+    return out_path
+
+
+def fit_duration(src_path, trim_silence='auto', allow_speed=False):
+    """180초 안에 들어오도록 줄인다. 줄인 결과 파일 경로와 잘림 여부를 돌려준다"""
+    dur = probe_duration(src_path)
+    print(f"⏱️ 현재 길이: {dur:.1f}초 (상한 {MAX_DURATION}초)")
+
+    want_silence = (trim_silence == 'on') or (trim_silence == 'auto' and dur > MAX_DURATION)
+    if want_silence:
+        src_path = remove_silence(src_path)
+        dur = probe_duration(src_path)
+
+    if dur > MAX_DURATION and allow_speed:
+        src_path = speed_up(src_path, dur / MAX_DURATION * 1.02)
+        dur = probe_duration(src_path)
+
+    will_cut = dur > MAX_DURATION + 0.5
+    if will_cut:
+        print(f"   ⚠️ 아직 {dur:.1f}초입니다. {MAX_DURATION}초에서 잘리고 화면에 안내가 붙습니다.")
+    return src_path, will_cut
+
+
 def upload_to_google_drive(file_path, folder_id, drive_name=None):
     print("☁️ 구글 드라이브 완성 영상 업로드 중...")
     service = get_drive_service_oauth()
@@ -414,8 +584,9 @@ def make_blur_background(video, size, out_path="bg_blur.jpg"):
 
 # ---------- 영상 조립 ----------
 
-def build_video(title, src_path, output_path="output_video.mp4", size=None):
-    """흐린 배경 + 가운데 영상 + 제목 카드 + 워터마크"""
+def build_video(title, src_path, output_path="output_video.mp4", size=None,
+                part=1, part_count=1, was_cut=False):
+    """흐린 배경 + 가운데 영상 + 제목 카드 + 워터마크 + 끝 안내"""
     print("🎬 영상 조립 시작...")
     size = size or VIDEO_SIZE
     W, H = size
@@ -426,6 +597,7 @@ def build_video(title, src_path, output_path="output_video.mp4", size=None):
     if video.duration > MAX_DURATION:
         print(f"   ⚠️ {MAX_DURATION}초를 넘어 앞부분만 씁니다.")
         video = video.subclip(0, MAX_DURATION)
+        was_cut = True
     duration = video.duration
 
     # 1) 제목 카드 (화면 위쪽 고정)
@@ -466,6 +638,23 @@ def build_video(title, src_path, output_path="output_video.mp4", size=None):
     shade = ColorClip(size=size, color=(0, 0, 0), duration=duration).set_opacity(SHADE_OPACITY)
 
     layers = [bg, shade, vid, title_clip]
+
+    # 5) 끝 안내 문구 — 다음 편이 있거나, 길이 때문에 잘렸을 때
+    notice_text = ""
+    if part_count > 1 and part < part_count:
+        notice_text = f"{part + 1}편에서 계속"
+    elif was_cut:
+        notice_text = "영상이 길어 여기까지만 담았습니다"
+
+    if notice_text and duration > NOTICE_SECONDS + 0.5:
+        notice = make_text_card(notice_text, int(W * 0.062), 'white', TITLE_FONT, size,
+                                band_opacity=0.72)
+        notice = (notice.set_position(('center', int(H * 0.60)))
+                        .set_start(duration - NOTICE_SECONDS)
+                        .set_duration(NOTICE_SECONDS))
+        layers.append(notice)
+        print(f"📣 끝 안내: \"{notice_text}\" (마지막 {NOTICE_SECONDS}초)")
+
     if WATERMARK:
         wm = make_watermark_clip(WATERMARK, size)
         wm = wm.set_position(('center', int(H * 0.915) - wm.h // 2)).set_duration(duration)
@@ -497,6 +686,22 @@ if __name__ == "__main__":
     blog_link = os.environ.get('BLOG_LINK', '')
     threads_text = " ".join(title.split()).replace("\\", "").replace('"', "'")[:480]
 
+    # 길이 다루기
+    def num_env(name, default=0.0):
+        try:
+            return float(str(os.environ.get(name, '')).strip())
+        except Exception:
+            return default
+
+    clip_start = max(0.0, num_env('CLIP_START', 0.0))
+    clip_end = num_env('CLIP_END', 0.0)
+    part = int(num_env('PART', 1) or 1)
+    part_count = int(num_env('PART_COUNT', 1) or 1)
+    trim_silence = (os.environ.get('TRIM_SILENCE', 'auto').strip().lower() or 'auto')
+    if trim_silence not in ('auto', 'on', 'off'):
+        trim_silence = 'auto'
+    allow_speed = os.environ.get('SPEED_UP', '').strip().lower() == 'on'
+
     # 시험 모드: 렌더링만 하고 발행은 전부 건너뛴다.
     # 깃허브 화면에서 손으로 돌릴 때만 켜진다 (repository_dispatch 로는 값이 안 들어와 항상 꺼짐)
     dry_run = os.environ.get('DRY_RUN', '').strip().lower() == 'true'
@@ -514,7 +719,15 @@ if __name__ == "__main__":
     try:
         src = download_drive_video(video_file_id)
         src = normalize_video(src)
-        build_video(title, src, output_file)
+
+        if clip_end > clip_start:
+            src = cut_segment(src, clip_start, clip_end)
+        elif clip_start > 0:
+            src = cut_segment(src, clip_start, probe_duration(src))
+
+        src, was_cut = fit_duration(src, trim_silence=trim_silence, allow_speed=allow_speed)
+        build_video(title, src, output_file,
+                    part=part, part_count=part_count, was_cut=was_cut)
 
         if dry_run:
             got = os.path.getsize(output_file) if os.path.exists(output_file) else 0
