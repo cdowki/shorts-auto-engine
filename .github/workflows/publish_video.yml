@@ -1,0 +1,78 @@
+name: Publish Manual Video
+
+on:
+  repository_dispatch:
+    types: [publish_video]
+  workflow_dispatch:
+    inputs:
+      title:
+        description: '영상 제목 (화면 위에 노란 글씨로 뜹니다)'
+        required: true
+        default: '시험 영상'
+      video_file_id:
+        description: '드라이브 영상 파일 ID (주소의 /file/d/ 와 /view 사이)'
+        required: true
+      dry_run:
+        description: '시험 모드 — 렌더링만 하고 발행은 전부 건너뜁니다'
+        required: true
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+        default: 'true'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 저장소 체크아웃
+        uses: actions/checkout@v4
+
+      - name: Python 3.10 환경 설정
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: 필수 라이브러리 및 나눔 폰트 설치
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg imagemagick fonts-nanum
+
+          sudo sed -i 's/rights="none" pattern="@\*"/rights="read|write" pattern="@\*"/g' /etc/ImageMagick-*/policy.xml || true
+          sudo sed -i 's/rights="none" pattern="PDF"/rights="read|write" pattern="PDF"/g' /etc/ImageMagick-*/policy.xml || true
+
+          sudo sed -i '/<policy domain="resource" name="width"/d' /etc/ImageMagick-*/policy.xml || true
+          sudo sed -i '/<policy domain="resource" name="height"/d' /etc/ImageMagick-*/policy.xml || true
+
+          fc-cache -f -v
+
+          pip install moviepy==1.0.3 requests google-auth google-api-python-client pillow numpy
+
+      - name: 영상 발행 실행
+        env:
+          TITLE: ${{ github.event.client_payload.title || github.event.inputs.title }}
+          VIDEO_FILE_ID: ${{ github.event.client_payload.video_file_id || github.event.inputs.video_file_id }}
+          ROW: ${{ github.event.client_payload.row }}
+          DESCRIPTION: ${{ github.event.client_payload.description }}
+          TAGS: ${{ github.event.client_payload.tags }}
+          BLOG_LINK: ${{ github.event.client_payload.blog_link }}
+          DRY_RUN: ${{ github.event.inputs.dry_run }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPOSITORY: ${{ github.repository }}
+          DRIVE_FOLDER_ID: ${{ secrets.DRIVE_FOLDER_ID }}
+          GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
+          GOOGLE_OAUTH_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
+          GOOGLE_OAUTH_REFRESH_TOKEN: ${{ secrets.GOOGLE_OAUTH_REFRESH_TOKEN }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+          CALLBACK_URL: ${{ secrets.CALLBACK_URL }}
+          CALLBACK_SECRET: ${{ secrets.CALLBACK_SECRET }}
+          MAKE_IG_WEBHOOK_URL: ${{ secrets.MAKE_IG_WEBHOOK_URL }}
+        run: python publish_video.py
+
+      - name: MP4 파일 아티팩트 보관
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: manual-video
+          path: output_video.mp4
+          if-no-files-found: warn
