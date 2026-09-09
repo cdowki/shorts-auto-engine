@@ -20,6 +20,39 @@ on:
           - 'true'
           - 'false'
         default: 'true'
+      trim_silence:
+        description: '무음 구간 건너뛰기 (auto = 180초 넘을 때만)'
+        required: false
+        type: choice
+        options:
+          - 'auto'
+          - 'on'
+          - 'off'
+        default: 'auto'
+      speed_up:
+        description: '조금 빠르게 (무음 제거로도 모자랄 때만, 최대 1.1배)'
+        required: false
+        type: choice
+        options:
+          - 'off'
+          - 'on'
+        default: 'off'
+      clip_start:
+        description: '시작 초 (여러 편으로 나눌 때만. 비우면 처음부터)'
+        required: false
+        default: ''
+      clip_end:
+        description: '끝 초 (여러 편으로 나눌 때만. 비우면 끝까지)'
+        required: false
+        default: ''
+      part:
+        description: '몇 번째 편인지 (기본 1)'
+        required: false
+        default: '1'
+      part_count:
+        description: '전체 몇 편인지 (기본 1)'
+        required: false
+        default: '1'
 
 jobs:
   publish:
@@ -57,6 +90,12 @@ jobs:
           TAGS: ${{ github.event.client_payload.tags }}
           BLOG_LINK: ${{ github.event.client_payload.blog_link }}
           DRY_RUN: ${{ github.event.inputs.dry_run }}
+          TRIM_SILENCE: ${{ github.event.client_payload.trim_silence || github.event.inputs.trim_silence }}
+          SPEED_UP: ${{ github.event.client_payload.speed_up || github.event.inputs.speed_up }}
+          CLIP_START: ${{ github.event.client_payload.clip_start || github.event.inputs.clip_start }}
+          CLIP_END: ${{ github.event.client_payload.clip_end || github.event.inputs.clip_end }}
+          PART: ${{ github.event.client_payload.part || github.event.inputs.part }}
+          PART_COUNT: ${{ github.event.client_payload.part_count || github.event.inputs.part_count }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPOSITORY: ${{ github.repository }}
           DRIVE_FOLDER_ID: ${{ secrets.DRIVE_FOLDER_ID }}
