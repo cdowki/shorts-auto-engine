@@ -27,7 +27,7 @@ SPEED = 1.15                      # 음성 배속
 MAX_IMAGES = 5                    # 배경 사진 최대 장수
 TAIL_SILENCE = 0.4                # 음성 끝에 붙일 무음 길이(초)
 KEEP_LOOP_ENDING = True           # 마지막 여운 문장(루프멘트)을 살릴지. False면 잘라냄
-YOUTUBE_PRIVACY = 'private'       # private(비공개) / unlisted(일부공개) / public(공개)
+YOUTUBE_PRIVACY = 'public'       # private(비공개) / unlisted(일부공개) / public(공개)
 YOUTUBE_CATEGORY = '22'           # 22=인물/블로그, 27=교육
 WATERMARK = '@비광도기'           # 화면 하단에 고정 표시할 저자 표기 (빈 문자열이면 표시 안 함)
 TITLE_FONT = 'NanumGothicBold'
@@ -106,7 +106,7 @@ def upload_to_youtube(file_path, title, description="", tags_text="", privacy=YO
         },
         'status': {
             'privacyStatus': privacy,
-            'selfDeclaredMadeForKids': False
+            'selfDeclaredMadeForKids': False, 'containsSyntheticMedia': True
         }
     }
 
