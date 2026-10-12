@@ -106,7 +106,7 @@ def upload_to_youtube(file_path, title, description="", tags_text="", privacy=YO
         },
         'status': {
             'privacyStatus': privacy,
-            'selfDeclaredMadeForKids': False, 'containsSyntheticMedia': True
+            'selfDeclaredMadeForKids': False, 'containsSyntheticMedia': os.environ.get('AI_IMAGES', '') == '1'
         }
     }
 
