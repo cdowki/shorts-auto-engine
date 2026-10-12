@@ -36,7 +36,7 @@ TITLE_FONT = 'NanumGothicBold'
 CAPTION_FONT = 'NanumGothic'
 BLUR_RADIUS = 28
 SIDE_PAD = 0.03                   # 영상 좌우 여백 (화면 폭 대비)
-YOUTUBE_PRIVACY = 'private'       # private / unlisted / public
+YOUTUBE_PRIVACY = 'public'       # private / unlisted / public
 YOUTUBE_CATEGORY = '22'
 
 # 이 파일만의 설정
