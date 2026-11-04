@@ -1,0 +1,14 @@
+# 서버 실행 중에 생기는 것 — 저장소에는 고른 기록만 저장 (longform.yml)
+logs/
+out/
+claude-empty/
+tts_*/
+jobs/*/img/
+jobs/*/job.json
+jobs/*/_answer_*.txt
+jobs/*/_prompt.txt
+jobs/*/scenes_이전_*.json
+_낱말시각_*.json
+_cut.wav
+.env
+__pycache__/

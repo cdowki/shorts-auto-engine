@@ -1,0 +1,2986 @@
+{
+ "made": "2026-11-03 쇼츠창",
+ "note": "긴 영상 장면 그림 창고 목록. have = 이미 그린 글번호·장면(재사용 후보), drawn = 창고용으로 그린 파일, file = 장면표가 가져다 쓰는 파일(drawn 또는 have 폴더) | 저장소판(11/4): file = warehouse/<번호>.png, pc_file = PC 원래 위치",
+ "items": [
+  {
+   "id": "A01",
+   "group": "공통 동작(혼자)",
+   "name": "인사",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "인사",
+    "시작",
+    "안녕"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 화면 가운데에 서서 한 손을 가볍게 들어 흔들며 반갑게 웃고 있다. 인물을 작게 그리지 말고 화면 가로의 절반 이상을 차지하게 그린다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도, 인물은 화면 가로 가운데",
+   "drawn": "out_warehouse_test10_20261103_213926/scene_01.png",
+   "file": "warehouse/A01.png",
+   "pc_file": "out_warehouse_test10_20261103_213926/scene_01.png"
+  },
+  {
+   "id": "A02",
+   "group": "공통 동작(혼자)",
+   "name": "갸웃 고민",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "고민",
+    "궁금",
+    "질문",
+    "헷갈림"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 화면 가운데에 서서 한 손으로 턱을 괴고 고개를 갸웃하며 골똘히 생각하고 있다. 머리부터 발끝까지 온몸이 다 보인다.",
+   "camera": "전신이 보이는 거리, 정면 각도, 인물은 화면 가로 가운데",
+   "drawn": "out_warehouse_test10_20261103_213926/scene_02.png",
+   "file": "warehouse/A02.png",
+   "pc_file": "out_warehouse_test10_20261103_213926/scene_02.png"
+  },
+  {
+   "id": "A03",
+   "group": "공통 동작(혼자)",
+   "name": "검지로 짚기",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "중요",
+    "핵심",
+    "포인트",
+    "설명"
+   ],
+   "have": "20261030_r1 2",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 집게손가락 하나를 세워 들고 자신 있게 웃으며 중요한 점을 짚어 주고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "",
+   "file": "warehouse/A03.png",
+   "pc_file": "out_20261030_r1_20261102_011308/scene_02.png"
+  },
+  {
+   "id": "A04",
+   "group": "공통 동작(혼자)",
+   "name": "엄지 척",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "추천",
+    "좋다",
+    "이득",
+    "혜택"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 한 손 엄지를 위로 들어 올리고 환하게 웃고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_test10_20261103_212238/scene_03.png",
+   "file": "warehouse/A04.png",
+   "pc_file": "out_warehouse_test10_20261103_212238/scene_03.png"
+  },
+  {
+   "id": "A05",
+   "group": "공통 동작(혼자)",
+   "name": "깜짝 놀람",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "놀람",
+    "의외",
+    "생각보다"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 두 손을 양 볼에 대고 눈을 크게 뜨며 깜짝 놀라고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_test10_20261103_212238/scene_04.png",
+   "file": "warehouse/A05.png",
+   "pc_file": "out_warehouse_test10_20261103_212238/scene_04.png"
+  },
+  {
+   "id": "A06",
+   "group": "공통 동작(혼자)",
+   "name": "이마 땀 걱정",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "걱정",
+    "부담",
+    "손해",
+    "비용"
+   ],
+   "have": "20261030_r1 7",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 계산기를 두 손으로 들고 이마에 땀 한 방울을 흘리며 걱정스러운 표정을 짓고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "",
+   "file": "warehouse/A06.png",
+   "pc_file": "out_20261030_r1_20261102_011308/scene_07.png"
+  },
+  {
+   "id": "A07",
+   "group": "공통 동작(혼자)",
+   "name": "안도",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "안도",
+    "다행",
+    "해결",
+    "안심"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 한 손을 가슴에 대고 눈을 감은 채 후 하고 안도의 숨을 내쉬며 미소 짓고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_01.png",
+   "file": "warehouse/A07.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_01.png"
+  },
+  {
+   "id": "A08",
+   "group": "공통 동작(혼자)",
+   "name": "손바닥 잠깐",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "주의",
+    "잠깐",
+    "멈춤",
+    "조심"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 한 손바닥을 앞으로 내밀어 '잠깐만요' 하는 동작을 하며 진지한 표정을 짓고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_test10_20261103_212238/scene_05.png",
+   "file": "warehouse/A08.png",
+   "pc_file": "out_warehouse_test10_20261103_212238/scene_05.png"
+  },
+  {
+   "id": "A09",
+   "group": "공통 동작(혼자)",
+   "name": "팔짱 생각",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "생각",
+    "판단",
+    "따져보기"
+   ],
+   "have": "20261103_r1 8",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 의자에 앉아 팔짱을 끼고 무릎 위 수첩을 내려다보며 고개를 갸웃하고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "",
+   "file": "warehouse/A09.png",
+   "pc_file": "out_20261103_r1_20261103_192635/scene_08.png"
+  },
+  {
+   "id": "A10",
+   "group": "공통 동작(혼자)",
+   "name": "OK 손",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "확인",
+    "완료",
+    "가능",
+    "된다"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 한 손으로 OK 손 모양을 만들고 눈을 찡긋하며 웃고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_02.png",
+   "file": "warehouse/A10.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_02.png"
+  },
+  {
+   "id": "A11",
+   "group": "공통 동작(혼자)",
+   "name": "X 손",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "안",
+    "됨",
+    "불가",
+    "제외",
+    "금지"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 두 팔을 가슴 앞에서 X자로 엇갈려 '안 돼요' 하는 동작을 하고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_03.png",
+   "file": "warehouse/A11.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_03.png"
+  },
+  {
+   "id": "A12",
+   "group": "공통 동작(혼자)",
+   "name": "두 손 당부",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "당부",
+    "꼭",
+    "부탁",
+    "잊지",
+    "마세요"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 두 손을 가슴 앞에 모으고 고개를 살짝 숙이며 진심으로 당부하는 표정을 짓고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_04.png",
+   "file": "warehouse/A12.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_04.png"
+  },
+  {
+   "id": "A13",
+   "group": "공통 동작(혼자)",
+   "name": "수첩 메모",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "메모",
+    "기록",
+    "적어두기",
+    "준비물"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 작은 수첩을 한 손에 들고 볼펜으로 무언가를 적고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_05.png",
+   "file": "warehouse/A13.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_05.png"
+  },
+  {
+   "id": "A14",
+   "group": "공통 동작(혼자)",
+   "name": "탁상 달력",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "날짜",
+    "기한",
+    "언제",
+    "시행",
+    "일정"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 탁자 앞에 앉아 탁자 위 탁상 달력의 한 칸을 손가락으로 짚고 있다. 달력 칸에는 숫자 없이 빈칸만 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_06.png",
+   "file": "warehouse/A14.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_06.png"
+  },
+  {
+   "id": "A15",
+   "group": "공통 동작(혼자)",
+   "name": "모래시계",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "기간",
+    "대기",
+    "기다림",
+    "면책기간"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 탁자 앞에 앉아 탁자 위 모래시계를 바라보며 턱을 괴고 기다리고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_07.png",
+   "file": "warehouse/A15.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_07.png"
+  },
+  {
+   "id": "A16",
+   "group": "공통 동작(혼자)",
+   "name": "손목시계",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "마감",
+    "시간",
+    "급함",
+    "기한"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 왼쪽 손목의 시계를 들여다보며 조금 서두르는 표정을 짓고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_08.png",
+   "file": "warehouse/A16.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_08.png"
+  },
+  {
+   "id": "A17",
+   "group": "공통 동작(혼자)",
+   "name": "돋보기 서류",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "꼼꼼히",
+    "확인",
+    "약관",
+    "조건"
+   ],
+   "have": "20261030_r1 6",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 책상 앞 의자에 앉아 손에 든 돋보기로 서류를 꼼꼼히 들여다보고 있다. 책상 위에 서류 더미가 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "",
+   "file": "warehouse/A17.png",
+   "pc_file": "out_20261030_r1_20261102_011308/scene_06.png"
+  },
+  {
+   "id": "A18",
+   "group": "공통 동작(혼자)",
+   "name": "계산기",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "계산",
+    "금액",
+    "얼마"
+   ],
+   "have": "20261103_r1 5",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 탁자 앞에 앉아 작은 계산기를 눌러 보며 고개를 끄덕인다. 탁자 위에 메모지와 펜이 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "",
+   "file": "warehouse/A18.png",
+   "pc_file": "out_20261103_r1_20261103_192635/scene_05.png"
+  },
+  {
+   "id": "A19",
+   "group": "공통 동작(혼자)",
+   "name": "스마트폰 조회",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "조회",
+    "앱",
+    "휴대폰",
+    "확인",
+    "온라인"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 의자에 앉아 두 손으로 스마트폰을 들고 화면을 들여다보며 고개를 끄덕이고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_test10_20261103_212238/scene_06.png",
+   "file": "warehouse/A19.png",
+   "pc_file": "out_warehouse_test10_20261103_212238/scene_06.png"
+  },
+  {
+   "id": "A20",
+   "group": "공통 동작(혼자)",
+   "name": "노트북 조회",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "홈페이지",
+    "조회",
+    "신청",
+    "인터넷"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 탁자 앞에 앉아 노트북 화면을 보며 한 손으로 마우스를 쥐고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_09.png",
+   "file": "warehouse/A20.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_09.png"
+  },
+  {
+   "id": "A21",
+   "group": "공통 동작(혼자)",
+   "name": "전화 통화",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "전화",
+    "문의",
+    "상담",
+    "콜센터"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 의자에 앉아 휴대폰을 귀에 대고 다른 손으로 수첩에 메모하며 통화하고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_10.png",
+   "file": "warehouse/A21.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_10.png"
+  },
+  {
+   "id": "A22",
+   "group": "공통 동작(혼자)",
+   "name": "우편 봉투 열기",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "안내문",
+    "통지서",
+    "우편",
+    "고지"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 흰 우편 봉투를 열어 안의 안내문을 꺼내 보고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_11.png",
+   "file": "warehouse/A22.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_11.png"
+  },
+  {
+   "id": "A23",
+   "group": "공통 동작(혼자)",
+   "name": "빈 화이트보드",
+   "couple": false,
+   "board": true,
+   "tags": [
+    "설명",
+    "정리",
+    "비교",
+    "표"
+   ],
+   "have": "20261030_r1 4",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 옆에 세워 둔 빈 흰색 화이트보드를 한 손으로 가리키며 설명하고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "",
+   "file": "warehouse/A23.png",
+   "pc_file": "out_20261030_r1_20261102_011308/scene_04.png"
+  },
+  {
+   "id": "A24",
+   "group": "공통 동작(혼자)",
+   "name": "안내문 고민",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "고민",
+    "안내문",
+    "시작",
+    "질문"
+   ],
+   "have": "20261030_r1 1",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 1인용 소파에 앉아 두 손으로 흰 안내문 한 장을 들고 고개를 갸웃하고 있다. 옆 작은 탁자에 찻잔이 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "",
+   "file": "warehouse/A24.png",
+   "pc_file": "out_20261030_r1_20261102_011308/scene_01.png"
+  },
+  {
+   "id": "B01",
+   "group": "부부",
+   "name": "식탁 서류 의논",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "의논",
+    "부부",
+    "계산",
+    "상의"
+   ],
+   "have": "20261030_r1 5",
+   "ref": "49_연금_통장확인.png",
+   "scene": "부부가 식탁에 마주 앉아 서류 몇 장과 계산기를 놓고 함께 들여다보며 의논하고 있다. 식탁 위에 찻잔 두 개가 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "",
+   "file": "warehouse/B01.png",
+   "pc_file": "out_20261030_r1_20261102_011308/scene_05.png"
+  },
+  {
+   "id": "B02",
+   "group": "부부",
+   "name": "소파 태블릿",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "함께",
+    "조회",
+    "태블릿",
+    "이야기"
+   ],
+   "have": "20261103_r1 6",
+   "ref": "49_연금_통장확인.png",
+   "scene": "부부가 소파에 나란히 앉아 태블릿을 함께 보며 이야기를 나누고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "",
+   "file": "warehouse/B02.png",
+   "pc_file": "out_20261103_r1_20261103_192635/scene_06.png"
+  },
+  {
+   "id": "B03",
+   "group": "부부",
+   "name": "벤치 미소",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "안도",
+    "마무리",
+    "노후",
+    "행복"
+   ],
+   "have": "20261030_r1 9",
+   "ref": "49_연금_통장확인.png",
+   "scene": "부부가 나무 벤치에 나란히 앉아 서로를 바라보며 안도의 미소를 짓고 있다. 벤치 옆에 작은 나무 한 그루가 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "",
+   "file": "warehouse/B03.png",
+   "pc_file": "out_20261030_r1_20261102_011308/scene_09.png"
+  },
+  {
+   "id": "B04",
+   "group": "부부",
+   "name": "하이파이브",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "기쁨",
+    "성공",
+    "혜택",
+    "받음"
+   ],
+   "have": "",
+   "ref": "49_연금_통장확인.png",
+   "scene": "부부가 서서 마주 보고 활짝 웃으며 한 손씩 들어 하이파이브를 하고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_test10_20261103_212238/scene_07.png",
+   "file": "warehouse/B04.png",
+   "pc_file": "out_warehouse_test10_20261103_212238/scene_07.png"
+  },
+  {
+   "id": "B05",
+   "group": "부부",
+   "name": "걱정과 달램",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "걱정",
+    "불안",
+    "위로",
+    "괜찮다"
+   ],
+   "have": "",
+   "ref": "49_연금_통장확인.png",
+   "scene": "할머니가 걱정스러운 얼굴로 두 손을 모으고 있고, 옆에 선 할아버지가 할머니 어깨에 손을 얹고 다정하게 웃으며 달래고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_12.png",
+   "file": "warehouse/B05.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_12.png"
+  },
+  {
+   "id": "B06",
+   "group": "부부",
+   "name": "할머니 설명",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "아내",
+    "설명",
+    "알려줌",
+    "배우자"
+   ],
+   "have": "",
+   "ref": "49_연금_통장확인.png",
+   "scene": "부부가 탁자에 나란히 앉아 할머니가 종이 한 장을 손가락으로 짚으며 설명하고, 할아버지가 귀 기울여 듣고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_13.png",
+   "file": "warehouse/B06.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_13.png"
+  },
+  {
+   "id": "B07",
+   "group": "부부",
+   "name": "함께 통장 보기",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "통장",
+    "잔액",
+    "입금",
+    "확인",
+    "부부"
+   ],
+   "have": "",
+   "ref": "49_연금_통장확인.png",
+   "scene": "부부가 나란히 앉아 할아버지가 펼쳐 든 통장을 함께 들여다보며 미소 짓고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_test10_20261103_212238/scene_08.png",
+   "file": "warehouse/B07.png",
+   "pc_file": "out_warehouse_test10_20261103_212238/scene_08.png"
+  },
+  {
+   "id": "B08",
+   "group": "부부",
+   "name": "산책",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "노후",
+    "생활",
+    "건강",
+    "산책"
+   ],
+   "have": "",
+   "ref": "49_연금_통장확인.png",
+   "scene": "부부가 나란히 걸으며 서로를 보고 웃고 있다. 할머니가 할아버지의 팔짱을 끼고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_14.png",
+   "file": "warehouse/B08.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_14.png"
+  },
+  {
+   "id": "B09",
+   "group": "부부",
+   "name": "휴대폰 보고 놀람",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "놀람",
+    "문자",
+    "알림",
+    "소식"
+   ],
+   "have": "",
+   "ref": "49_연금_통장확인.png",
+   "scene": "부부가 나란히 서서 할아버지가 든 스마트폰 화면을 함께 보며 둘 다 깜짝 놀라고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_15.png",
+   "file": "warehouse/B09.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_15.png"
+  },
+  {
+   "id": "B10",
+   "group": "부부",
+   "name": "가계부",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "생활비",
+    "가계부",
+    "지출",
+    "관리"
+   ],
+   "have": "",
+   "ref": "49_연금_통장확인.png",
+   "scene": "부부가 탁자에 앉아 할머니가 공책에 가계부를 적고 할아버지가 옆에서 영수증을 건네고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_16.png",
+   "file": "warehouse/B10.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_16.png"
+  },
+  {
+   "id": "B11",
+   "group": "부부",
+   "name": "저금통",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "저축",
+    "모으기",
+    "적립"
+   ],
+   "have": "",
+   "ref": "49_연금_통장확인.png",
+   "scene": "부부가 탁자 앞에 앉아 탁자 위 큰 돼지저금통에 할머니가 동전을 넣고 할아버지가 웃으며 보고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_17.png",
+   "file": "warehouse/B11.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_17.png"
+  },
+  {
+   "id": "B12",
+   "group": "부부",
+   "name": "함께 서명",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "서명",
+    "계약",
+    "신청서",
+    "동의"
+   ],
+   "have": "",
+   "ref": "49_연금_통장확인.png",
+   "scene": "부부가 탁자에 나란히 앉아 할아버지가 서류에 펜으로 서명하고 할머니가 옆에서 지켜보고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_18.png",
+   "file": "warehouse/B12.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_18.png"
+  },
+  {
+   "id": "B13",
+   "group": "부부",
+   "name": "찻잔 대화",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "대화",
+    "이야기",
+    "상의",
+    "차"
+   ],
+   "have": "",
+   "ref": "49_연금_통장확인.png",
+   "scene": "부부가 작은 탁자에 마주 앉아 찻잔을 들고 편안하게 이야기를 나누고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_19.png",
+   "file": "warehouse/B13.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_19.png"
+  },
+  {
+   "id": "B14",
+   "group": "부부",
+   "name": "여행 가방",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "여행",
+    "해외",
+    "체류",
+    "출국"
+   ],
+   "have": "",
+   "ref": "49_연금_통장확인.png",
+   "scene": "부부가 서서 바퀴 달린 여행 가방을 하나씩 잡고 설레는 표정으로 웃고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_20.png",
+   "file": "warehouse/B14.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_20.png"
+  },
+  {
+   "id": "B15",
+   "group": "부부",
+   "name": "나란히 엄지 척",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "마무리",
+    "추천",
+    "좋다",
+    "정리"
+   ],
+   "have": "",
+   "ref": "49_연금_통장확인.png",
+   "scene": "부부가 나란히 서서 둘 다 엄지를 들어 올리고 환하게 웃고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_21.png",
+   "file": "warehouse/B15.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_21.png"
+  },
+  {
+   "id": "B16",
+   "group": "부부",
+   "name": "손주와 셋",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "손주",
+    "가족",
+    "자녀",
+    "돌봄"
+   ],
+   "have": "",
+   "ref": "49_연금_통장확인.png",
+   "scene": "부부가 바닥에 앉아 그 사이에 앉은 대여섯 살 손주(노란 티셔츠 남자아이)와 함께 블록을 쌓으며 웃고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_22.png",
+   "file": "warehouse/B16.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_22.png"
+  },
+  {
+   "id": "C01",
+   "group": "상담·창구",
+   "name": "은행 창구",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "은행",
+    "창구",
+    "통장",
+    "개설",
+    "해지"
+   ],
+   "have": "20261030_r1 3",
+   "ref": "43_발표_그래프.png",
+   "scene": "은행 창구 책상 앞에 할아버지가 서서, 투명한 유리 칸막이 너머의 은행원(남색 정장의 젊은 여성)에게 통장을 두 손으로 건네고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "",
+   "file": "warehouse/C01.png",
+   "pc_file": "out_20261030_r1_20261102_011308/scene_03.png"
+  },
+  {
+   "id": "C02",
+   "group": "상담·창구",
+   "name": "상담원과 부부",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "상담",
+    "설명",
+    "가입",
+    "안내"
+   ],
+   "have": "20261030_r1 8",
+   "ref": "49_연금_통장확인.png",
+   "scene": "부부가 상담 책상 앞 의자 2개에 나란히 앉아 맞은편의 친절한 상담원(흰 블라우스의 중년 여성)의 설명을 듣고 있다. 책상 위에 서류가 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "",
+   "file": "warehouse/C02.png",
+   "pc_file": "out_20261030_r1_20261102_011308/scene_08.png"
+  },
+  {
+   "id": "C03",
+   "group": "상담·창구",
+   "name": "번호표 대기",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "대기",
+    "방문",
+    "공단",
+    "주민센터"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 대기 의자에 앉아 작은 번호표 종이를 들고 차례를 기다리고 있다. 옆에 빈 의자가 두 개 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_23.png",
+   "file": "warehouse/C03.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_23.png"
+  },
+  {
+   "id": "C04",
+   "group": "상담·창구",
+   "name": "관공서 서류 제출",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "신청",
+    "제출",
+    "주민센터",
+    "서류"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "낮은 민원 창구 책상 앞에서 할아버지가 맞은편 공무원(하늘색 셔츠의 중년 남성)에게 서류를 건네고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_24.png",
+   "file": "warehouse/C04.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_24.png"
+  },
+  {
+   "id": "C05",
+   "group": "상담·창구",
+   "name": "의사 상담",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "의사",
+    "진료",
+    "상담",
+    "진단"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "진료실 책상 앞 의자에 할아버지가 앉아, 맞은편 흰 가운의 의사(안경 쓴 중년 여성)가 설명하는 말을 고개를 끄덕이며 듣고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_test10_20261103_212238/scene_09.png",
+   "file": "warehouse/C05.png",
+   "pc_file": "out_warehouse_test10_20261103_212238/scene_09.png"
+  },
+  {
+   "id": "C06",
+   "group": "상담·창구",
+   "name": "약국",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "약국",
+    "약사",
+    "처방",
+    "약값"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "약국 계산대 앞에서 할아버지가 흰 가운의 약사(젊은 남성)에게서 하얀 약 봉투를 받고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_25.png",
+   "file": "warehouse/C06.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_25.png"
+  },
+  {
+   "id": "C07",
+   "group": "상담·창구",
+   "name": "세무사",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "세무사",
+    "세금",
+    "신고",
+    "상담"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "사무 책상 앞에서 할아버지가 맞은편 세무사(회색 정장의 중년 남성)와 함께 서류를 보며 상담하고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_26.png",
+   "file": "warehouse/C07.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_26.png"
+  },
+  {
+   "id": "C08",
+   "group": "상담·창구",
+   "name": "보험설계사",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "보험",
+    "약관",
+    "설계사",
+    "가입"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "탁자 앞에서 할아버지가 맞은편 보험설계사(베이지 정장의 젊은 여성)가 펼쳐 보이는 책자를 보고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_27.png",
+   "file": "warehouse/C08.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_27.png"
+  },
+  {
+   "id": "C09",
+   "group": "상담·창구",
+   "name": "헤드셋 상담원",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "고객센터",
+    "콜센터",
+    "문의"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "헤드셋을 쓴 상담원(초록 셔츠의 젊은 여성)이 책상 앞에 앉아 밝게 웃으며 안내하고 있고, 할아버지는 그 옆에서 휴대폰을 귀에 대고 듣고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_28.png",
+   "file": "warehouse/C09.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_28.png"
+  },
+  {
+   "id": "C10",
+   "group": "상담·창구",
+   "name": "부동산 중개사",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "중개사",
+    "매매",
+    "전세",
+    "계약"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "탁자 위에 작은 집 모형이 있고, 할아버지가 맞은편 부동산 중개사(남색 조끼의 중년 남성)와 모형을 보며 이야기하고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_29.png",
+   "file": "warehouse/C10.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_29.png"
+  },
+  {
+   "id": "C11",
+   "group": "상담·창구",
+   "name": "경찰 진술",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "경찰",
+    "조사",
+    "신고",
+    "출석"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "책상 앞에 할아버지가 앉아 맞은편 경찰관(남색 제복의 젊은 남성)에게 차분히 이야기하고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_30.png",
+   "file": "warehouse/C11.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_30.png"
+  },
+  {
+   "id": "C12",
+   "group": "상담·창구",
+   "name": "변호사",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "법률",
+    "소송",
+    "판결",
+    "변호사"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "책상 앞에서 할아버지가 맞은편 변호사(검은 정장의 중년 여성)가 가리키는 서류를 보고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_31.png",
+   "file": "warehouse/C12.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_31.png"
+  },
+  {
+   "id": "C13",
+   "group": "상담·창구",
+   "name": "직업상담사",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "재취업",
+    "고용센터",
+    "일자리"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "상담 책상 앞에서 할아버지가 맞은편 직업상담사(연두 카디건의 젊은 여성)와 이력서를 보며 이야기하고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_32.png",
+   "file": "warehouse/C13.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_32.png"
+  },
+  {
+   "id": "C14",
+   "group": "상담·창구",
+   "name": "교육 강사",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "교육",
+    "강의",
+    "훈련",
+    "배움"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 화면 가운데 작은 책상에 앉아 공책을 펴고 펜을 든 채 한 손을 들어 질문하고 있다. 할아버지 옆 조금 뒤쪽에 강사(흰 셔츠의 중년 남성)가 서서 미소 지으며 고개를 끄덕이고 있다. 할아버지가 그림의 주인공이라 가장 크고 앞에 보인다. 할아버지는 이 그림에 딱 한 명만 나오고, 다른 사람은 강사 한 명뿐이다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_01.png",
+   "file": "warehouse/C14.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_01.png"
+  },
+  {
+   "id": "D01",
+   "group": "연금",
+   "name": "통장 입금 미소",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "연금",
+    "입금",
+    "매달",
+    "받는",
+    "돈"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 의자에 앉아 손바닥만 한 작은 통장(얇은 파란 표지의 작은 책자)을 두 손으로 펼쳐 들고 흐뭇하게 웃고 있다. 통장은 손바닥 크기로 작게 그리고, 신문이나 큰 서류처럼 그리지 않는다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_test10_20261103_213926/scene_10.png",
+   "file": "warehouse/D01.png",
+   "pc_file": "out_warehouse_test10_20261103_213926/scene_10.png"
+  },
+  {
+   "id": "D02",
+   "group": "연금",
+   "name": "돼지저금통",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "저축",
+    "노후",
+    "자금",
+    "모으기"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 의자에 앉아 무릎 위에 큰 분홍 돼지저금통을 안고 웃고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_04.png",
+   "file": "warehouse/D02.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_04.png"
+  },
+  {
+   "id": "D03",
+   "group": "연금",
+   "name": "연금 봉투 받기",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "연금",
+    "수령",
+    "받기",
+    "지급"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 두 손으로 두툼한 흰 봉투를 받아 들고 기뻐하고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_43.png",
+   "file": "warehouse/D03.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_43.png"
+  },
+  {
+   "id": "D04",
+   "group": "연금",
+   "name": "달력 매달 표시",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "매달",
+    "정기",
+    "지급일",
+    "월"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 들고 있는 큰 달력의 한 칸에 빨간 펜으로 동그라미를 그리고 있다. 달력에는 숫자 없이 빈칸만 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_44.png",
+   "file": "warehouse/D04.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_44.png"
+  },
+  {
+   "id": "D05",
+   "group": "연금",
+   "name": "동전 탑",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "적립",
+    "쌓기",
+    "늘어남",
+    "복리"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 탁자 앞에 앉아 높이가 점점 높아지는 동전 탑 세 개를 손가락으로 가리키며 웃고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_05.png",
+   "file": "warehouse/D05.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_05.png"
+  },
+  {
+   "id": "D06",
+   "group": "연금",
+   "name": "금고",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "안전",
+    "보관",
+    "노후",
+    "자금",
+    "압류",
+    "방지"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 작은 금고 옆에 쪼그려 앉아 금고 문을 닫으며 안심하는 표정을 짓고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_06.png",
+   "file": "warehouse/D06.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_06.png"
+  },
+  {
+   "id": "D07",
+   "group": "연금",
+   "name": "지폐 세기",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "생활비",
+    "현금",
+    "돈"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 탁자 앞에 앉아 지폐 몇 장을 손가락으로 세고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_45.png",
+   "file": "warehouse/D07.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_45.png"
+  },
+  {
+   "id": "D08",
+   "group": "연금",
+   "name": "봉투 둘로 나누기",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "분할",
+    "나누기",
+    "이혼",
+    "분할연금",
+    "배분"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 탁자 앞에 앉아 두 개의 봉투를 양손에 하나씩 들고 비교하고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_07.png",
+   "file": "warehouse/D08.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_07.png"
+  },
+  {
+   "id": "D09",
+   "group": "연금",
+   "name": "퇴직 꽃다발",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "퇴직",
+    "은퇴",
+    "정년"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 꽃다발을 품에 안고 조금 아쉽지만 뿌듯한 미소를 짓고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_08.png",
+   "file": "warehouse/D09.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_08.png"
+  },
+  {
+   "id": "D10",
+   "group": "연금",
+   "name": "연금 앱 조회",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "연금",
+    "조회",
+    "포털",
+    "앱"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 소파에 앉아 스마트폰을 보다가 반가운 듯 눈썹을 올리며 미소 짓고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_09.png",
+   "file": "warehouse/D10.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_09.png"
+  },
+  {
+   "id": "E01",
+   "group": "병원·약·건강",
+   "name": "병원 대기실",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "병원",
+    "대기",
+    "진료",
+    "접수"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 병원 대기 의자에 앉아 무릎 위에 손을 모으고 차례를 기다리고 있다. 옆에 작은 화분이 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_40.png",
+   "file": "warehouse/E01.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_40.png"
+  },
+  {
+   "id": "E02",
+   "group": "병원·약·건강",
+   "name": "청진기 진찰",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "진찰",
+    "검진",
+    "진료"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 진료 의자에 앉아 있고, 흰 가운의 의사(중년 남성)가 청진기를 할아버지 가슴에 대고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_10.png",
+   "file": "warehouse/E02.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_10.png"
+  },
+  {
+   "id": "E03",
+   "group": "병원·약·건강",
+   "name": "MRI 기계",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "MRI",
+    "검사",
+    "CT",
+    "영상",
+    "검사"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 둥근 MRI 기계 앞 검사대에 누워 있고, 옆에 선 방사선사(하늘색 옷의 젊은 여성)가 안심시키며 웃고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_11.png",
+   "file": "warehouse/E03.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_11.png"
+  },
+  {
+   "id": "E04",
+   "group": "병원·약·건강",
+   "name": "병상 입원",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "입원",
+    "수술",
+    "후",
+    "병실"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 환자복을 입고 병원 침대에 앉아 이불을 덮은 채 미소 짓고 있다. 침대 옆에 링거 거치대가 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_12.png",
+   "file": "warehouse/E04.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_12.png"
+  },
+  {
+   "id": "E05",
+   "group": "병원·약·건강",
+   "name": "응급실",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "응급실",
+    "응급",
+    "이송"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "응급실 침대에 할아버지가 누워 있고, 옆에 간호사(분홍 제복의 젊은 여성)가 서류판을 들고 서 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_13.png",
+   "file": "warehouse/E05.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_13.png"
+  },
+  {
+   "id": "E06",
+   "group": "병원·약·건강",
+   "name": "약 봉투",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "약",
+    "처방",
+    "복용",
+    "약값"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 탁자 앞에 앉아 하얀 약 봉투를 열어 알약을 꺼내 보고 있다. 탁자 위에 물컵이 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_41.png",
+   "file": "warehouse/E06.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_41.png"
+  },
+  {
+   "id": "E07",
+   "group": "병원·약·건강",
+   "name": "요일 약통",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "만성질환",
+    "복용",
+    "혈압약",
+    "당뇨약"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 탁자 앞에 앉아 칸이 일곱 개인 약통에 알약을 하나씩 넣고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_14.png",
+   "file": "warehouse/E07.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_14.png"
+  },
+  {
+   "id": "E08",
+   "group": "병원·약·건강",
+   "name": "혈압 재기",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "혈압",
+    "고혈압",
+    "건강",
+    "관리"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 탁자 앞에 앉아 팔에 혈압계 띠를 감고 혈압계를 바라보고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_15.png",
+   "file": "warehouse/E08.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_15.png"
+  },
+  {
+   "id": "E09",
+   "group": "병원·약·건강",
+   "name": "치과 의자",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "치과",
+    "임플란트",
+    "틀니",
+    "치아"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 치과 의자에 앉아 입을 벌리고 있고, 마스크를 쓴 치과의사(흰 가운의 중년 남성)가 작은 거울로 살펴보고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_16.png",
+   "file": "warehouse/E09.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_16.png"
+  },
+  {
+   "id": "E10",
+   "group": "병원·약·건강",
+   "name": "안과 검사",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "안과",
+    "백내장",
+    "시력",
+    "눈"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 안과 검사 기계에 턱을 대고 앉아 있고, 맞은편에 흰 가운의 의사(젊은 여성)가 기계를 들여다보고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_17.png",
+   "file": "warehouse/E10.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_17.png"
+  },
+  {
+   "id": "E11",
+   "group": "병원·약·건강",
+   "name": "수술실 앞 기다림",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "수술",
+    "보호자",
+    "기다림"
+   ],
+   "have": "",
+   "ref": "49_연금_통장확인.png",
+   "scene": "할머니가 대기 의자에 앉아 두 손을 모으고 기다리고, 할아버지가 옆에 앉아 할머니 손을 잡아 주고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_18.png",
+   "file": "warehouse/E11.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_18.png"
+  },
+  {
+   "id": "E12",
+   "group": "병원·약·건강",
+   "name": "병원비 영수증 놀람",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "병원비",
+    "본인부담금",
+    "비급여",
+    "영수증"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 긴 영수증 종이를 두 손으로 펼쳐 들고 눈을 크게 뜨며 놀라고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_42.png",
+   "file": "warehouse/E12.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_42.png"
+  },
+  {
+   "id": "E13",
+   "group": "병원·약·건강",
+   "name": "엑스레이 보기",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "검사",
+    "결과",
+    "진단",
+    "엑스레이"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 의자에 앉아 있고, 옆에 선 의사(흰 가운의 중년 남성)가 밝게 빛나는 판에 꽂힌 엑스레이 사진을 가리키고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_19.png",
+   "file": "warehouse/E13.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_19.png"
+  },
+  {
+   "id": "E14",
+   "group": "병원·약·건강",
+   "name": "도수치료",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "도수치료",
+    "물리치료",
+    "재활"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 치료 침대에 엎드려 있고, 물리치료사(남색 옷의 젊은 남성)가 할아버지 어깨를 두 손으로 눌러 주고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_20.png",
+   "file": "warehouse/E14.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_20.png"
+  },
+  {
+   "id": "E15",
+   "group": "병원·약·건강",
+   "name": "간병인 휠체어",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "간병",
+    "간병비",
+    "요양",
+    "돌봄"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 휠체어에 앉아 있고, 뒤에서 간병인(보라색 앞치마의 중년 여성)이 휠체어를 밀며 웃고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_21.png",
+   "file": "warehouse/E15.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_21.png"
+  },
+  {
+   "id": "E16",
+   "group": "병원·약·건강",
+   "name": "건강검진 문진표",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "건강검진",
+    "대상",
+    "검진표"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 탁자 앞에 앉아 펜으로 문진표 칸에 표시를 하고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_22.png",
+   "file": "warehouse/E16.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_22.png"
+  },
+  {
+   "id": "F01",
+   "group": "세금",
+   "name": "고지서 놀람",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "세금",
+    "고지서",
+    "납부",
+    "폭탄"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 고지서 한 장을 두 손으로 들고 놀라 입을 벌리고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_46.png",
+   "file": "warehouse/F01.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_46.png"
+  },
+  {
+   "id": "F02",
+   "group": "세금",
+   "name": "노트북 신고",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "홈택스",
+    "신고",
+    "납부",
+    "온라인"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 탁자 앞에 앉아 노트북 자판을 두드리며 옆에 펼친 서류를 확인하고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_23.png",
+   "file": "warehouse/F02.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_23.png"
+  },
+  {
+   "id": "F03",
+   "group": "세금",
+   "name": "영수증 정리",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "영수증",
+    "공제",
+    "증빙",
+    "정리"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 탁자 앞에 앉아 탁자 위에 흩어진 영수증들을 한 장씩 모아 클립으로 묶고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_24.png",
+   "file": "warehouse/F03.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_24.png"
+  },
+  {
+   "id": "F04",
+   "group": "세금",
+   "name": "도장",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "도장",
+    "서류",
+    "날인",
+    "확인서"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 탁자 앞에 앉아 서류 위에 도장을 꾹 찍고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_25.png",
+   "file": "warehouse/F04.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_25.png"
+  },
+  {
+   "id": "F05",
+   "group": "세금",
+   "name": "돈 봉투 건네기",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "증여",
+    "용돈",
+    "주기",
+    "자녀"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 두 손으로 흰 봉투를 앞으로 내밀어 건네며 웃고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_47.png",
+   "file": "warehouse/F05.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_47.png"
+  },
+  {
+   "id": "F06",
+   "group": "세금",
+   "name": "저울 비교",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "비교",
+    "따져보기",
+    "유리",
+    "불리"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 탁자 앞에 서서 탁자 위 양팔 저울을 바라보고 있다. 저울 한쪽에는 동전 더미, 다른 쪽에는 서류 묶음이 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_26.png",
+   "file": "warehouse/F06.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_26.png"
+  },
+  {
+   "id": "F07",
+   "group": "세금",
+   "name": "가족 상속 회의",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "상속",
+    "가족",
+    "회의",
+    "유산"
+   ],
+   "have": "",
+   "ref": "49_연금_통장확인.png",
+   "scene": "부부와 마흔 살쯤 된 아들(회색 니트)이 탁자에 둘러앉아 서류를 가운데 두고 진지하게 의논하고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_27.png",
+   "file": "warehouse/F07.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_27.png"
+  },
+  {
+   "id": "F08",
+   "group": "세금",
+   "name": "환급 웃음",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "환급",
+    "돌려받기",
+    "과오납"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 지폐 몇 장을 부채처럼 펼쳐 들고 기뻐하며 웃고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_28.png",
+   "file": "warehouse/F08.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_28.png"
+  },
+  {
+   "id": "F09",
+   "group": "세금",
+   "name": "세금 메모",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "세금",
+    "계산",
+    "세율",
+    "메모"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 탁자 앞에 앉아 메모지에 무언가를 적으며 다른 손으로 계산기를 누르고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_29.png",
+   "file": "warehouse/F09.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_29.png"
+  },
+  {
+   "id": "F10",
+   "group": "세금",
+   "name": "마감 도장 서류",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "마감",
+    "기한",
+    "연체",
+    "가산세"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 커다란 빨간 도장이 찍힌 서류를 들고 당황한 표정을 짓고 있다. 도장 안에는 글자가 없다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_30.png",
+   "file": "warehouse/F10.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_30.png"
+  },
+  {
+   "id": "G01",
+   "group": "부동산",
+   "name": "집 모형",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "주택",
+    "집",
+    "내",
+    "집",
+    "보유"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 두 손으로 작은 집 모형을 받쳐 들고 흐뭇하게 웃고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_48.png",
+   "file": "warehouse/G01.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_48.png"
+  },
+  {
+   "id": "G02",
+   "group": "부동산",
+   "name": "아파트 모형 고민",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "아파트",
+    "매도",
+    "매수",
+    "고민"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 탁자 앞에 앉아 탁자 위 아파트 모형을 바라보며 턱을 괴고 고민하고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_02.png",
+   "file": "warehouse/G02.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_02.png"
+  },
+  {
+   "id": "G03",
+   "group": "부동산",
+   "name": "열쇠 받기",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "이사",
+    "입주",
+    "열쇠",
+    "매매"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 한 손에 열쇠 꾸러미를 들어 올려 보이며 웃고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_03.png",
+   "file": "warehouse/G03.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_03.png"
+  },
+  {
+   "id": "G04",
+   "group": "부동산",
+   "name": "계약서 서명",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "계약서",
+    "서명",
+    "매매",
+    "임대"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "탁자 앞에서 할아버지가 계약서에 서명하고, 맞은편 부동산 중개사(남색 조끼의 중년 남성)가 지켜보고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_04.png",
+   "file": "warehouse/G04.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_04.png"
+  },
+  {
+   "id": "G05",
+   "group": "부동산",
+   "name": "이삿짐 상자",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "이사",
+    "이전",
+    "합가",
+    "정리"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 바닥에 쌓인 종이 상자 옆에 서서 상자 하나를 들어 올리고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_05.png",
+   "file": "warehouse/G05.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_05.png"
+  },
+  {
+   "id": "G06",
+   "group": "부동산",
+   "name": "상가 모형",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "상가",
+    "오피스텔",
+    "임대",
+    "수익"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 탁자 앞에 앉아 차양이 달린 작은 가게 건물 모형을 들여다보고 있다. 간판에는 글자가 없다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_06.png",
+   "file": "warehouse/G06.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_06.png"
+  },
+  {
+   "id": "G07",
+   "group": "부동산",
+   "name": "세입자와 대화",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "세입자",
+    "임대인",
+    "갱신",
+    "전세"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 맞은편의 서른 살쯤 된 세입자(주황 후드티의 남성)와 서류를 사이에 두고 이야기하고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_07.png",
+   "file": "warehouse/G07.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_07.png"
+  },
+  {
+   "id": "G08",
+   "group": "부동산",
+   "name": "집과 저울",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "팔까",
+    "보유",
+    "비교",
+    "부동산",
+    "비중"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 탁자 앞에 서서 양팔 저울을 보고 있다. 저울 한쪽에는 작은 집 모형, 다른 쪽에는 동전 더미가 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_08.png",
+   "file": "warehouse/G08.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_08.png"
+  },
+  {
+   "id": "G09",
+   "group": "부동산",
+   "name": "안전모 재건축",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "재건축",
+    "재개발",
+    "공사"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 노란 안전모를 쓰고 서서 둘둘 만 설계도를 옆구리에 끼고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_09.png",
+   "file": "warehouse/G09.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_09.png"
+  },
+  {
+   "id": "G10",
+   "group": "부동산",
+   "name": "땅 모형",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "토지",
+    "땅",
+    "농지",
+    "과태료"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 탁자 앞에 앉아 탁자 위에 놓인 네모난 초록 땅 모형과 작은 깃발을 바라보고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_10.png",
+   "file": "warehouse/G10.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_10.png"
+  },
+  {
+   "id": "H01",
+   "group": "투자·예금",
+   "name": "오름 화살표",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "상승",
+    "수익",
+    "오름",
+    "증가"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 위로 꺾여 올라가는 커다란 초록 화살표 판을 한 손으로 들고 웃고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_11.png",
+   "file": "warehouse/H01.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_11.png"
+  },
+  {
+   "id": "H02",
+   "group": "투자·예금",
+   "name": "내림 화살표 걱정",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "하락",
+    "손실",
+    "내림",
+    "감소",
+    "깎임"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 아래로 꺾여 내려가는 커다란 빨간 화살표 판을 들고 걱정스러운 얼굴을 하고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_12.png",
+   "file": "warehouse/H02.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_12.png"
+  },
+  {
+   "id": "H03",
+   "group": "투자·예금",
+   "name": "골드바",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "금",
+    "골드바",
+    "금값"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 탁자 앞에 앉아 반짝이는 금괴 하나를 두 손으로 들고 신기한 듯 바라보고 있다. 금괴에는 글자가 없다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_13.png",
+   "file": "warehouse/H03.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_13.png"
+  },
+  {
+   "id": "H04",
+   "group": "투자·예금",
+   "name": "코인",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "코인",
+    "가상자산",
+    "비트코인"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 손바닥 위의 커다란 금색 동전을 들여다보며 고개를 갸웃하고 있다. 동전에는 글자나 기호가 없다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_14.png",
+   "file": "warehouse/H04.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_14.png"
+  },
+  {
+   "id": "H05",
+   "group": "투자·예금",
+   "name": "배당 봉투",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "배당",
+    "배당금",
+    "주식"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 의자에 앉아 무릎 위 흰 봉투에서 지폐를 꺼내며 웃고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_15.png",
+   "file": "warehouse/H05.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_15.png"
+  },
+  {
+   "id": "H06",
+   "group": "투자·예금",
+   "name": "채권 증서",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "채권",
+    "국채",
+    "증서",
+    "만기"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 두 손으로 테두리 장식이 있는 증서 한 장을 들고 바라보고 있다. 증서에는 글자 없이 줄만 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_16.png",
+   "file": "warehouse/H06.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_16.png"
+  },
+  {
+   "id": "H07",
+   "group": "투자·예금",
+   "name": "달걀 두 바구니",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "분산",
+    "투자",
+    "나누기",
+    "ETF"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 탁자 앞에 앉아 달걀이 담긴 바구니 두 개 중 하나에 달걀 하나를 옮겨 담고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_17.png",
+   "file": "warehouse/H07.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_17.png"
+  },
+  {
+   "id": "H08",
+   "group": "투자·예금",
+   "name": "안전 저울",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "안전자산",
+    "비율",
+    "위험"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 양팔 저울을 들고 있다. 한쪽 접시에는 자물쇠, 다른 쪽 접시에는 동전 더미가 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_18.png",
+   "file": "warehouse/H08.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_18.png"
+  },
+  {
+   "id": "H09",
+   "group": "투자·예금",
+   "name": "예금 이자 계산",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "예금",
+    "적금",
+    "이자",
+    "금리"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 탁자 앞에 앉아 통장을 펴 놓고 계산기를 누르며 고개를 끄덕이고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_49.png",
+   "file": "warehouse/H09.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_49.png"
+  },
+  {
+   "id": "H10",
+   "group": "투자·예금",
+   "name": "두 통장 비교",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "금리",
+    "비교",
+    "은행",
+    "고르기"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 양손에 통장을 하나씩 들고 번갈아 보며 비교하고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_19.png",
+   "file": "warehouse/H10.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_19.png"
+  },
+  {
+   "id": "H11",
+   "group": "투자·예금",
+   "name": "물가 장바구니",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "물가",
+    "장보기",
+    "생활비",
+    "인상"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 채소와 우유가 담긴 장바구니를 들고 손에 든 영수증을 보며 한숨을 쉬고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_20.png",
+   "file": "warehouse/H11.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_20.png"
+  },
+  {
+   "id": "H12",
+   "group": "투자·예금",
+   "name": "대출 서류 고민",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "대출",
+    "빚",
+    "담보",
+    "대환"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 탁자 앞에 앉아 서류 몇 장을 앞에 두고 이마를 짚으며 고민하고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_50.png",
+   "file": "warehouse/H12.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_50.png"
+  },
+  {
+   "id": "I01",
+   "group": "일자리·창업",
+   "name": "지게차",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "지게차",
+    "자격증",
+    "기술"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 노란 안전모를 쓰고 작은 지게차 운전석에 앉아 운전대를 잡고 웃고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_22.png",
+   "file": "warehouse/I01.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_22.png"
+  },
+  {
+   "id": "I02",
+   "group": "일자리·창업",
+   "name": "이력서 면접",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "면접",
+    "이력서",
+    "취업"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 정장 재킷을 걸치고 의자에 꼿꼿이 앉아 두 손으로 이력서를 들고 긴장된 미소를 짓고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_23.png",
+   "file": "warehouse/I02.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_23.png"
+  },
+  {
+   "id": "I03",
+   "group": "일자리·창업",
+   "name": "작업복 안전모",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "일",
+    "현장",
+    "근로",
+    "작업"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 작업 조끼와 안전모 차림으로 서서 목장갑 낀 손으로 공구 상자를 들고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_24.png",
+   "file": "warehouse/I03.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_24.png"
+  },
+  {
+   "id": "I04",
+   "group": "일자리·창업",
+   "name": "앞치마 가게",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "자영업",
+    "소상공인",
+    "가게",
+    "창업"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 앞치마를 두르고 작은 계산대 뒤에 서서 손님을 맞는 듯 웃고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_25.png",
+   "file": "warehouse/I04.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_25.png"
+  },
+  {
+   "id": "I05",
+   "group": "일자리·창업",
+   "name": "교실 공부",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "공부",
+    "시험",
+    "배움",
+    "준비"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 작은 책상 앞에 앉아 책을 펴고 형광펜으로 줄을 긋고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_26.png",
+   "file": "warehouse/I05.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_26.png"
+  },
+  {
+   "id": "I06",
+   "group": "일자리·창업",
+   "name": "자격증",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "자격증",
+    "합격",
+    "취득"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 액자에 든 증서를 두 손으로 들어 보이며 뿌듯하게 웃고 있다. 증서에는 글자가 없다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_27.png",
+   "file": "warehouse/I06.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_27.png"
+  },
+  {
+   "id": "I07",
+   "group": "일자리·창업",
+   "name": "컴퓨터 교육",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "컴퓨터",
+    "디지털",
+    "교육"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 컴퓨터 앞에 앉아 있고, 옆에 선 강사(노란 카디건의 젊은 여성)가 화면을 가리키며 알려 주고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_28.png",
+   "file": "warehouse/I07.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_28.png"
+  },
+  {
+   "id": "I08",
+   "group": "일자리·창업",
+   "name": "문 닫은 가게",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "폐업",
+    "폐점",
+    "가게",
+    "정리"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 셔터가 반쯤 내려진 작은 가게 앞에 서서 쓸쓸한 표정으로 열쇠를 들고 있다. 간판에는 글자가 없다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_29.png",
+   "file": "warehouse/I08.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_29.png"
+  },
+  {
+   "id": "J01",
+   "group": "가족·생활·복지",
+   "name": "손주 돌봄",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "손주",
+    "돌봄",
+    "육아",
+    "지원금"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 의자에 앉아 무릎 위에 앉은 두 살쯤 된 손녀(분홍 원피스)에게 그림책을 읽어 주고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_21.png",
+   "file": "warehouse/J01.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_21.png"
+  },
+  {
+   "id": "J02",
+   "group": "가족·생활·복지",
+   "name": "손주 용돈",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "용돈",
+    "손주",
+    "증여"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 허리를 숙여 일곱 살쯤 된 손자(파란 티셔츠)에게 봉투를 건네고, 손자가 두 손으로 받고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_30.png",
+   "file": "warehouse/J02.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_30.png"
+  },
+  {
+   "id": "J03",
+   "group": "가족·생활·복지",
+   "name": "자녀 결혼 축하",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "결혼",
+    "자녀",
+    "축하",
+    "혼수"
+   ],
+   "have": "",
+   "ref": "49_연금_통장확인.png",
+   "scene": "부부가 서서 정장 차림의 젊은 신랑(검은 정장)과 신부(흰 원피스) 옆에서 손뼉을 치며 축하하고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_31.png",
+   "file": "warehouse/J03.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_31.png"
+  },
+  {
+   "id": "J04",
+   "group": "가족·생활·복지",
+   "name": "자녀와 합가",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "합가",
+    "자녀",
+    "함께",
+    "살기"
+   ],
+   "have": "",
+   "ref": "49_연금_통장확인.png",
+   "scene": "부부와 서른 살쯤 된 딸(하늘색 블라우스)이 소파에 나란히 앉아 웃으며 이야기하고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_32.png",
+   "file": "warehouse/J04.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_32.png"
+  },
+  {
+   "id": "J05",
+   "group": "가족·생활·복지",
+   "name": "우편함",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "우편",
+    "안내문",
+    "통지"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 작은 우편함 앞에 서서 우편물 몇 통을 꺼내 들고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_33.png",
+   "file": "warehouse/J05.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_33.png"
+  },
+  {
+   "id": "J06",
+   "group": "가족·생활·복지",
+   "name": "상품권",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "상품권",
+    "카드",
+    "바우처",
+    "환불"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 손에 든 상품권 몇 장을 부채처럼 펼쳐 보고 있다. 상품권에는 글자가 없다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_34.png",
+   "file": "warehouse/J06.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_34.png"
+  },
+  {
+   "id": "J07",
+   "group": "가족·생활·복지",
+   "name": "장보기",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "장보기",
+    "마트",
+    "생활"
+   ],
+   "have": "",
+   "ref": "49_연금_통장확인.png",
+   "scene": "부부가 함께 쇼핑 카트를 밀며 카트 안의 채소를 보고 웃고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_35.png",
+   "file": "warehouse/J07.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_35.png"
+  },
+  {
+   "id": "J08",
+   "group": "가족·생활·복지",
+   "name": "강아지",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "반려견",
+    "강아지",
+    "펫",
+    "반려동물",
+    "펫보험"
+   ],
+   "have": "20261103_r1 1",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 의자에 앉아 작은 강아지를 무릎에 안고 고개를 갸웃하고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "",
+   "file": "warehouse/J08.png",
+   "pc_file": "out_20261103_r1_20261103_192635/scene_01.png"
+  },
+  {
+   "id": "J09",
+   "group": "가족·생활·복지",
+   "name": "고양이",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "반려묘",
+    "고양이",
+    "펫",
+    "반려동물",
+    "펫보험"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 소파에 앉아 무릎 위의 고양이를 쓰다듬으며 웃고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_36.png",
+   "file": "warehouse/J09.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_36.png"
+  },
+  {
+   "id": "J10",
+   "group": "가족·생활·복지",
+   "name": "계단 오르기",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "계단",
+    "무릎",
+    "운동"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 운동복 차림으로 몇 칸짜리 계단을 한 걸음 오르며 힘차게 웃고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_37.png",
+   "file": "warehouse/J10.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_37.png"
+  },
+  {
+   "id": "J11",
+   "group": "가족·생활·복지",
+   "name": "아령",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "근육",
+    "근력",
+    "운동"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 양손에 작은 아령을 들고 팔을 굽혀 올리고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_38.png",
+   "file": "warehouse/J11.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_38.png"
+  },
+  {
+   "id": "J12",
+   "group": "가족·생활·복지",
+   "name": "걷기 운동",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "걷기",
+    "건강",
+    "운동",
+    "산책"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 운동화와 모자 차림으로 팔을 힘차게 흔들며 걷고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_39.png",
+   "file": "warehouse/J12.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_39.png"
+  },
+  {
+   "id": "J13",
+   "group": "가족·생활·복지",
+   "name": "혼자 쓸쓸히",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "우울",
+    "외로움",
+    "은퇴",
+    "후"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 의자에 혼자 앉아 두 손을 무릎에 모으고 고개를 숙인 채 쓸쓸한 표정을 짓고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_40.png",
+   "file": "warehouse/J13.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_40.png"
+  },
+  {
+   "id": "J14",
+   "group": "가족·생활·복지",
+   "name": "심리상담",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "심리상담",
+    "마음",
+    "상담센터"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 소파에 앉아 맞은편 상담사(연한 갈색 카디건의 중년 여성)와 편안하게 이야기를 나누고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_41.png",
+   "file": "warehouse/J14.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_41.png"
+  },
+  {
+   "id": "K01",
+   "group": "주의·피해",
+   "name": "사기 문자 경고",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "보이스피싱",
+    "사기",
+    "문자"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 스마트폰 화면을 보며 미간을 찌푸리고 경계하는 표정을 짓고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_42.png",
+   "file": "warehouse/K01.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_42.png"
+  },
+  {
+   "id": "K02",
+   "group": "주의·피해",
+   "name": "수상한 전화 막기",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "사기",
+    "전화",
+    "거절",
+    "차단"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 한 손으로 휴대폰을 멀리 내밀고 다른 손바닥을 펴서 막는 동작을 하고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_43.png",
+   "file": "warehouse/K02.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_43.png"
+  },
+  {
+   "id": "K03",
+   "group": "주의·피해",
+   "name": "지갑 자물쇠",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "보호",
+    "지키기",
+    "차단",
+    "안전"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 사슬과 자물쇠가 채워진 지갑을 들어 보이며 단호하게 웃고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_44.png",
+   "file": "warehouse/K03.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_44.png"
+  },
+  {
+   "id": "K04",
+   "group": "주의·피해",
+   "name": "경고 표지판",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "경고",
+    "주의",
+    "위험"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 노란 삼각형 경고 표지판(가운데 느낌표 하나)을 들고 진지한 표정을 짓고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_45.png",
+   "file": "warehouse/K04.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_45.png"
+  },
+  {
+   "id": "K05",
+   "group": "주의·피해",
+   "name": "압류 서류 걱정",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "압류",
+    "강제집행",
+    "연체"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 의자에 앉아 서류 한 장을 들고 다른 손으로 머리를 감싸며 걱정하고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_46.png",
+   "file": "warehouse/K05.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_46.png"
+  },
+  {
+   "id": "K06",
+   "group": "주의·피해",
+   "name": "복권 긁기",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "복권",
+    "당첨",
+    "로또"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 탁자 앞에 앉아 동전으로 작은 복권 종이를 긁으며 기대하는 표정을 짓고 있다. 복권에는 글자가 없다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "",
+   "file": ""
+  },
+  {
+   "id": "L01",
+   "group": "시작·마무리",
+   "name": "손 흔들며 마무리",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "마무리",
+    "끝",
+    "다음에"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 두 손을 흔들며 환하게 웃으며 작별 인사를 하고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_34.png",
+   "file": "warehouse/L01.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_34.png"
+  },
+  {
+   "id": "L02",
+   "group": "시작·마무리",
+   "name": "아래 가리키기",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "댓글",
+    "구독",
+    "아래",
+    "남겨주세요"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 한 손 집게손가락으로 아래쪽을 가리키며 웃고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_35.png",
+   "file": "warehouse/L02.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_35.png"
+  },
+  {
+   "id": "L03",
+   "group": "시작·마무리",
+   "name": "체크리스트",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "체크",
+    "점검",
+    "확인",
+    "목록",
+    "정리"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 서류판을 들고 펜으로 칸마다 체크 표시를 하고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_36.png",
+   "file": "warehouse/L03.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_36.png"
+  },
+  {
+   "id": "L04",
+   "group": "시작·마무리",
+   "name": "큰 물음표",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "질문",
+    "궁금",
+    "시작",
+    "오해"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 두 손으로 커다란 물음표 모양의 판을 들고 고개를 갸웃하고 있다. 물음표 판은 노란색 한 가지로 칠한 반듯하고 또렷한 물음표 모양이고, 두께가 고르며 검은 외곽선이 있다. 판의 높이는 할아버지 상반신 정도다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_02.png",
+   "file": "warehouse/L04.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_02.png"
+  },
+  {
+   "id": "L05",
+   "group": "시작·마무리",
+   "name": "큰 느낌표",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "정답",
+    "핵심",
+    "결론",
+    "깨달음"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 커다란 느낌표 모양 판을 들고 무언가 깨달은 듯 활짝 웃고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b1_20261103_215059/scene_38.png",
+   "file": "warehouse/L05.png",
+   "pc_file": "out_warehouse_b1_20261103_215059/scene_38.png"
+  },
+  {
+   "id": "L06",
+   "group": "시작·마무리",
+   "name": "신문 읽기",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "뉴스",
+    "소식",
+    "발표",
+    "개편"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 소파에 앉아 신문을 펼쳐 들고 관심 있게 읽고 있다. 신문에는 글자 없이 줄만 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_47.png",
+   "file": "warehouse/L06.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_47.png"
+  },
+  {
+   "id": "L07",
+   "group": "시작·마무리",
+   "name": "TV 뉴스 부부",
+   "couple": true,
+   "board": true,
+   "tags": [
+    "뉴스",
+    "발표",
+    "제도",
+    "변화"
+   ],
+   "have": "",
+   "ref": "49_연금_통장확인.png",
+   "scene": "부부가 소파에 나란히 앉아 정면의 텔레비전을 보며 할아버지가 화면을 가리키고 있다.",
+   "camera": "전신이 보이는 거리, 정면에서 약간 오른쪽 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_48.png",
+   "file": "warehouse/L07.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_48.png"
+  },
+  {
+   "id": "L08",
+   "group": "시작·마무리",
+   "name": "박수",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "축하",
+    "좋은",
+    "소식",
+    "혜택",
+    "확대"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 활짝 웃으며 손뼉을 치고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_49.png",
+   "file": "warehouse/L08.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_49.png"
+  },
+  {
+   "id": "L09",
+   "group": "시작·마무리",
+   "name": "돋보기로 시청자 보기",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "시작",
+    "알아보기",
+    "살펴보기"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 서서 커다란 돋보기를 눈앞에 대고 보는 사람 쪽을 장난스럽게 들여다보고 있다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도",
+   "drawn": "out_warehouse_b3_20261104_202859/scene_50.png",
+   "file": "warehouse/L09.png",
+   "pc_file": "out_warehouse_b3_20261104_202859/scene_50.png"
+  },
+  {
+   "id": "L10",
+   "group": "시작·마무리",
+   "name": "꾸벅 인사",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "감사",
+    "인사",
+    "마무리"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 옆모습으로 서서 두 손을 배 앞에 모으고 허리를 45도로 숙여 공손하게 꾸벅 인사하고 있다. 머리와 상체가 앞으로 기울어진 모습이 분명히 보인다.",
+   "camera": "전신이 보이는 거리, 옆에서 약간 앞쪽으로 돌아간 각도, 인물은 화면 가로 가운데",
+   "drawn": "out_warehouse_b2_20261103_223923/scene_03.png",
+   "file": "warehouse/L10.png",
+   "pc_file": "out_warehouse_b2_20261103_223923/scene_03.png"
+  }
+ ]
+}
