@@ -1,12 +1,15 @@
 name: Longform Video (daily)
 
 # 긴 영상(유튜브 1~3분) 서버 묶음 실행 — 쇼츠창 2026-11-04
-# 매일 16:17 KST(07:17 UTC). 드라이브 본문은 13~15시에 올라오므로 그 뒤, 18시 점검 앞.
+# 본 실행: 쇼츠 GAS가 매일 16시대 KST에 repository_dispatch "longform_daily"로 부름(11/5 — 깃허브 예약이 빠진 뒤).
+# 예비: 깃허브 예약 17:37 KST(08:37 UTC). 이미 만든 글은 다시 만들지 않고, 할 일이 없으면 메일도 안 보냄.
 # 첫 2일은 그림자 운행: 영상은 릴리스에만 올리고 유튜브에는 올리지 않음.
 
 on:
+  repository_dispatch:
+    types: [longform_daily]
   schedule:
-    - cron: '17 7 * * *'
+    - cron: '37 8 * * *'
   workflow_dispatch:
     inputs:
       only:
@@ -67,6 +70,7 @@ jobs:
           ONLY_POST: ${{ github.event.inputs.only }}
           MAX_POSTS: ${{ github.event.inputs.max || '4' }}
           START_ID: '20261104'
+          RUN_EVENT: ${{ github.event_name }}
         run: node longform/run_daily.js
 
       - name: 기록 저장 (만든 글 · 창고 사용/부족 기록 · 장면표)
