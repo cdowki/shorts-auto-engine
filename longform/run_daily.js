@@ -9,6 +9,7 @@
 //   6) 기록: done.json(만든 글) · 창고_사용기록.json · 창고_부족기록.json · jobs/<글>/scenes.json — 저장소 저장은 워크플로가 함
 //
 // 실행: node longform/run_daily.js [--only 20261105_r1] [--max 4] [--no-mail]
+// 부르는 곳(11/5~): 쇼츠 GAS가 매일 16시대 repository_dispatch "longform_daily" · 예비로 깃허브 예약 17:37 KST(할 일 없으면 메일 없음)
 // 비밀값(환경 변수): CALLBACK_URL · CALLBACK_SECRET · TTS_API_KEY · CLAUDE_CODE_OAUTH_TOKEN · GH_TOKEN · GH_REPOSITORY
 //   값은 화면·기록·메일 어디에도 찍지 않음
 // 끝 코드: 0 = 정상(만든 글 0편 포함) · 1 = 글 일부/전부 실패 · 2 = 목록을 못 받음
@@ -28,6 +29,7 @@ const pickArg = (name, def) => {
 const ONLY = pickArg('--only', process.env.ONLY_POST || '') || '';
 const MAX_POSTS = Number(pickArg('--max', process.env.MAX_POSTS || '4')) || 4;
 const NO_MAIL = argv.includes('--no-mail');
+const RUN_EVENT = process.env.RUN_EVENT || '';                 // schedule = 예비 예약 실행 (11/5 — 본 실행은 GAS가 부름)
 const START_ID = process.env.START_ID || '20261105';     // 이 날짜(글 번호 앞 8자리)부터 만듦 — 그 앞 밀린 글은 건너뜀 (11/4 비광도기님 확인)
 const VOICE = 'ko-KR-Chirp3-HD-Algieba';
 const RATE = '0.95';
@@ -238,7 +240,9 @@ function mailText(results, skipped, info) {
   const subject = `결과 ${kstNow().slice(0, 10)} — 만듦 ${nOk}편 · 실패 ${nFail}편${nAlt ? ` · 대체 그림 ${nAlt}장` : ''}`;
   const text = mailText(results, skipped, info);
   console.log(`\n----- 메일 -----\n${subject}\n${text}\n----------------`);
-  if (!NO_MAIL) {
+  const quietBackup = RUN_EVENT === 'schedule' && results.length === 0;   // 예비 예약이 할 일 없이 돌면 메일을 보내지 않음(본 실행이 이미 보냄)
+  if (quietBackup) log('예비 예약 실행 — 새로 만든 글이 없어 메일은 보내지 않음');
+  if (!NO_MAIL && !quietBackup) {
     try {
       const m = await gas({ action: 'longform_result', subject, text }, 60 * 1000);
       log(`결과 메일 보냄 (${JSON.stringify(m.mail === undefined ? '' : m.mail).slice(0, 60)})`);
