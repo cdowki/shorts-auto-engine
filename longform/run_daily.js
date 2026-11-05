@@ -9,7 +9,7 @@
 //   6) 기록: done.json(만든 글) · 창고_사용기록.json · 창고_부족기록.json · jobs/<글>/scenes.json — 저장소 저장은 워크플로가 함
 //
 // 실행: node longform/run_daily.js [--only 20261105_r1] [--max 4] [--no-mail]
-// 부르는 곳(11/5~): 쇼츠 GAS가 매일 16시대 repository_dispatch "longform_daily" · 예비로 깃허브 예약 17:37 KST(할 일 없으면 메일 없음)
+// 부르는 곳(11/5~): 쇼츠 GAS가 매일 10시대 repository_dispatch "longform_daily" · 예비로 깃허브 예약 11:37 KST(할 일 없으면 메일 없음)
 // 비밀값(환경 변수): CALLBACK_URL · CALLBACK_SECRET · TTS_API_KEY · CLAUDE_CODE_OAUTH_TOKEN · GH_TOKEN · GH_REPOSITORY
 //   값은 화면·기록·메일 어디에도 찍지 않음
 // 끝 코드: 0 = 정상(만든 글 0편 포함) · 1 = 글 일부/전부 실패 · 2 = 목록을 못 받음
