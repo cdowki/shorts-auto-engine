@@ -253,7 +253,7 @@ function numTokens(s) {
   return (String(s).match(/\d[\d,]*(?:\.\d+)?/g) || []).map((x) => x.replace(/,/g, ''));
 }
 function amount(s) {
-  // 한국식 금액·수량을 숫자로: "30만 원"→300000, "1억 2천만"→120000000, "46,200원"→46200, "16.5%"→16.5
+  // 한국식 금액·수량을 숫자로: "30만 원"→300000, "1억 2천만"→120000000, "46,200원"→46200, "16.5%"→0.165
   const t = String(s).replace(/,/g, '').replace(/\s/g, '');
   let total = 0;
   let found = false;
@@ -264,6 +264,7 @@ function amount(s) {
     found = true;
     total += parseFloat(m[1]) * (m[2] ? unit[m[2]] : 1);
   }
+  if (found && /%|퍼센트/.test(t)) total /= 100;   // "10%"는 곱셈에서 0.1 (11/5 — 3000만 원 × 10%를 3억으로 계산한 검사기 실수 고침)
   return found ? total : NaN;
 }
 function stripMd(s) {
