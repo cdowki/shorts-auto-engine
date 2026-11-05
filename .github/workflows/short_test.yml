@@ -1,0 +1,51 @@
+name: Short New Style Test
+
+# 새 틀 숏폼 시험 (쇼츠창 2026-11-05) — 손 실행만. 시험 영상을 릴리스에만 올리고 어디에도 발행하지 않음.
+# 설치는 render.yml과 똑같이 맞춤(파이썬 3.10 등) — 실제 쇼츠 서버와 같은 환경에서 시험하려고.
+
+on:
+  workflow_dispatch:
+    inputs:
+      row:
+        description: '이 행만 시험 (168·169·170). 비우면 셋 다'
+        required: false
+        default: ''
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write
+    steps:
+      - name: 코드 내려받기
+        uses: actions/checkout@v4
+
+      - name: 파이썬 준비
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: 노드 준비 (새 틀 숏폼)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: 필요한 프로그램 설치
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg imagemagick fonts-nanum
+          sudo apt-get install -y fonts-noto-cjk fonts-noto-cjk-extra || echo "본고딕 설치 실패"
+          sudo fc-cache -fv
+          pip install moviepy==1.0.3 requests google-auth google-api-python-client gtts pillow numpy
+          pip install scipy || echo "scipy 설치 실패"
+          npm install -g @anthropic-ai/claude-code || echo "클로드 설치 실패"
+
+      - name: 새 틀 숏폼 시험
+        env:
+          TTS_API_KEY: ${{ secrets.TTS_API_KEY }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPOSITORY: ${{ github.repository }}
+          ONLY_ROW: ${{ github.event.inputs.row }}
+        run: python longform/test/short_test.py
