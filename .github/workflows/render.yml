@@ -20,12 +20,20 @@ jobs:
         with:
           python-version: '3.10'
 
+      - name: 노드 준비 (새 틀 숏폼)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
       - name: 필요한 프로그램 설치
         run: |
           sudo apt-get update
           sudo apt-get install -y ffmpeg imagemagick fonts-nanum
+          sudo apt-get install -y fonts-noto-cjk fonts-noto-cjk-extra || echo "본고딕 설치 실패 — 새 틀 숏폼은 예전 방식으로 대신함"
           sudo fc-cache -fv
           pip install moviepy==1.0.3 requests google-auth google-api-python-client gtts pillow numpy
+          pip install scipy || echo "scipy 설치 실패 — 새 틀 숏폼은 예전 방식으로 대신함"
+          npm install -g @anthropic-ai/claude-code || echo "클로드 설치 실패 — 새 틀 숏폼은 예전 방식으로 대신함"
 
       - name: ImageMagick 제한 해제
         run: |
@@ -48,6 +56,9 @@ jobs:
           TAGS: ${{ github.event.client_payload.tags }}
           IMAGE_FOLDER_ID: ${{ github.event.client_payload.image_folder_id }}
           AI_IMAGES: ${{ github.event.client_payload.ai_images }}
+          NEW_STYLE: ${{ (github.event.client_payload.ai_images == '1' && contains(github.event.client_payload.blog_link, 'newcp2024')) && '1' || '' }}
+          TTS_API_KEY: ${{ secrets.TTS_API_KEY }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           BLOG_LINK: ${{ github.event.client_payload.blog_link }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPOSITORY: ${{ github.repository }}
