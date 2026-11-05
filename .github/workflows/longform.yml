@@ -5,6 +5,7 @@ name: Longform Video (daily)
 # 만드는 글은 쇼츠와 같은 전날 글(본문은 전날 오후에 드라이브에 이미 있음).
 # 예비: 깃허브 예약 11:37 KST(02:37 UTC). 이미 만든 글은 다시 만들지 않고, 할 일이 없으면 메일도 안 보냄.
 # 첫 2일은 그림자 운행: 영상은 릴리스에만 올리고 유튜브에는 올리지 않음.
+# 유튜브 업로드 스위치(11/5 추가): 아래 YT_UPLOAD 줄의 '0'을 '1'로 바꾸면 켜짐. 손 실행 때 yt 칸에 dry를 넣으면 열쇠만 확인(올리지 않음).
 
 on:
   repository_dispatch:
@@ -21,6 +22,10 @@ on:
         description: '한 번에 만들 글 수 (기본 4)'
         required: false
         default: '4'
+      yt:
+        description: '유튜브: 비우면 평소 설정 · dry = 열쇠만 확인(올리지 않음) · 0 = 이번엔 끔'
+        required: false
+        default: ''
 
 concurrency:
   group: longform-daily
@@ -55,6 +60,7 @@ jobs:
           sudo apt-get install -y ffmpeg fonts-noto-cjk fonts-noto-cjk-extra
           ls -la /usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc /usr/share/fonts/opentype/noto/NotoSansCJK-Black.ttc
           pip install pillow numpy scipy
+          pip install google-api-python-client google-auth || echo "구글 라이브러리 설치 실패 — 유튜브 업로드만 실패로 표시됨"
           npm install -g @anthropic-ai/claude-code
           claude --version
 
@@ -72,6 +78,10 @@ jobs:
           MAX_POSTS: ${{ github.event.inputs.max || '4' }}
           START_ID: '20261104'
           RUN_EVENT: ${{ github.event_name }}
+          YT_UPLOAD: ${{ github.event.inputs.yt || '0' }}
+          GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
+          GOOGLE_OAUTH_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
         run: node longform/run_daily.js
 
       - name: 기록 저장 (만든 글 · 창고 사용/부족 기록 · 장면표)
