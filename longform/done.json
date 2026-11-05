@@ -1,0 +1,74 @@
+{
+ "20261104_r1": {
+  "postId": "20261104_r1",
+  "row": 168,
+  "blogTitle": "5060 건강검진 때 유방 초음파 비용이 건강보험 적용되는 대상과 본인부담금 기준",
+  "blogLink": "https://blog.naver.com/newcp2024/224465243958?fromRss=true&trackingCode=rss",
+  "made": "202611052009",
+  "status": "만듦",
+  "title": "건강검진 유방 초음파, 보험이 될까요?",
+  "tries": 2,
+  "match": {
+   "딱맞음": 5,
+   "비슷함": 4,
+   "대체": 0
+  },
+  "alt": [],
+  "imgs": [
+   "E16",
+   "L05",
+   "A11",
+   "B01",
+   "E12",
+   "A18",
+   "A03",
+   "A17",
+   "B15"
+  ],
+  "sec": 108,
+  "mb": 11.6,
+  "minutes": 5.5,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261104_r1/20261104_r1_202611052009.mp4",
+  "youtube": "",
+  "fails": 0
+ },
+ "20261104_r2": {
+  "postId": "20261104_r2",
+  "row": 170,
+  "blogTitle": "내년 기초연금 재산기준 산정 시 주택과 예금이 어떻게 반영되는지 확인하는 방법",
+  "blogLink": "https://blog.naver.com/newcp2024/224464630381?fromRss=true&trackingCode=rss",
+  "made": "202611052009",
+  "status": "실패",
+  "title": "기초연금 재산 계산, 집과 예금은 어떻게 반영될까요?",
+  "tries": 3,
+  "match": {
+   "딱맞음": 4,
+   "비슷함": 5,
+   "대체": 0
+  },
+  "alt": [],
+  "imgs": [
+   "G01",
+   "B13",
+   "A23",
+   "F09",
+   "B05",
+   "J04",
+   "L06",
+   "D10",
+   "L02"
+  ],
+  "fails": 1,
+  "lastReason": "영상 만들기 실패 (깃허브 실행 기록을 보십시오)"
+ },
+ "20261104_r3": {
+  "postId": "20261104_r3",
+  "row": 169,
+  "blogTitle": "5060이 중개형 ISA 계좌를 만들 때 살펴봐야 할 수수료 체계와 만기 시 연금계좌 이전 방법",
+  "blogLink": "https://blog.naver.com/newcp2024/224465243311?fromRss=true&trackingCode=rss",
+  "made": "202611052009",
+  "status": "실패",
+  "fails": 1,
+  "lastReason": "장면표 실패"
+ }
+}
