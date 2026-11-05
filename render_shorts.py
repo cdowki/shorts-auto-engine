@@ -837,6 +837,48 @@ def render_video(title, script, audio_path, output_path="output_shorts.mp4", siz
     return output_path
 
 
+
+# ---------- 새 틀 숏폼 (11/5 비광도기님 승인 — 창고 그림·위 카드 도표·구글 목소리) ----------
+# 자동 쇼츠(블로그 글)에만 켭니다: render.yml이 NEW_STYLE=1을 넣을 때만.
+# 어느 단계든 실패하면 False를 돌려주고, 아래 본흐름이 예전 방식으로 그대로 만들어 발행합니다.
+LONGFORM_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'longform')
+NEW_VOICE = 'ko-KR-Chirp3-HD-Algieba'
+NEW_RATE = '0.95'
+
+
+def render_new_style(title, script, row, output_path):
+    tag = re.sub(r'[^0-9A-Za-z_]', '', str(row or 'r')) or 'r'
+    work = os.path.abspath(f"new_short_{tag}")
+    started = time.time()
+    try:
+        os.makedirs(work, exist_ok=True)
+        script_file = os.path.join(work, 'script.txt')
+        with open(script_file, 'w', encoding='utf-8') as f:
+            f.write(script)
+        scenes = os.path.join(work, 'scenes.json')
+        tts_dir = os.path.join(LONGFORM_DIR, f"tts_short_{tag}_{NEW_VOICE}_r{NEW_RATE}_p")
+        steps = [
+            ('장면표', ['node', 'short-make.js', '--out', work, '--title', title, '--script-file', script_file, '--tag', tag], 900, {}),
+            ('목소리', ['node', 'tts-make.js', '--scenes', scenes, '--voice', NEW_VOICE, '--rate', NEW_RATE], 600, {}),
+            ('영상', ['python3', 'render_preview.py', scenes, os.path.join(work, 'img'), os.path.abspath(output_path)], 900, {'TTS': tts_dir}),
+        ]
+        for label, cmd, limit, extra in steps:
+            print(f"🆕 새 틀 숏폼 — {label}")
+            r = subprocess.run(cmd, cwd=LONGFORM_DIR, timeout=limit, env={**os.environ, **extra})
+            if r.returncode != 0:
+                print(f"⚠️ 새 틀 숏폼 {label} 실패(끝 코드 {r.returncode}) — 예전 방식으로 만듭니다")
+                return False
+        if not os.path.exists(output_path) or os.path.getsize(output_path) < 100000:
+            print("⚠️ 새 틀 숏폼 영상 파일이 없거나 너무 작음 — 예전 방식으로 만듭니다")
+            return False
+        os.environ['AI_IMAGES'] = '1'   # 창고 그림은 제미나이가 그린 그림 → 유튜브 AI 표시
+        print(f"✅ 새 틀 숏폼 완성 ({round(time.time() - started)}초, {round(os.path.getsize(output_path) / 1048576, 1)}MB)")
+        return True
+    except Exception as e:
+        print(f"⚠️ 새 틀 숏폼 오류: {e} — 예전 방식으로 만듭니다")
+        return False
+
+
 if __name__ == "__main__":
     title = clean_script(os.environ.get('TITLE', '기본 쇼츠 제목입니다'))
     script = clean_script(os.environ.get('SCRIPT', '여기에 쇼츠 스크립트 내용이 들어갑니다.'))
@@ -862,9 +904,13 @@ if __name__ == "__main__":
     drive_name = make_output_name(title)
 
     try:
-        audio_file = generate_audio(script)
-        render_video(title, script, audio_file, output_file,
-                     bg_keyword=bg_keyword, image_folder_id=image_folder_id)
+        new_ok = False
+        if os.environ.get('NEW_STYLE', '') == '1':
+            new_ok = render_new_style(title, script, row, output_file)
+        if not new_ok:
+            audio_file = generate_audio(script)
+            render_video(title, script, audio_file, output_file,
+                         bg_keyword=bg_keyword, image_folder_id=image_folder_id)
 
         drive_link = ""
         if drive_folder_id and os.path.exists(output_file):
