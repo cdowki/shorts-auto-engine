@@ -417,7 +417,10 @@ function makeShort(longScenes, script, title) {
 }
 
 // ── 실행 ─────────────────────────────────────────
-(async () => {
+// 쇼폼(short-make.js)이 검사·클로드 부르기를 같이 쓰도록 내보냄 (11/5). 직접 실행할 때만 아래 본흐름이 돎
+module.exports = { runClaude, parseJson, loadCatalog, loadUsed, recentBans, catalogGuide, topicCandidates, TEMPLATE_GUIDE, LIMITS, chartStrings, checkFormula, numTokens, MATCHES, REF_SOLO, REF_COUPLE, HERE };
+
+if (require.main === module) (async () => {
   if (!ID || !/^\d{8}_r\d+$/.test(ID)) { log('사용법: node scene-make.js --id 20261103_r1 [--short-file 대본.txt --short-title 제목] [--dry]  또는  --job 작업.json'); process.exit(2); }
   let body = '';
   let title = '';
