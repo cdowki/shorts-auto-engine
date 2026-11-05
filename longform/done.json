@@ -37,38 +37,42 @@
   "row": 170,
   "blogTitle": "내년 기초연금 재산기준 산정 시 주택과 예금이 어떻게 반영되는지 확인하는 방법",
   "blogLink": "https://blog.naver.com/newcp2024/224464630381?fromRss=true&trackingCode=rss",
-  "made": "202611052009",
-  "status": "실패",
-  "title": "기초연금 재산 계산, 집과 예금은 어떻게 반영될까요?",
+  "made": "202611052030",
+  "status": "만듦",
+  "title": "기초연금 재산기준, 주택과 예금은 어떻게 반영될까요?",
   "tries": 3,
   "match": {
-   "딱맞음": 4,
-   "비슷함": 5,
+   "딱맞음": 3,
+   "비슷함": 6,
    "대체": 0
   },
   "alt": [],
   "imgs": [
    "G01",
-   "B13",
-   "A23",
-   "F09",
-   "B05",
+   "H09",
+   "B06",
+   "B10",
+   "F05",
    "J04",
    "L06",
-   "D10",
+   "A20",
    "L02"
   ],
-  "fails": 1,
-  "lastReason": "영상 만들기 실패 (깃허브 실행 기록을 보십시오)"
+  "sec": 120,
+  "mb": 14,
+  "minutes": 8.1,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261104_r2/20261104_r2_202611052030.mp4",
+  "youtube": "",
+  "fails": 0
  },
  "20261104_r3": {
   "postId": "20261104_r3",
   "row": 169,
   "blogTitle": "5060이 중개형 ISA 계좌를 만들 때 살펴봐야 할 수수료 체계와 만기 시 연금계좌 이전 방법",
   "blogLink": "https://blog.naver.com/newcp2024/224465243311?fromRss=true&trackingCode=rss",
-  "made": "202611052009",
+  "made": "202611052030",
   "status": "실패",
-  "fails": 1,
+  "fails": 2,
   "lastReason": "장면표 실패"
  }
 }
