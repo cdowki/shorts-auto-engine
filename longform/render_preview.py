@@ -1,5 +1,5 @@
 # render_preview.py — 긴 영상 시험본(목소리 없음): 장면 그림 9장 + 움직이는 차트 + 자막
-# 1080x1920, 24fps, 장면 길이는 장면표 sec 값. 장면 사이 0.4초 겹쳐 넘김.
+# 1080x1920(세로) 또는 WIDE=1이면 1920x1080(가로, 긴 영상), 24fps, 장면 길이는 장면표 sec 값. 장면 사이 0.4초 겹쳐 넘김.
 import json, math, os, re, subprocess, sys
 from PIL import Image, ImageDraw, ImageFont
 
@@ -7,6 +7,15 @@ SCENES = sys.argv[1]
 IMGDIR = sys.argv[2]
 OUT = sys.argv[3]
 W, H, FPS, XF = 1080, 1920, 24, 0.4
+# 가로판(11/6): WIDE=1 이면 결과 영상을 1920x1080(16:9)으로 — 세로 3분 이하는 유튜브가 쇼츠로 분류해 긴 영상 시청 시간에 안 들어가므로.
+# 도표·자막·그림은 세로판과 같은 방식으로 만든 뒤 가로 화면에 다시 배치함(도표 틀은 고치지 않음)
+WIDE = os.environ.get('WIDE', '') == '1'
+OW, OH = (1920, 1080) if WIDE else (W, H)
+# 자막 — 세로판: 2줄까지·폭 800 / 가로판(11/6 비광도기님): 1줄·폭 1700, 바닥에 늘 깔린 고정 검정 띠(글자 수와 관계없이 같은 크기)
+SUB_W, SUB_LINES = (1700, 1) if WIDE else (800, 2)
+BAR_H = 120
+BOTTOM_SAFE = 250   # 가로판 자막 띠 아래 빈칸 — 재생 막대·단추·아래 그늘이 덮는 아래쪽을 피함(11/6 비광도기님, 100은 재생 막대에 가려 250으로 올림)
+BAR_Y = OH - BOTTOM_SAFE - BAR_H
 FONT = '/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc'
 FONT_B = '/usr/share/fonts/opentype/noto/NotoSansCJK-Black.ttc'
 NAVY = (36, 78, 120)
@@ -299,15 +308,15 @@ def sentences(txt):
         cur = ''
         for p in [x for x in re.split(r'(?<=,)\s+', sent) if x]:
             test = (cur + ' ' + p).strip()
-            if len(wrap(test, f, 800)) <= 2:
+            if len(wrap(test, f, SUB_W)) <= SUB_LINES:
                 cur = test
                 continue
             if cur:
                 out.append(cur)
-            lines = wrap(p, f, 800)
-            for k in range(0, len(lines) - 2, 2):
-                out.append(' '.join(lines[k:k + 2]))
-            cur = ' '.join(lines[(len(lines) - 1) // 2 * 2:]) if len(lines) > 2 else p
+            lines = wrap(p, f, SUB_W)
+            for k in range(0, len(lines) - SUB_LINES, SUB_LINES):
+                out.append(' '.join(lines[k:k + SUB_LINES]))
+            cur = ' '.join(lines[(len(lines) - 1) // SUB_LINES * SUB_LINES:]) if len(lines) > SUB_LINES else p
         if cur:
             out.append(cur)
     return out
@@ -331,6 +340,13 @@ def wrap(s, f, maxw):
 
 def subtitle_layer(s):
     f = F(50)
+    if WIDE:
+        # 가로판: 글자만 (검정 띠는 frame_wide가 늘 깔아 둠)
+        line = ' '.join(wrap(s, f, SUB_W))
+        im, d = layer(OW, BAR_H)
+        w = f.getlength(line)
+        d.text(((OW - w) / 2, (BAR_H - 72) / 2 + 4), line, font=f, fill=WHITE + (255,))
+        return im
     lines = wrap(s, f, 800)
     lh = 72
     h = lh * len(lines) + 40
@@ -643,7 +659,7 @@ def voice_subs(i, sc):
     clips = voice[i]
     groups, cur = [], []
     for it in clips:
-        if cur and (cur[-1]['n'] != it['n'] or len(wrap(' '.join(x['text'] for x in cur + [it]), f, 800)) > 2):
+        if cur and (cur[-1]['n'] != it['n'] or len(wrap(' '.join(x['text'] for x in cur + [it]), f, SUB_W)) > SUB_LINES):
             groups.append(cur)
             cur = []
         cur.append(it)
@@ -652,7 +668,7 @@ def voice_subs(i, sc):
     marks = []   # (시작 시각, 자막 글)
     for g in groups:
         txt = ' '.join(x['text'] for x in g)
-        if len(g) == 1 and len(wrap(txt, f, 800)) > 2:
+        if len(g) == 1 and len(wrap(txt, f, SUB_W)) > SUB_LINES:
             it = g[0]
             chunks = sentences(it['text'])
             edges = [0.0] + voice_bounds(it, chunks)
@@ -691,7 +707,7 @@ for i, sc in enumerate(data):
     big = im.resize((bw, bh), Image.LANCZOS)
     ht = head_top(im)
     top_f = None if ht is None else ht * W / im.width - (bh - H)
-    shift = 0 if top_f is None or top_f >= HEAD_SAFE else int(HEAD_SAFE - top_f)
+    shift = 0 if WIDE or top_f is None or top_f >= HEAD_SAFE else int(HEAD_SAFE - top_f)   # 가로판은 위 판이 그림을 덮지 않음
     win = Image.new('RGB', (W, H), big.getpixel((W // 2, 5)))
     src_top = bh - H - shift
     win.paste(big.crop((0, max(0, src_top), W, bh - shift)), (0, max(0, -src_top)))
@@ -741,7 +757,82 @@ def card():
     return card_cache['c']
 
 
+WCARD = (40, 15, 1140, 715)   # 가로판 왼쪽 도표 자리 (x0, y0, x1, y1) — 자막 띠 위 공간
+
+
+def wide_card():
+    # 가로판 도표 카드: 세로판 위 판과 같은 하늘색→흰색, 둥근 모서리
+    if 'wc' not in card_cache:
+        x0, y0, x1, y1 = WCARD
+        cw, ch = x1 - x0, y1 - y0
+        im = Image.new('RGBA', (cw, ch), (0, 0, 0, 0))
+        px = im.load()
+        top, bot = (226, 242, 250), (250, 252, 254)
+        for y in range(ch):
+            k = y / ch
+            col = tuple(int(top[c] + (bot[c] - top[c]) * k) for c in range(3)) + (255,)
+            for x in range(cw):
+                px[x, y] = col
+        mask = Image.new('L', (cw, ch), 0)
+        ImageDraw.Draw(mask).rounded_rectangle((0, 0, cw - 1, ch - 1), radius=44, fill=255)
+        im.putalpha(mask)
+        card_cache['wc'] = im
+    return card_cache['wc']
+
+
+def frame_wide(i, t):
+    # 가로판 한 장: 바탕은 그림 바탕색, 오른쪽에 인물 그림(천천히 당겨 보임), 왼쪽 카드에 도표, 왼쪽 아래에 자막
+    sc = data[i]
+    base = bases[i]
+    z = 1.0 + 0.045 * (t / sc['sec'])
+    # 인물 크기는 처음 가로 견본(그림 전체를 화면 높이에 맞춘 비율)대로, 위쪽 빈 바탕은 잘라 내고 자막 띠 위에 세움(11/6 비광도기님)
+    #   머리 꼭대기 120칸 위 ~ 그림 아래끝을 보여 주되, 띠 위 공간보다 크면 그만큼만 줄임
+    top = heads[i][0]
+    y_top = max(0, (top if top is not None else 300) - 120)
+    roi_h = H - y_top
+    s_ = min(OH / H, BAR_Y / roi_h)
+    win_h = roi_h / z
+    win_top = y_top + (roi_h - win_h) * 0.35
+    ww = W / z
+    cx = W / 2
+    pic = base.crop((int(cx - ww / 2), int(win_top), int(cx + ww / 2), int(win_top + win_h)))
+    pic = pic.resize((round(W * s_), round(roi_h * s_)), Image.BILINEAR)
+    bgcol = base.getpixel((3, 3))
+    can = Image.new('RGBA', (OW, OH), bgcol + (255,))
+    # 그림 가장자리를 바탕색으로 서서히 녹여 네모 경계가 안 보이게 (도표 바탕을 없앤 뒤 드러남, 11/6)
+    import numpy as np
+    pw_, ph_ = pic.size   # 확대 중에는 그림 폭이 매 장 달라져 가림막을 저장해 두지 않고 매번 만듦(가벼움)
+    fx = np.clip(np.minimum(np.arange(pw_), pw_ - 1 - np.arange(pw_)) / 90.0, 0, 1)
+    fy = np.clip(np.arange(ph_) / 60.0, 0, 1)
+    can.paste(pic, (1530 - pic.width // 2, BAR_Y - pic.height), Image.fromarray((np.outer(fy, fx) * 255).astype('uint8'), 'L'))
+    if 'bar' not in card_cache:
+        # 자막 띠 + 그 아래는 그림 바탕보다 한 톤 짙은 바닥색(11/6 비광도기님 B안 — 재생 막대가 없을 때 아래가 비어 보이지 않게)
+        bar, bd = layer(OW, OH - BAR_Y)
+        r_, g_, b_ = bgcol
+        bd.rectangle((0, BAR_H, OW, OH), fill=(max(0, r_ - 22), max(0, g_ - 26), max(0, b_ - 34), 255))
+        bd.rectangle((0, 0, OW, BAR_H), fill=(20, 30, 45, 235))
+        card_cache['bar'] = bar
+    put(can, card_cache['bar'], 0, BAR_Y, 1)
+    # 도표 카드 바탕은 깔지 않음(11/6 비광도기님 "도표 바탕색은 없애자") — 도표가 그림 바탕 위에 바로 놓임
+    lay_c = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+    if sc.get('chart'):
+        draw_chart(lay_c, t, chart_for(i, sc))
+    else:
+        CHARTS[i](lay_c, t * sc.get('sec_old', sc['sec']) / sc['sec'])
+    cx0, cy0, cx1, cy1 = WCARD
+    ch_img = lay_c.crop((0, 0, W, cy1 - cy0 - 30))
+    k = (cx1 - cx0) / W
+    ch_img = ch_img.resize((int(W * k), int(ch_img.height * k)), Image.BILINEAR)
+    can.alpha_composite(ch_img, (cx0, cy0 + 30))
+    for d0, d1, lay in subs[i]:
+        if d0 <= t < d1 + 0.05:
+            put(can, lay, 0, BAR_Y, min(1, (t - d0) / 0.2 + 0.0001))
+    return can.convert('RGB')
+
+
 def frame(i, t):
+    if WIDE:
+        return frame_wide(i, t)
     sc = data[i]
     base = bases[i]
     z = 1.0 + 0.045 * (t / sc['sec'])
@@ -769,10 +860,11 @@ for sc in data:
 TOTAL = tt
 print('머리 꼭대기(원래 → 내린 칸):', [(k + 1, h0, sh) for k, (h0, sh) in enumerate(heads)], flush=True)
 if os.environ.get('STILLS'):
-    sheet = Image.new('RGB', (360 * 5, 640 * 2), 'white')
+    tw, th = (640, 360) if WIDE else (360, 640)
+    sheet = Image.new('RGB', (tw * 5, th * 2), 'white')
     for i, sc in enumerate(data):
-        fr = frame(i, sc['sec'] - XF - 0.05).resize((360, 640))
-        sheet.paste(fr, ((i % 5) * 360, (i // 5) * 640))
+        fr = frame(i, sc['sec'] - XF - 0.05).resize((tw, th))
+        sheet.paste(fr, ((i % 5) * tw, (i // 5) * th))
     sheet.save(OUT, quality=88)
     sys.exit(0)
 if os.environ.get('SUBS'):
@@ -791,7 +883,7 @@ if os.environ.get('ONE'):
     sys.exit(0)
 N = int(TOTAL * FPS)
 VOUT = OUT + '.video.mp4' if voice else OUT
-ff = subprocess.Popen(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS), '-i', '-',
+ff = subprocess.Popen(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{OW}x{OH}', '-r', str(FPS), '-i', '-',
                        '-c:v', 'libx264', '-preset', 'medium', '-crf', '21', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', VOUT], stdin=subprocess.PIPE)
 for n in range(N):
     T = n / FPS
