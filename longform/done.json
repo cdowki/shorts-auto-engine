@@ -108,5 +108,41 @@
   "youtube": "",
   "ytNote": "꺼짐(그림자 운행)",
   "fails": 0
+ },
+ "20261105_r2": {
+  "postId": "20261105_r2",
+  "row": 171,
+  "blogTitle": "가려움과 진물이 반복되는 성인 유두습진 초기 증상과 만성 피부염으로 악화되지 않도록 일상에서 관리해야 할 주의사항",
+  "blogLink": "https://blog.naver.com/newcp2024/224465886546?fromRss=true&trackingCode=rss",
+  "made": "202611061849",
+  "status": "만듦",
+  "title": "유두가 가렵고 진물이 반복된다면? 초기 증상과 관리법",
+  "tries": 1,
+  "match": {
+   "딱맞음": 0,
+   "비슷함": 8,
+   "대체": 1
+  },
+  "alt": [
+   "4번 장면: 원한 그림 \"새로 산 제품을 부부가 함께 떠올림\" → 쓴 그림 J07 장보기"
+  ],
+  "imgs": [
+   "C05",
+   "A12",
+   "A06",
+   "J07",
+   "F06",
+   "K04",
+   "A08",
+   "C02",
+   "B03"
+  ],
+  "sec": 104,
+  "mb": 12,
+  "minutes": 4.6,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261105_r2/20261105_r2_202611061849.mp4",
+  "youtube": "",
+  "ytNote": "꺼짐(그림자 운행)",
+  "fails": 0
  }
 }
