@@ -215,7 +215,7 @@ async function makeOne(job, prev) {
 
   fs.mkdirSync(path.join(HERE, 'out'), { recursive: true });
   const mp4 = path.join(HERE, 'out', `${id}.mp4`);
-  const s3 = step(`${id} 영상 만들기`, 'python3', ['render_preview.py', path.join('jobs', id, 'scenes.json'), path.join('jobs', id, 'img'), mp4], { timeoutMs: 40 * 60 * 1000, env: { TTS: ttsDir } });
+  const s3 = step(`${id} 영상 만들기`, 'python3', ['render_preview.py', path.join('jobs', id, 'scenes.json'), path.join('jobs', id, 'img'), mp4], { timeoutMs: 40 * 60 * 1000, env: { TTS: ttsDir, WIDE: '1' } });   // 긴 영상은 가로(16:9) — 세로 3분 이하는 쇼츠로 분류돼 시청 시간에 안 들어감 (11/6)
   if (!s3.ok || !fs.existsSync(mp4)) { out.reason = '영상 만들기 실패 (깃허브 실행 기록을 보십시오)'; return out; }
   out.sec = duration(mp4);
   out.mb = Math.round((fs.statSync(mp4).size / 1048576) * 10) / 10;
