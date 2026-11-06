@@ -4,7 +4,7 @@ name: Longform Video (daily)
 # 본 실행: 쇼츠 GAS가 매일 10시대 KST(09시 쇼츠 렌더링 뒤)에 repository_dispatch "longform_daily"로 부름(11/5 — 깃허브 예약이 빠진 뒤).
 # 만드는 글은 쇼츠와 같은 전날 글(본문은 전날 오후에 드라이브에 이미 있음).
 # 예비: 깃허브 예약 11:37 KST(02:37 UTC). 이미 만든 글은 다시 만들지 않고, 할 일이 없으면 메일도 안 보냄.
-# 첫 2일은 그림자 운행: 영상은 릴리스에만 올리고 유튜브에는 올리지 않음.
+# 그림자 운행 2일(11/5·11/6) 끝 — 11/7 실행부터 유튜브에 가로판(16:9)으로 자동 업로드.
 # 유튜브 업로드 스위치(11/5 추가): 아래 YT_UPLOAD 줄의 '0'을 '1'로 바꾸면 켜짐. 손 실행 때 yt 칸에 dry를 넣으면 열쇠만 확인(올리지 않음).
 
 on:
@@ -78,7 +78,7 @@ jobs:
           MAX_POSTS: ${{ github.event.inputs.max || '4' }}
           START_ID: '20261104'
           RUN_EVENT: ${{ github.event_name }}
-          YT_UPLOAD: ${{ github.event.inputs.yt || '0' }}
+          YT_UPLOAD: ${{ github.event.inputs.yt || '1' }}   # 11/6 비광도기님 승인 — 켬(11/7 실행부터 유튜브 자동 업로드)
           GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
           GOOGLE_OAUTH_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
