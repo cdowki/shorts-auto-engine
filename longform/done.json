@@ -74,5 +74,39 @@
   "status": "실패",
   "fails": 2,
   "lastReason": "장면표 실패"
+ },
+ "20261105_r1": {
+  "postId": "20261105_r1",
+  "row": 172,
+  "blogTitle": "실직 후 구직 기간 동안 국민연금 보험료 75%를 국가에서 지원받는 실업크레딧 신청 조건과 보험료 납부 기간 인정 기준",
+  "blogLink": "https://blog.naver.com/newcp2024/224465868840?fromRss=true&trackingCode=rss",
+  "made": "202611061020",
+  "status": "만듦",
+  "title": "실업크레딧, 보험료 75%를 지원받는 조건은?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 2,
+   "비슷함": 7,
+   "대체": 0
+  },
+  "alt": [],
+  "imgs": [
+   "D10",
+   "B05",
+   "C13",
+   "B13",
+   "B07",
+   "A15",
+   "A14",
+   "C04",
+   "L03"
+  ],
+  "sec": 110,
+  "mb": 13.4,
+  "minutes": 3.3,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261105_r1/20261105_r1_202611061020.mp4",
+  "youtube": "",
+  "ytNote": "꺼짐(그림자 운행)",
+  "fails": 0
  }
 }
