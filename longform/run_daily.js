@@ -92,7 +92,27 @@ async function gh(method, url, body, headers) {
   try { data = JSON.parse(text); } catch (e) { /* 무시 */ }
   return { status: res.status, data, text };
 }
+// 릴리스 올리기 — 네트워크 오류(11/6 EPIPE로 실행 전체가 멈춤)가 나도 실행을 멈추지 않고 3번까지 다시 시도 (11/6)
 async function uploadRelease(file, postId, title) {
+  let last = '';
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    try {
+      // eslint-disable-next-line no-await-in-loop
+      const r = await uploadReleaseOnce(file, postId, title, attempt);
+      if (r.url) return attempt > 1 ? { url: r.url, note: `릴리스 ${attempt}번째에 올라감 (앞 실패: ${last})` } : r;
+      last = r.note;
+    } catch (e) {
+      last = `네트워크 오류 ${(e.cause && e.cause.code) || e.message}`;
+    }
+    if (attempt < 3) {
+      log(`  릴리스 올리기 다시 시도 (${attempt}/3 실패: ${String(last).slice(0, 100)})`);
+      // eslint-disable-next-line no-await-in-loop
+      await new Promise((res) => setTimeout(res, 15000));
+    }
+  }
+  return { url: '', note: `영상 올리기 3번 실패 — ${last}` };
+}
+async function uploadReleaseOnce(file, postId, title, attempt) {
   const repo = process.env.GH_REPOSITORY;
   if (!process.env.GH_TOKEN || !repo) return { url: '', note: 'GH_TOKEN/GH_REPOSITORY 없음 — 릴리스 건너뜀' };
   const api = `${process.env.GH_API || 'https://api.github.com'}/repos/${repo}`;   // GH_API는 시험용(가짜 서버)
@@ -105,7 +125,7 @@ async function uploadRelease(file, postId, title) {
     }), { 'Content-Type': 'application/json' });
   }
   if (rel.status >= 300 || !rel.data || !rel.data.upload_url) return { url: '', note: `릴리스 만들기 실패 [${rel.status}] ${rel.text.slice(0, 120)}` };
-  const name = `${postId}_${RUN}.mp4`;
+  const name = `${postId}_${RUN}${attempt > 1 ? `_${attempt}` : ''}.mp4`;   // 다시 시도 때는 이름을 바꿔 '이미 있음' 거절을 피함
   const up = await gh('POST', `${rel.data.upload_url.split('{')[0]}?name=${encodeURIComponent(name)}`, fs.readFileSync(file), { 'Content-Type': 'video/mp4' });
   if (up.status >= 300 || !up.data) return { url: '', note: `영상 올리기 실패 [${up.status}] ${up.text.slice(0, 120)}` };
   return { url: up.data.browser_download_url || '', note: '' };
@@ -281,7 +301,14 @@ function mailText(results, skipped, info) {
   for (const j of now) {
     // eslint-disable-next-line no-await-in-loop
     const prev = done[j.postId] || {};
-    const r = await makeOne(j, prev);
+    let r;
+    try {
+      r = await makeOne(j, prev);
+    } catch (e) {
+      // 예상 못 한 오류가 나도 다음 글·결과 메일·기록은 계속 (11/6)
+      log(`✘ ${j.postId} 예상 못 한 오류: ${e.message}`);
+      r = { postId: j.postId, row: j.row, blogTitle: j.blogTitle, blogLink: j.blogLink || '', made: RUN, status: '실패', reason: `예상 못 한 오류: ${e.message}${e.cause && e.cause.code ? ` (${e.cause.code})` : ''}` };
+    }
     results.push(r);
     done[j.postId] = { ...r, fails: r.status === '실패' ? (prev.fails || 0) + 1 : 0 };
     delete done[j.postId].reason;
