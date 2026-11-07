@@ -144,5 +144,112 @@
   "youtube": "",
   "ytNote": "꺼짐(그림자 운행)",
   "fails": 0
+ },
+ "20261106_r1": {
+  "postId": "20261106_r1",
+  "row": 174,
+  "blogTitle": "2026년 올해 종합부동산세 분납 신청 기한이 다가왔는데, 내가 소유한 주택 공시가격과 세액 기준에 맞춰 이자 없이 나눠 내는 혜택을 온전히 챙기려면 언제까지 신청서를",
+  "blogLink": "https://blog.naver.com/newcp2024/224467713616?fromRss=true&trackingCode=rss",
+  "made": "202611071020",
+  "status": "만듦",
+  "title": "종부세 분납, 언제까지 신청해야 할까요?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 3,
+   "비슷함": 6,
+   "대체": 0
+  },
+  "alt": [],
+  "imgs": [
+   "G08",
+   "A16",
+   "A19",
+   "B05",
+   "A09",
+   "A13",
+   "L03",
+   "C04",
+   "B12"
+  ],
+  "sec": 120,
+  "mb": 7.6,
+  "minutes": 5.1,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261106_r1/20261106_r1_202611071020.mp4",
+  "youtube": "https://youtu.be/ZM0DAa7yd7c",
+  "ytNote": "",
+  "fails": 0
+ },
+ "20261106_r2": {
+  "postId": "20261106_r2",
+  "row": 175,
+  "blogTitle": "퇴직연금 디폴트옵션 제도를 통해 내 퇴직금이 자동으로 운용되도록 설정할 때, 초위험자산과 저위험자산 사이에서 내 투자 성향에 맞는 상품을 직접 고르고 수수료 부담을 점검해 보는 방",
+  "blogLink": "https://blog.naver.com/newcp2024/224467129760?fromRss=true&trackingCode=rss",
+  "made": "202611071020",
+  "status": "만듦",
+  "title": "퇴직연금 디폴트옵션, 어떻게 골라야 할까요?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 3,
+   "비슷함": 4,
+   "대체": 2
+  },
+  "alt": [
+   "7번 장면: 원한 그림 \"노트북으로 수수료 조회\" → 쓴 그림 H10 두 통장 비교",
+   "8번 장면: 원한 그림 \"수수료 차이를 계산하는 모습\" → 쓴 그림 D07 지폐 세기"
+  ],
+  "imgs": [
+   "D09",
+   "A05",
+   "B09",
+   "A07",
+   "H07",
+   "H01",
+   "H10",
+   "D07",
+   "B08"
+  ],
+  "sec": 120,
+  "mb": 7.2,
+  "minutes": 3.8,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261106_r2/20261106_r2_202611071020_2.mp4",
+  "note": "릴리스 2번째에 올라감 (앞 실패: 네트워크 오류 EPIPE)",
+  "youtube": "",
+  "ytNote": "대체 그림 2장 — 올리지 않음",
+  "fails": 0
+ },
+ "20261106_r3": {
+  "postId": "20261106_r3",
+  "row": 173,
+  "blogTitle": "올해 공무원연금 수급액 인상률이 물가 상승률을 반영해 어떻게 결정되는지 확인하고, 퇴직 후 매달 받는 연금액 변동에 따라 노후 생활비 지출 계획을 새롭게 세워보는 기준",
+  "blogLink": "https://blog.naver.com/newcp2024/224467720967?fromRss=true&trackingCode=rss",
+  "made": "202611071020",
+  "status": "만듦",
+  "title": "공무원연금 인상률, 어떻게 정해질까요?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 3,
+   "비슷함": 6,
+   "대체": 0
+  },
+  "alt": [],
+  "imgs": [
+   "D01",
+   "B04",
+   "H11",
+   "A18",
+   "A24",
+   "A15",
+   "B10",
+   "C13",
+   "L01"
+  ],
+  "sec": 113,
+  "mb": 7.5,
+  "minutes": 4,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261106_r3/20261106_r3_202611071020_2.mp4",
+  "note": "릴리스 2번째에 올라감 (앞 실패: 네트워크 오류 EPIPE)",
+  "youtube": "https://youtu.be/irLbBBG0Gl8",
+  "ytNote": "",
+  "fails": 0
  }
 }
