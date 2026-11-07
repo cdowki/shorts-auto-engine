@@ -16,6 +16,7 @@ SUB_W, SUB_LINES = (1700, 1) if WIDE else (800, 2)
 BAR_H = 120
 BOTTOM_SAFE = 250   # 가로판 자막 띠 아래 빈칸 — 재생 막대·단추·아래 그늘이 덮는 아래쪽을 피함(11/6 비광도기님, 100은 재생 막대에 가려 250으로 올림)
 BAR_Y = OH - BOTTOM_SAFE - BAR_H
+FLOOR_TEXT = '@비광도기 · 블로그 글을 정리한 설명 영상'   # 가로판 바닥 칸 글자(11/7 비광도기님)
 FONT = '/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc'
 FONT_B = '/usr/share/fonts/opentype/noto/NotoSansCJK-Black.ttc'
 NAVY = (36, 78, 120)
@@ -811,6 +812,11 @@ def frame_wide(i, t):
         r_, g_, b_ = bgcol
         bd.rectangle((0, BAR_H, OW, OH), fill=(max(0, r_ - 22), max(0, g_ - 26), max(0, b_ - 34), 255))
         bd.rectangle((0, 0, OW, BAR_H), fill=(20, 30, 45, 235))
+        # 바닥 칸 가운데 흐린 글자 한 줄 — 작은 화면에서 아래가 비어 보이지 않게(11/7 비광도기님 A안)
+        f2 = ImageFont.truetype(FONT, 46, index=1)
+        fw = f2.getlength(FLOOR_TEXT)
+        fc = (max(0, r_ - 95), max(0, g_ - 100), max(0, b_ - 108), 255)
+        bd.text(((OW - fw) / 2, BAR_H + (OH - BAR_Y - BAR_H - 46) / 2 - 10), FLOOR_TEXT, font=f2, fill=fc)
         card_cache['bar'] = bar
     put(can, card_cache['bar'], 0, BAR_Y, 1)
     # 도표 카드 바탕은 깔지 않음(11/6 비광도기님 "도표 바탕색은 없애자") — 도표가 그림 바탕 위에 바로 놓임
