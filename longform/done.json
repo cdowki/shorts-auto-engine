@@ -251,5 +251,84 @@
   "youtube": "https://youtu.be/irLbBBG0Gl8",
   "ytNote": "",
   "fails": 0
+ },
+ "20261107_r1": {
+  "postId": "20261107_r1",
+  "row": 177,
+  "blogTitle": "국민연금 가입 기간이 부족해 걱정인 5060이 실시간으로 납부 이력과 예상 수령액을 정확히 조회하는 절차",
+  "blogLink": "https://blog.naver.com/newcp2024/224468485235?fromRss=true&trackingCode=rss",
+  "made": "202611081020",
+  "status": "만듦",
+  "title": "국민연금 가입 기간이 부족하다면? 내 이력부터 조회",
+  "tries": 1,
+  "match": {
+   "딱맞음": 3,
+   "비슷함": 6,
+   "대체": 0
+  },
+  "alt": [],
+  "imgs": [
+   "D03",
+   "L09",
+   "D10",
+   "L04",
+   "B11",
+   "D02",
+   "C09",
+   "C02",
+   "L10"
+  ],
+  "sec": 100,
+  "mb": 6.8,
+  "minutes": 3.4,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261107_r1/20261107_r1_202611081020.mp4",
+  "youtube": "https://youtu.be/oZO2GNJ3BsY",
+  "ytNote": "",
+  "fails": 0
+ },
+ "20261107_r2": {
+  "postId": "20261107_r2",
+  "row": 176,
+  "blogTitle": "출생 연도별로 수령 시기가 달라지는 공무원연금 지급 나이 기준과 퇴직 후 소득 공백기를 대비하는 요령",
+  "blogLink": "https://blog.naver.com/newcp2024/224468486106?fromRss=true&trackingCode=rss",
+  "made": "202611081020",
+  "status": "실패",
+  "fails": 1,
+  "lastReason": "장면표 실패"
+ },
+ "20261107_r3": {
+  "postId": "20261107_r3",
+  "row": 178,
+  "blogTitle": "소득 인정액 산정 방식에 따라 매달 받는 금액이 달라지는 노령연금과 기초연금의 차이 및 중복 수급 기준",
+  "blogLink": "https://blog.naver.com/newcp2024/224468251173?fromRss=true&trackingCode=rss",
+  "made": "202611081020",
+  "status": "만듦",
+  "title": "노령연금과 기초연금, 둘 다 받을 수 있나요?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 2,
+   "비슷함": 7,
+   "대체": 0
+  },
+  "alt": [],
+  "imgs": [
+   "A22",
+   "A04",
+   "F06",
+   "B01",
+   "H02",
+   "B05",
+   "A11",
+   "G02",
+   "B03"
+  ],
+  "sec": 121,
+  "mb": 7.8,
+  "minutes": 3.3,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261107_r3/20261107_r3_202611081020_2.mp4",
+  "note": "릴리스 2번째에 올라감 (앞 실패: 네트워크 오류 EPIPE)",
+  "youtube": "https://youtu.be/JcVqg8659m0",
+  "ytNote": "",
+  "fails": 0
  }
 }
