@@ -12,6 +12,8 @@
 //   - 그림은 창고에서 고름. 한 영상 안 같은 그림 금지, 최근 긴 영상 3편에 쓴 그림 금지(기록은 읽기만)
 //   - 위 카드 도표는 대본에 있는 숫자로만. 1장면은 큰제목(쇼츠 제목)
 //   - 클로드 부르는 법은 긴 영상과 같음(구독·도구 0개·잠금 확인) — scene-make.js 것을 그대로 씀
+//   - 1장면 그림 나누기(11/8 비광도기님 A안): 하루 3편이 동시에 만들어져 첫 그림이 늘 같았음(176~178행 모두 D03)
+//     → 창고 번호 끝 숫자로 그림을 3묶음으로 나누고, 시트 행 번호(--tag)로 1장면 묶음을 정함. 연달은 세 행은 첫 그림이 반드시 다름
 
 'use strict';
 
@@ -30,11 +32,19 @@ const SCRIPT_FILE = pickArg('--script-file', null);
 const TAG = pickArg('--tag', 'short');
 const MAX_TRIES = 3;
 const HERE = SM.HERE;
+const ROW = parseInt(String(TAG).replace(/\D/g, ''), 10);
+const FIRST_SLOT = Number.isFinite(ROW) ? ROW % 3 : -1;   // 행 번호를 못 읽으면(-1) 나누지 않음
+const idNum = (id) => parseInt(String(id).replace(/\D/g, ''), 10);
+function firstAllowed(cat, bans) {
+  // 1장면에 쓸 수 있는 그림: 번호 끝 숫자가 이 행의 묶음인 것(최근 사용 금지 그림 빼고)
+  if (FIRST_SLOT < 0) return null;
+  return new Set(cat.usable.filter((x) => (idNum(x.id) - 1) % 3 === FIRST_SLOT && !bans.hard.has(x.id)).map((x) => x.id));
+}
 
 function log(...a) { console.log('[short-make]', ...a); }
 const norm = (s) => String(s).replace(/\s+/g, '');
 
-function buildPrompt(title, script, retryNote, guide) {
+function buildPrompt(title, script, retryNote, guide, first) {
   return `너는 5060 세대를 위한 생활 금융·제도 설명 세로 숏폼 영상의 장면표를 쓰는 작가야.
 아래 [쇼츠 대본]을 장면으로 나누고, 장면마다 그림과 위 카드 도표를 붙여서 JSON 하나로만 답해줘. JSON 밖에는 아무 글자도 쓰지 마.
 
@@ -54,7 +64,7 @@ function buildPrompt(title, script, retryNote, guide) {
 - 그림은 아래 [그림 창고]에서 고름. 장면 대사에 가장 맞는 번호 하나를 img에 씀(예: "E06").
 - want: 이 장면에 원래 가장 어울리는 그림을 한 줄로(30자 이하). match: "딱맞음" / "비슷함" / "대체" 중 정직하게.
 - 한 영상 안에서 같은 번호를 두 번 쓰지 마. "[금지:최근 사용]" 번호는 쓰지 마. "[되도록 피함]" 번호는 다른 마땅한 그림이 없을 때만.
-- 1장면 그림은 주제가 바로 보이는 그림(병원·연금·집·보험 등 주제 묶음)으로.
+- 1장면 그림은 주제가 바로 보이는 그림(병원·연금·집·보험 등 주제 묶음)으로.${first ? `\n- 1장면 그림은 반드시 아래 [1장면 후보] 번호 중에서만 고름(같은 날 다른 영상과 첫 그림이 겹치지 않게). 2장면부터는 창고 전체에서 고름.\n[1장면 후보] ${[...first].join(' ')}` : ''}
 - "칠판" 그림은 1장까지이고, 칠판 그림을 쓴 장면에만 "board":"내림막대" 또는 "오름막대"를 넣음.
 
 ${SM.TEMPLATE_GUIDE}
@@ -72,7 +82,7 @@ ${script}
 `;
 }
 
-function validate(data, script, cat, bans) {
+function validate(data, script, cat, bans, first) {
   const errs = [];
   if (!data || !Array.isArray(data.scenes)) return ['scenes 목록이 없음'];
   const sc = data.scenes;
@@ -131,6 +141,7 @@ function validate(data, script, cat, bans) {
   });
   if (boards > 1) errs.push(`칠판 그림 ${boards}장 — 1장까지`);
   if (sc[0] && (sc[0].chart || {}).type !== '큰제목') errs.push('1장면 chart는 큰제목이어야 함');
+  if (first && sc[0] && !first.has(String(sc[0].img || '').trim())) errs.push(`1장면 img ${sc[0].img}는 [1장면 후보]에 없음 — 후보 번호 중에서 주제에 맞는 것으로`);
   const last = sc[sc.length - 1];
   if (last && !['체크목록', '큰제목'].includes((last.chart || {}).type)) errs.push('마지막 장면 chart는 체크목록 또는 큰제목이어야 함');
   return [...new Set(errs)];
@@ -146,8 +157,9 @@ function validate(data, script, cat, bans) {
   if (missing.length) { log(`창고 그림 파일 ${missing.length}개 없음`); process.exit(2); }
   const bans = SM.recentBans(SM.loadUsed(), `short_${TAG}`);   // 최근 긴 영상 3편 그림은 금지(읽기만)
   const guide = SM.catalogGuide(cat, bans);
+  const first = firstAllowed(cat, bans);
   fs.mkdirSync(OUT, { recursive: true });
-  log(`제목: ${TITLE} · 대본 ${script.length}자 · 창고 ${cat.usable.length}장 · 금지 ${bans.hard.size}장`);
+  log(`제목: ${TITLE} · 대본 ${script.length}자 · 창고 ${cat.usable.length}장 · 금지 ${bans.hard.size}장 · 1장면 묶음 ${first ? `${FIRST_SLOT + 1}/3(${first.size}장)` : '나누지 않음'}`);
 
   let note = '';
   let data = null;
@@ -156,12 +168,12 @@ function validate(data, script, cat, bans) {
   for (tries = 1; tries <= MAX_TRIES; tries += 1) {
     log(`[${tries}/${MAX_TRIES}] 클로드에게 숏폼 장면표 요청…`);
     // eslint-disable-next-line no-await-in-loop
-    const r = await SM.runClaude(buildPrompt(TITLE, script, note, guide));
+    const r = await SM.runClaude(buildPrompt(TITLE, script, note, guide, first));
     if (!r.ok) { log(`  ✘ ${r.problem}`); if (/\[잠금\]/.test(r.problem)) break; continue; }
     log(`  받음 ${r.sec}초 · ${r.text.length}자`);
     data = SM.parseJson(r.text);
     if (!data) { errs = ['답이 JSON 모양이 아님']; note = 'JSON 하나로만 답해야 함'; log('  ✘ JSON을 못 읽음'); continue; }
-    errs = validate(data, script, cat, bans);
+    errs = validate(data, script, cat, bans, first);
     if (!errs.length) { log('  ✓ 검사 통과'); break; }
     log(`  ✘ 검사 ${errs.length}건`);
     errs.slice(0, 20).forEach((e) => log(`    - ${e}`));
