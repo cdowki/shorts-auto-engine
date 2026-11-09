@@ -7,7 +7,7 @@
 //   4) 영상은 이 저장소 릴리스(longform-<글번호>)에 올려 주소를 만듦
 //   4-b) 유튜브 업로드 (11/5 추가) — 스위치 YT_UPLOAD: '1' 켬 · 'dry' 시험(열쇠만 확인, 올리지 않음) · 그 밖 끔(그림자 운행)
 //        제목 = 같은 글의 쇼츠 제목(시트 D열, 9/14 규칙을 거친 것) · 바로 공개 · AI 표시 켬 (11/5 비광도기님 결정)
-//        막는 조건: 장면표가 첫 시도에 통과 못 함 · 대체 그림 2장 이상 · 쇼츠 제목 없음 · 이미 올린 글 · 한 번에 YT_MAX편 넘음
+//        막는 조건: 장면표가 3번째 시도에야 통과(11/9부터 — 2번째까지는 올림) · 대체 그림 2장 이상 · 쇼츠 제목 없음 · 이미 올린 글 · 한 번에 YT_MAX편 넘음
 //   5) 결과를 GAS longform_result로 보내 "[긴 영상] …" 메일 한 통
 //   6) 기록: done.json(만든 글) · 창고_사용기록.json · 창고_부족기록.json · jobs/<글>/scenes.json — 저장소 저장은 워크플로가 함
 //
@@ -159,7 +159,8 @@ function ytBlock(out, job, prev) {
   // 올리지 않을 이유를 돌려줌. 빈 글자면 올림
   if (!YT_ON) return '꺼짐(그림자 운행)';
   if (prev && prev.youtube) return `이미 올린 글 — ${prev.youtube}`;
-  if (out.tries !== 1) return `장면표가 ${out.tries}번째에 통과 — 올리지 않음`;
+  // 11/9 비광도기님: 2번째 시도 통과까지 올림 — 막힌 3편의 첫 시도 탈락이 모두 표기 실수(연도 줄임·점 날짜·구절 길이)였고, 2번째도 같은 검사 전체를 통과함
+  if (!(out.tries >= 1 && out.tries <= 2)) return `장면표가 ${out.tries}번째에야 통과 — 올리지 않음(2번째까지만 올림)`;
   if ((out.match && out.match.대체) >= 2) return `대체 그림 ${out.match.대체}장 — 올리지 않음`;
   if (!String(job.shortsTitle || '').trim()) return '쇼츠 제목(시트 D열)이 없음 — 올리지 않음';
   if (ytSent >= YT_MAX) return `한 번에 ${YT_MAX}편까지 — 올리지 않음(다음 실행에서도 다시 올리지는 않음, 손 실행 필요)`;
