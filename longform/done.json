@@ -354,5 +354,81 @@
   "youtube": "https://youtu.be/JcVqg8659m0",
   "ytNote": "",
   "fails": 0
+ },
+ "20261108_r1": {
+  "postId": "20261108_r1",
+  "row": 180,
+  "blogTitle": "외국 영주권을 취득한 5060이 국내에 거주할 때 기초연금 수급 자격과 지급 정지 기준이 어떻게 적용되는지 확인하는 방법",
+  "blogLink": "https://blog.naver.com/newcp2024/224469096741?fromRss=true&trackingCode=rss",
+  "made": "202611091020",
+  "status": "만듦",
+  "title": "외국 영주권 있어도 기초연금 받을 수 있을까?",
+  "tries": 2,
+  "match": {
+   "딱맞음": 4,
+   "비슷함": 1,
+   "대체": 4
+  },
+  "alt": [
+   "2번 장면: 원한 그림 \"인사하며 결론을 알려 주는 모습\" → 쓴 그림 A01 인사",
+   "3번 장면: 원한 그림 \"주민등록 서류를 확인하는 모습\" → 쓴 그림 F04 도장",
+   "6번 장면: 원한 그림 \"귀국 후 다시 지급돼 안도\" → 쓴 그림 D04 달력 매달 표시",
+   "8번 장면: 원한 그림 \"부부가 해외 재산 신고를 상의\" → 쓴 그림 F07 가족 상속 회의"
+  ],
+  "imgs": [
+   "D01",
+   "A01",
+   "F04",
+   "C04",
+   "B14",
+   "D04",
+   "L06",
+   "F07",
+   "L02"
+  ],
+  "sec": 110,
+  "mb": 7.5,
+  "minutes": 5.8,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261108_r1/20261108_r1_202611091020.mp4",
+  "youtube": "",
+  "ytNote": "장면표가 2번째에 통과 — 올리지 않음",
+  "fails": 0
+ },
+ "20261108_r2": {
+  "postId": "20261108_r2",
+  "row": 179,
+  "blogTitle": "법적 정년 연장을 앞둔 5060 직장인이 퇴직 전 회사와 임금피크제 조건 및 계속고용 연장 계약을 조율할 때 따져볼 기준",
+  "blogLink": "https://blog.naver.com/newcp2024/224469538667?fromRss=true&trackingCode=rss",
+  "made": "202611091020",
+  "status": "만듦",
+  "title": "정년 앞두고 서명해도 될까요? 임금피크제·재고용 확인",
+  "tries": 2,
+  "match": {
+   "딱맞음": 3,
+   "비슷함": 5,
+   "대체": 1
+  },
+  "alt": [
+   "1번 장면: 원한 그림 \"정년 앞둔 사람이 서류를 보며 상담\" → 쓴 그림 C10 부동산 중개사"
+  ],
+  "imgs": [
+   "C10",
+   "A17",
+   "A08",
+   "B09",
+   "C12",
+   "A13",
+   "B12",
+   "D07",
+   "B15"
+  ],
+  "sec": 117,
+  "mb": 7.9,
+  "minutes": 6.2,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261108_r2/20261108_r2_202611091020_2.mp4",
+  "note": "릴리스 2번째에 올라감 (앞 실패: 네트워크 오류 EPIPE)",
+  "youtube": "",
+  "ytNote": "장면표가 2번째에 통과 — 올리지 않음",
+  "fails": 0
  }
 }
