@@ -291,33 +291,35 @@
   "row": 176,
   "blogTitle": "출생 연도별로 수령 시기가 달라지는 공무원연금 지급 나이 기준과 퇴직 후 소득 공백기를 대비하는 요령",
   "blogLink": "https://blog.naver.com/newcp2024/224468486106?fromRss=true&trackingCode=rss",
-  "made": "202611081827",
+  "made": "202611091901",
   "status": "만듦",
-  "title": "공무원연금, 퇴직 후 언제부터 받을 수 있을까요?",
-  "tries": 2,
+  "title": "공무원연금, 몇 살부터 받을 수 있을까요?",
+  "tries": 1,
   "match": {
-   "딱맞음": 3,
-   "비슷함": 6,
-   "대체": 0
+   "딱맞음": 1,
+   "비슷함": 7,
+   "대체": 1
   },
-  "alt": [],
+  "alt": [
+   "4번 장면: 원한 그림 \"월급이 끊겨 걱정하는 퇴직자\" → 쓴 그림 J13 혼자 쓸쓸히"
+  ],
   "imgs": [
    "D09",
    "J05",
-   "L07",
-   "B07",
+   "D03",
+   "J13",
    "C03",
-   "C07",
-   "A23",
+   "B07",
+   "D05",
    "I02",
-   "L03"
+   "B15"
   ],
   "sec": 110,
-  "mb": 7.3,
-  "minutes": 5.9,
-  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261107_r2/20261107_r2_202611081827.mp4",
-  "youtube": "",
-  "ytNote": "장면표가 2번째에 통과 — 올리지 않음",
+  "mb": 7,
+  "minutes": 4.6,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261107_r2/20261107_r2_202611091901.mp4",
+  "youtube": "https://youtu.be/Rm4xMbEyxDo",
+  "ytNote": "",
   "fails": 0
  },
  "20261107_r3": {
