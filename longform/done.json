@@ -433,5 +433,87 @@
   "youtube": "",
   "ytNote": "꺼짐(그림자 운행)",
   "fails": 0
+ },
+ "20261109_r1": {
+  "postId": "20261109_r1",
+  "row": 183,
+  "blogTitle": "소득인정액 기준이 달라진 올해, 기초연금 탈락 대상에서 다시 신청하여 매월 연금을 받는 조건과 절차",
+  "blogLink": "https://blog.naver.com/newcp2024/224470759772?fromRss=true&trackingCode=rss",
+  "made": "202611101020",
+  "status": "실패",
+  "fails": 1,
+  "lastReason": "장면표 실패"
+ },
+ "20261109_r2": {
+  "postId": "20261109_r2",
+  "row": 182,
+  "blogTitle": "주민센터 방문 없이 올해 문화누리카드 발급받아 영화나 도서 구입할 때 놓치기 쉬운 본인 부담금 확인법",
+  "blogLink": "https://blog.naver.com/newcp2024/224470787162?fromRss=true&trackingCode=rss",
+  "made": "202611101020",
+  "status": "만듦",
+  "title": "주민센터 안 가고 문화누리카드, 본인 부담금은?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 2,
+   "비슷함": 7,
+   "대체": 0
+  },
+  "alt": [],
+  "imgs": [
+   "J06",
+   "L08",
+   "B02",
+   "A07",
+   "B01",
+   "F06",
+   "B11",
+   "A17",
+   "L03"
+  ],
+  "sec": 105,
+  "mb": 7.3,
+  "minutes": 4.2,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261109_r2/20261109_r2_202611101020.mp4",
+  "youtube": "https://youtu.be/MahyXtyp_yY",
+  "ytNote": "",
+  "fails": 0
+ },
+ "20261109_r3": {
+  "postId": "20261109_r3",
+  "row": 181,
+  "blogTitle": "소득과 재산 조사에서 불이익을 줄이기 위해 기초연금 신청 서류 뗄 때 본인 명의 재산 증명에서 꼭 챙길 점",
+  "blogLink": "https://blog.naver.com/newcp2024/224470812727?fromRss=true&trackingCode=rss",
+  "made": "202611101020",
+  "status": "만듦",
+  "title": "기초연금 신청 서류, 재산 증명에서 뭘 챙길까요?",
+  "tries": 2,
+  "match": {
+   "딱맞음": 2,
+   "비슷함": 5,
+   "대체": 2
+  },
+  "alt": [
+   "4번 장면: 원한 그림 \"집과 예금에서 공제액을 빼는 모습\" → 쓴 그림 G01 집 모형",
+   "8번 장면: 원한 그림 \"자동차 열쇠를 들고 걱정하는 모습\" → 쓴 그림 G03 열쇠 받기"
+  ],
+  "imgs": [
+   "C04",
+   "C02",
+   "A18",
+   "G01",
+   "A13",
+   "B06",
+   "F07",
+   "G03",
+   "D10"
+  ],
+  "sec": 111,
+  "mb": 7.6,
+  "minutes": 6.7,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261109_r3/20261109_r3_202611101020_2.mp4",
+  "note": "릴리스 2번째에 올라감 (앞 실패: 네트워크 오류 EPIPE)",
+  "youtube": "",
+  "ytNote": "대체 그림 2장 — 올리지 않음",
+  "fails": 0
  }
 }
