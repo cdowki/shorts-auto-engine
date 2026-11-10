@@ -439,10 +439,37 @@
   "row": 183,
   "blogTitle": "소득인정액 기준이 달라진 올해, 기초연금 탈락 대상에서 다시 신청하여 매월 연금을 받는 조건과 절차",
   "blogLink": "https://blog.naver.com/newcp2024/224470759772?fromRss=true&trackingCode=rss",
-  "made": "202611101020",
-  "status": "실패",
-  "fails": 1,
-  "lastReason": "장면표 실패"
+  "made": "202611101922",
+  "status": "만듦",
+  "title": "기초연금 탈락했어도 다시 신청할 수 있나요?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 3,
+   "비슷함": 4,
+   "대체": 2
+  },
+  "alt": [
+   "2번 장면: 원한 그림 \"결론을 듣고 고개를 끄덕이는 모습\" → 쓴 그림 L05 큰 느낌표",
+   "6번 장면: 원한 그림 \"두 기준선 금액을 견주는 모습\" → 쓴 그림 H10 두 통장 비교"
+  ],
+  "imgs": [
+   "D01",
+   "L05",
+   "A02",
+   "L07",
+   "B10",
+   "H10",
+   "F02",
+   "B12",
+   "L02"
+  ],
+  "sec": 105,
+  "mb": 7.2,
+  "minutes": 4.3,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261109_r1/20261109_r1_202611101922.mp4",
+  "youtube": "",
+  "ytNote": "대체 그림 2장 — 올리지 않음",
+  "fails": 0
  },
  "20261109_r2": {
   "postId": "20261109_r2",
