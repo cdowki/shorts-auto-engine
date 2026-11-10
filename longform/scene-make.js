@@ -268,6 +268,10 @@ function amount(s) {
   if (found && /%|퍼센트/.test(t)) total /= 100;   // "10%"는 곱셈에서 0.1 (11/5 — 3000만 원 × 10%를 3억으로 계산한 검사기 실수 고침)
   return found ? total : NaN;
 }
+// 금액 표현을 값으로 모음 — "395만 2천 원"·"395.2만 원"·"3,952,000원"이 모두 3952000 (11/10 비광도기님: 표기만 다른 같은 금액을 "본문에 없음"으로 떨어뜨리던 것 고침)
+const MONEY_RE = /\d[\d,]*(?:\.\d+)?\s*(?:억|천만|백만|만|천)(?:\s*\d[\d,]*(?:\.\d+)?\s*(?:천만|백만|만|천))*(?:\s*\d[\d,]*\s*원|\s*원)?|\d[\d,]*(?:\.\d+)?\s*원/g;
+function moneyExprs(s) { return String(s).match(MONEY_RE) || []; }
+function moneySet(s) { return new Set(moneyExprs(s).map((x) => Math.round(amount(x))).filter((v) => Number.isFinite(v) && v > 0)); }
 function stripMd(s) {
   return String(s).replace(/\*\*|==|~~/g, '').replace(/^#+\s*/gm, '');
 }
@@ -299,7 +303,12 @@ function chartStrings(c) {
     if (k === 'type' || k === 'hl' || k === 'warn' || k === 'ops') return;
     if (typeof v === 'string' || typeof v === 'number') out.push(String(v));
     else if (Array.isArray(v)) v.forEach((x) => walk(x, ''));
-    else if (v && typeof v === 'object') Object.entries(v).forEach(([kk, vv]) => walk(vv, kk));
+    else if (v && typeof v === 'object') {
+      // 값과 단위가 따로 있는 칸(막대 등 {"value":395.2,"unit":"만 원"})은 붙여서 하나로 — 금액 값 비교가 되게(11/10)
+      const vu = (typeof v.value === 'string' || typeof v.value === 'number') && typeof v.unit === 'string';
+      if (vu) out.push(`${v.value} ${v.unit}`);
+      Object.entries(v).forEach(([kk, vv]) => { if (!(vu && (kk === 'value' || kk === 'unit'))) walk(vv, kk); });
+    }
   };
   walk(c, '');
   return out;
@@ -324,6 +333,7 @@ function checkFormula(c) {
 function validate(data, body, cat, bans, topics) {
   const errs = [];
   const bodyNums = new Set(numTokens(stripMd(body)));
+  const bodyAmts = moneySet(stripMd(body));
   if (!data || !Array.isArray(data.scenes)) return ['scenes 목록이 없음'];
   const sc = data.scenes;
   if (sc.length < 9 || sc.length > 11) errs.push(`장면이 ${sc.length}개 — 9~11개여야 함`);
@@ -372,9 +382,14 @@ function validate(data, body, cat, bans, topics) {
       else numTokens(c.result.value).forEach((x) => allowed.add(x));
     }
     const strsAll = [nar, ...chartStrings(c)];
-    strsAll.forEach((str) => numTokens(str).forEach((x) => {
-      if (!bodyNums.has(x) && !allowed.has(x)) errs.push(`${n}장면 숫자 "${x}"가 본문에 없음 (${String(str).slice(0, 30)})`);
-    }));
+    strsAll.forEach((str) => {
+      // 금액 표기가 본문과 달라도 값이 본문 금액과 같으면 그 숫자들은 인정
+      const ok = new Set();
+      moneyExprs(str).forEach((e) => { if (bodyAmts.has(Math.round(amount(e)))) numTokens(e).forEach((x) => ok.add(x)); });
+      numTokens(str).forEach((x) => {
+      if (!bodyNums.has(x) && !allowed.has(x) && !ok.has(x)) errs.push(`${n}장면 숫자 "${x}"가 본문에 없음 (${String(str).slice(0, 30)})`);
+      });
+    });
     if (/저도|제가 직접|해 봤는데|추천드립니다|가입하세요|매수|투자하세요|수익 보장/.test(nar)) errs.push(`${n}장면 대사에 금지 표현(경험담·권유)이 있음`);
   });
   if (total < 650 || total > 900) errs.push(`대사 합계 ${total}자 — 650~900자로`);
@@ -419,7 +434,7 @@ function makeShort(longScenes, script, title) {
 
 // ── 실행 ─────────────────────────────────────────
 // 쇼폼(short-make.js)이 검사·클로드 부르기를 같이 쓰도록 내보냄 (11/5). 직접 실행할 때만 아래 본흐름이 돎
-module.exports = { runClaude, parseJson, loadCatalog, loadUsed, recentBans, catalogGuide, topicCandidates, TEMPLATE_GUIDE, LIMITS, chartStrings, checkFormula, numTokens, MATCHES, REF_SOLO, REF_COUPLE, HERE };
+module.exports = { runClaude, parseJson, loadCatalog, loadUsed, recentBans, catalogGuide, topicCandidates, TEMPLATE_GUIDE, LIMITS, chartStrings, checkFormula, numTokens, amount, moneySet, moneyExprs, MATCHES, REF_SOLO, REF_COUPLE, HERE };
 
 if (require.main === module) (async () => {
   if (!ID || !/^\d{8}_r\d+$/.test(ID)) { log('사용법: node scene-make.js --id 20261103_r1 [--short-file 대본.txt --short-title 제목] [--dry]  또는  --job 작업.json'); process.exit(2); }
