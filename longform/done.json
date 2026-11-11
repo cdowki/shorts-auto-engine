@@ -542,5 +542,41 @@
   "youtube": "",
   "ytNote": "대체 그림 2장 — 올리지 않음",
   "fails": 0
+ },
+ "20261110_r1": {
+  "postId": "20261110_r1",
+  "row": 184,
+  "blogTitle": "50대에 접어들며 은퇴 후 수입이 끊기는 소득절벽 시기에 대비해 매달 고정 지출을 점검하고 국민연금 수령 시기를 조정하는 방법",
+  "blogLink": "https://blog.naver.com/newcp2024/224471559953?fromRss=true&trackingCode=rss",
+  "made": "202611111020",
+  "status": "만듦",
+  "title": "소득절벽 시기, 연금 언제 받을까요?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 3,
+   "비슷함": 5,
+   "대체": 1
+  },
+  "alt": [
+   "4번 장면: 원한 그림 \"건강보험료 고지서를 확인하는 모습\" → 쓴 그림 B13 찻잔 대화"
+  ],
+  "imgs": [
+   "D03",
+   "A03",
+   "B07",
+   "B13",
+   "A23",
+   "A10",
+   "D05",
+   "I03",
+   "B03"
+  ],
+  "sec": 123,
+  "mb": 8,
+  "minutes": 4.2,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261110_r1/20261110_r1_202611111020.mp4",
+  "youtube": "https://youtu.be/ttwiGAquxcA",
+  "ytNote": "",
+  "fails": 0
  }
 }
