@@ -578,5 +578,74 @@
   "youtube": "https://youtu.be/ttwiGAquxcA",
   "ytNote": "",
   "fails": 0
+ },
+ "20261111_r2": {
+  "postId": "20261111_r2",
+  "row": 186,
+  "blogTitle": "무리한 대출과 사업 확장 실패로 빚을 감당하기 어려워진 5060 본인이 개인회생 신청 시 보유 재산과 채무를 정리하는 기준",
+  "blogLink": "https://blog.naver.com/newcp2024/224472892806?fromRss=true&trackingCode=rss",
+  "made": "202611121023",
+  "status": "만듦",
+  "title": "빚이 버거울 때, 개인회생 재산 기준은?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 4,
+   "비슷함": 5,
+   "대체": 0
+  },
+  "alt": [],
+  "imgs": [
+   "H12",
+   "A09",
+   "K04",
+   "I08",
+   "G08",
+   "D06",
+   "B01",
+   "J07",
+   "A12"
+  ],
+  "sec": 123,
+  "mb": 8.1,
+  "minutes": 5.4,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261111_r2/20261111_r2_202611121023.mp4",
+  "youtube": "https://youtu.be/Ymi17a9iMfY",
+  "ytNote": "",
+  "fails": 0
+ },
+ "20261111_r3": {
+  "postId": "20261111_r3",
+  "row": 185,
+  "blogTitle": "국민내일배움카드 발급을 신청할 때 5060 구직자나 재직자가 충족해야 하는 소득 기준과 훈련비 지원 범위 확인 방법",
+  "blogLink": "https://blog.naver.com/newcp2024/224472921542?fromRss=true&trackingCode=rss",
+  "made": "202611121023",
+  "status": "만듦",
+  "title": "5060 내일배움카드, 소득 높으면 신청 못 하나요?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 1,
+   "비슷함": 8,
+   "대체": 0
+  },
+  "alt": [],
+  "imgs": [
+   "C14",
+   "D07",
+   "A05",
+   "I04",
+   "B04",
+   "B05",
+   "B02",
+   "C04",
+   "I05"
+  ],
+  "sec": 108,
+  "mb": 7.5,
+  "minutes": 4.5,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261111_r3/20261111_r3_202611121023_2.mp4",
+  "note": "릴리스 2번째에 올라감 (앞 실패: 네트워크 오류 EPIPE)",
+  "youtube": "https://youtu.be/4d--Q5Ag1bE",
+  "ytNote": "",
+  "fails": 0
  }
 }
