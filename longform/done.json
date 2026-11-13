@@ -647,5 +647,39 @@
   "youtube": "https://youtu.be/4d--Q5Ag1bE",
   "ytNote": "",
   "fails": 0
+ },
+ "20261112_r3": {
+  "postId": "20261112_r3",
+  "row": 187,
+  "blogTitle": "국민연금 수급 나이가 되었지만 가입 기간이 부족해 연금을 받지 못할 때, 일시금으로 돌려받는 수령 조건과 세부 정산 기준 확인 방법",
+  "blogLink": "https://blog.naver.com/newcp2024/224474248757?fromRss=true&trackingCode=rss",
+  "made": "202611131020",
+  "status": "만듦",
+  "title": "국민연금 가입 10년 미만, 일시금으로 돌려받을까요?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 2,
+   "비슷함": 7,
+   "대체": 0
+  },
+  "alt": [],
+  "imgs": [
+   "D01",
+   "A24",
+   "A17",
+   "B14",
+   "H09",
+   "D10",
+   "A08",
+   "B12",
+   "L01"
+  ],
+  "sec": 118,
+  "mb": 7.9,
+  "minutes": 4.4,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261112_r3/20261112_r3_202611131020.mp4",
+  "youtube": "https://youtu.be/342j3tzunHk",
+  "ytNote": "",
+  "fails": 0
  }
 }
