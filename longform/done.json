@@ -681,5 +681,76 @@
   "youtube": "https://youtu.be/342j3tzunHk",
   "ytNote": "",
   "fails": 0
+ },
+ "20261113_r2": {
+  "postId": "20261113_r2",
+  "row": 189,
+  "blogTitle": "2026년 하반기 개인사업자 부가세 예정신고 대상자 조건과 홈택스를 통한 전자신고 절차 및 전자세금계산서 발행 확인 방법 정리",
+  "blogLink": "https://blog.naver.com/newcp2024/224475599346?fromRss=true&trackingCode=rss",
+  "made": "202611141020",
+  "status": "만듦",
+  "title": "개인사업자 부가세 예정신고, 꼭 해야 할까요?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 5,
+   "비슷함": 4,
+   "대체": 0
+  },
+  "alt": [],
+  "imgs": [
+   "F01",
+   "A14",
+   "B09",
+   "B13",
+   "F02",
+   "A19",
+   "A22",
+   "A20",
+   "L10"
+  ],
+  "sec": 118,
+  "mb": 7.5,
+  "minutes": 4.9,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261113_r2/20261113_r2_202611141020.mp4",
+  "youtube": "https://youtu.be/MFJ9cblNw6Q",
+  "ytNote": "",
+  "fails": 0
+ },
+ "20261113_r3": {
+  "postId": "20261113_r3",
+  "row": 188,
+  "blogTitle": "올해 연말정산을 준비하는 5060 직장인이 연금저축과 IRP 계좌에 추가로 납입할 때 받을 수 있는 최대 세액공제 한도 계산법",
+  "blogLink": "https://blog.naver.com/newcp2024/224475640372?fromRss=true&trackingCode=rss",
+  "made": "202611141020",
+  "status": "만듦",
+  "title": "연금저축·IRP 세액공제, 최대 얼마까지 받을 수 있을까요?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 4,
+   "비슷함": 4,
+   "대체": 1
+  },
+  "alt": [
+   "7번 장면: 원한 그림 \"ISA 자금을 연금계좌로 옮기는 모습\" → 쓴 그림 C01 은행 창구"
+  ],
+  "imgs": [
+   "D02",
+   "A16",
+   "H07",
+   "A11",
+   "F09",
+   "B01",
+   "C01",
+   "A04",
+   "B08"
+  ],
+  "sec": 112,
+  "mb": 7.3,
+  "minutes": 4.1,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261113_r3/20261113_r3_202611141020_2.mp4",
+  "note": "릴리스 2번째에 올라감 (앞 실패: 네트워크 오류 EPIPE)",
+  "youtube": "https://youtu.be/54mlgzSYXHw",
+  "ytNote": "",
+  "fails": 0
  }
 }
