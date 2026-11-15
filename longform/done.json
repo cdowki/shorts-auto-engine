@@ -752,5 +752,39 @@
   "youtube": "https://youtu.be/54mlgzSYXHw",
   "ytNote": "",
   "fails": 0
+ },
+ "20261114_r2": {
+  "postId": "20261114_r2",
+  "row": 190,
+  "blogTitle": "비만 치료 주사제인 위고비를 처방받을 때 건강보험 적용 대상과 본인부담금 기준을 5060 세대가 확인할 점",
+  "blogLink": "https://blog.naver.com/newcp2024/224476798836?fromRss=true&trackingCode=rss",
+  "made": "202611151020",
+  "status": "만듦",
+  "title": "위고비, 건강보험 적용 대상과 본인부담금은?",
+  "tries": 3,
+  "match": {
+   "딱맞음": 2,
+   "비슷함": 7,
+   "대체": 0
+  },
+  "alt": [],
+  "imgs": [
+   "E06",
+   "E12",
+   "C05",
+   "L04",
+   "A21",
+   "A06",
+   "E11",
+   "L06",
+   "B15"
+  ],
+  "sec": 117,
+  "mb": 7.8,
+  "minutes": 6.4,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261114_r2/20261114_r2_202611151020.mp4",
+  "youtube": "",
+  "ytNote": "장면표가 3번째에야 통과 — 올리지 않음(2번째까지만 올림)",
+  "fails": 0
  }
 }
