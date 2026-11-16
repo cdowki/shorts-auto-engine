@@ -786,5 +786,41 @@
   "youtube": "",
   "ytNote": "장면표가 3번째에야 통과 — 올리지 않음(2번째까지만 올림)",
   "fails": 0
+ },
+ "20261115_r2": {
+  "postId": "20261115_r2",
+  "row": 191,
+  "blogTitle": "퇴직 후 14일이 지나도 퇴직금을 받지 못했을 때 법정 지연이자 계산하는 방법과 고용노동부에 진정서 제출하는 절차",
+  "blogLink": "https://blog.naver.com/newcp2024/224477800407?fromRss=true&trackingCode=rss",
+  "made": "202611161020",
+  "status": "만듦",
+  "title": "퇴직금 14일 넘게 못 받았다면? 지연이자와 진정 방법",
+  "tries": 1,
+  "match": {
+   "딱맞음": 6,
+   "비슷함": 2,
+   "대체": 1
+  },
+  "alt": [
+   "8번 장면: 원한 그림 \"대신 지급받는 돈을 확인하는 부부\" → 쓴 그림 B10 가계부"
+  ],
+  "imgs": [
+   "D09",
+   "L05",
+   "A18",
+   "C02",
+   "C04",
+   "B06",
+   "A13",
+   "B10",
+   "L02"
+  ],
+  "sec": 102,
+  "mb": 7.3,
+  "minutes": 2.8,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261115_r2/20261115_r2_202611161020.mp4",
+  "youtube": "https://youtu.be/MiJuWxqkB5M",
+  "ytNote": "",
+  "fails": 0
  }
 }
