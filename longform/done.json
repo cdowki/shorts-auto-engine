@@ -822,5 +822,39 @@
   "youtube": "https://youtu.be/MiJuWxqkB5M",
   "ytNote": "",
   "fails": 0
+ },
+ "20261116_r3": {
+  "postId": "20261116_r3",
+  "row": 192,
+  "blogTitle": "5060 본인이 만성질환으로 먹는 약값 부담을 줄이기 위해 올해 제약사와 정부가 추진하는 약가 연동 협상 제도의 약가 인하 적용 기준과 본인부담금 변동 내용을 정확히 확인하는 방법",
+  "blogLink": "https://blog.naver.com/newcp2024/224479034469?fromRss=true&trackingCode=rss",
+  "made": "202611171020",
+  "status": "만듦",
+  "title": "약값이 내렸다는데, 내 약도 해당될까요?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 3,
+   "비슷함": 6,
+   "대체": 0
+  },
+  "alt": [],
+  "imgs": [
+   "C06",
+   "L07",
+   "H01",
+   "E07",
+   "B07",
+   "F06",
+   "A03",
+   "F03",
+   "B03"
+  ],
+  "sec": 109,
+  "mb": 7.5,
+  "minutes": 3.6,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261116_r3/20261116_r3_202611171020.mp4",
+  "youtube": "https://youtu.be/QFMuXKEBgKw",
+  "ytNote": "",
+  "fails": 0
  }
 }
