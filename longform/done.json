@@ -856,5 +856,39 @@
   "youtube": "https://youtu.be/QFMuXKEBgKw",
   "ytNote": "",
   "fails": 0
+ },
+ "20261117_r2": {
+  "postId": "20261117_r2",
+  "row": 193,
+  "blogTitle": "퇴직 후 전문성 살려 일하는 2026년 신중년 경력형 일자리 사업 참여 조건과 신청 절차",
+  "blogLink": "https://blog.naver.com/newcp2024/224480456076?fromRss=true&trackingCode=rss",
+  "made": "202611181940",
+  "status": "만듦",
+  "title": "2026년 신중년 경력형 일자리, 참여할 수 있을까요?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 3,
+   "비슷함": 6,
+   "대체": 0
+  },
+  "alt": [],
+  "imgs": [
+   "C13",
+   "A08",
+   "B02",
+   "A05",
+   "A17",
+   "B05",
+   "C03",
+   "A15",
+   "L03"
+  ],
+  "sec": 121,
+  "mb": 7.9,
+  "minutes": 4.3,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261117_r2/20261117_r2_202611181940.mp4",
+  "youtube": "https://youtu.be/H-nyOARPhf8",
+  "ytNote": "",
+  "fails": 0
  }
 }
