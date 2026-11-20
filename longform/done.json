@@ -890,5 +890,74 @@
   "youtube": "https://youtu.be/H-nyOARPhf8",
   "ytNote": "",
   "fails": 0
+ },
+ "20261119_r1": {
+  "postId": "20261119_r1",
+  "row": 195,
+  "blogTitle": "퇴직금 여러 은행에 나눠 맡길 때 예금자보호한도 1억 원, 이자까지 합산되는 것 놓치기 쉬운 기준",
+  "blogLink": "https://blog.naver.com/newcp2024/224483322485?fromRss=true&trackingCode=rss",
+  "made": "202611201020",
+  "status": "만듦",
+  "title": "퇴직금 나눠 맡길 때, 1억 원 보호는 어떻게 될까요?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 5,
+   "비슷함": 4,
+   "대체": 0
+  },
+  "alt": [],
+  "imgs": [
+   "H10",
+   "K03",
+   "B01",
+   "H07",
+   "D03",
+   "B13",
+   "H02",
+   "A20",
+   "A12"
+  ],
+  "sec": 119,
+  "mb": 7.5,
+  "minutes": 3.8,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261119_r1/20261119_r1_202611201020.mp4",
+  "youtube": "https://youtu.be/9LWCNLvK6qA",
+  "ytNote": "",
+  "fails": 0
+ },
+ "20261119_r2": {
+  "postId": "20261119_r2",
+  "row": 194,
+  "blogTitle": "일용직 주휴수당 지급 기준 주 15시간 근무 조건과 올해 변경된 계산 방법 및 미지급 대처 요령",
+  "blogLink": "https://blog.naver.com/newcp2024/224483358697?fromRss=true&trackingCode=rss",
+  "made": "202611201020",
+  "status": "만듦",
+  "title": "일용직도 주휴수당 받을 수 있나요?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 5,
+   "비슷함": 4,
+   "대체": 0
+  },
+  "alt": [],
+  "imgs": [
+   "A02",
+   "B04",
+   "I03",
+   "A11",
+   "A18",
+   "B09",
+   "B12",
+   "A13",
+   "L10"
+  ],
+  "sec": 130,
+  "mb": 7.7,
+  "minutes": 4.3,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261119_r2/20261119_r2_202611201020_2.mp4",
+  "note": "릴리스 2번째에 올라감 (앞 실패: 네트워크 오류 EPIPE)",
+  "youtube": "https://youtu.be/63kG1wtXXl8",
+  "ytNote": "",
+  "fails": 0
  }
 }
