@@ -959,5 +959,74 @@
   "youtube": "https://youtu.be/63kG1wtXXl8",
   "ytNote": "",
   "fails": 0
+ },
+ "20261120_r2": {
+  "postId": "20261120_r2",
+  "row": 197,
+  "blogTitle": "5060 구직자가 폴리텍대학 신중장년 특화과정 지원할 때 챙겨야 할 출결 기준과 훈련수당 지급 조건",
+  "blogLink": "https://blog.naver.com/newcp2024/224484689960?fromRss=true&trackingCode=rss",
+  "made": "202611211021",
+  "status": "만듦",
+  "title": "폴리텍 중장년특화과정, 출결과 수당 조건은?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 2,
+   "비슷함": 7,
+   "대체": 0
+  },
+  "alt": [],
+  "imgs": [
+   "C14",
+   "L05",
+   "I02",
+   "A14",
+   "F09",
+   "B06",
+   "B10",
+   "K04",
+   "L02"
+  ],
+  "sec": 109,
+  "mb": 7.4,
+  "minutes": 3.4,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261120_r2/20261120_r2_202611211021.mp4",
+  "youtube": "https://youtu.be/asN_6rR9j8g",
+  "ytNote": "",
+  "fails": 0
+ },
+ "20261120_r3": {
+  "postId": "20261120_r3",
+  "row": 196,
+  "blogTitle": "퇴직 후 육군체력단련장 이용할 때 필요한 회원 자격 요건과 부대별 예약 방식",
+  "blogLink": "https://blog.naver.com/newcp2024/224484720620?fromRss=true&trackingCode=rss",
+  "made": "202611211021",
+  "status": "만듦",
+  "title": "퇴직 후 육군체력단련장, 회원 자격은 어떻게 되나요?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 3,
+   "비슷함": 6,
+   "대체": 0
+  },
+  "alt": [],
+  "imgs": [
+   "D09",
+   "A10",
+   "A23",
+   "C02",
+   "A19",
+   "A22",
+   "A06",
+   "B08",
+   "B15"
+  ],
+  "sec": 107,
+  "mb": 6.9,
+  "minutes": 3.5,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261120_r3/20261120_r3_202611211021_2.mp4",
+  "note": "릴리스 2번째에 올라감 (앞 실패: 네트워크 오류 ETIMEDOUT)",
+  "youtube": "https://youtu.be/ugBwymJWw1M",
+  "ytNote": "",
+  "fails": 0
  }
 }
