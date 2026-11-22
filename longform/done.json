@@ -1028,5 +1028,42 @@
   "youtube": "https://youtu.be/ugBwymJWw1M",
   "ytNote": "",
   "fails": 0
+ },
+ "20261121_r3": {
+  "postId": "20261121_r3",
+  "row": 198,
+  "blogTitle": "일상 속 폭언 처벌 수위와 모욕죄 및 협박죄 성립 요건별 증거 수집 기준",
+  "blogLink": "https://blog.naver.com/newcp2024/224485935963?fromRss=true&trackingCode=rss",
+  "made": "202611221020",
+  "status": "만듦",
+  "title": "일상 폭언, 모욕죄·협박죄 될까요?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 2,
+   "비슷함": 5,
+   "대체": 2
+  },
+  "alt": [
+   "2번 장면: 원한 그림 \"결론을 짚어 주는 모습\" → 쓴 그림 A09 팔짱 생각",
+   "7번 장면: 원한 그림 \"화면을 캡처해 증거를 정리하는 모습\" → 쓴 그림 L09 돋보기로 시청자 보기"
+  ],
+  "imgs": [
+   "L04",
+   "A09",
+   "B13",
+   "C12",
+   "B05",
+   "C11",
+   "L09",
+   "A08",
+   "L01"
+  ],
+  "sec": 125,
+  "mb": 8.1,
+  "minutes": 3.7,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261121_r3/20261121_r3_202611221020.mp4",
+  "youtube": "",
+  "ytNote": "대체 그림 2장 — 올리지 않음",
+  "fails": 0
  }
 }
