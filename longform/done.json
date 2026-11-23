@@ -1065,5 +1065,39 @@
   "youtube": "",
   "ytNote": "대체 그림 2장 — 올리지 않음",
   "fails": 0
+ },
+ "20261122_r2": {
+  "postId": "20261122_r2",
+  "row": 199,
+  "blogTitle": "퇴직연금 중도인출 사유 중 무주택자 주택 구입 및 본인 장기 요양 치료비 조건",
+  "blogLink": "https://blog.naver.com/newcp2024/224486973567?fromRss=true&trackingCode=rss",
+  "made": "202611231020",
+  "status": "만듦",
+  "title": "퇴직연금 중도인출, 집 구입과 요양비는 될까?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 6,
+   "비슷함": 3,
+   "대체": 0
+  },
+  "alt": [],
+  "imgs": [
+   "G01",
+   "A03",
+   "B12",
+   "A16",
+   "E15",
+   "E11",
+   "C07",
+   "L06",
+   "B03"
+  ],
+  "sec": 111,
+  "mb": 7.7,
+  "minutes": 3.9,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261122_r2/20261122_r2_202611231020.mp4",
+  "youtube": "https://youtu.be/jg0Grk8bRLM",
+  "ytNote": "",
+  "fails": 0
  }
 }
