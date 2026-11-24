@@ -1099,5 +1099,78 @@
   "youtube": "https://youtu.be/jg0Grk8bRLM",
   "ytNote": "",
   "fails": 0
+ },
+ "20261123_r1": {
+  "postId": "20261123_r1",
+  "row": 201,
+  "blogTitle": "대중교통 오팔카드 잔액 환불 신청할 때 놓치기 쉬운 수수료 규정 및 본인 계좌 입금 기한",
+  "blogLink": "https://blog.naver.com/newcp2024/224488290832?fromRss=true&trackingCode=rss",
+  "made": "202611241020",
+  "status": "만듦",
+  "title": "오팔카드 잔액 환불, 수수료와 기한은 어떻게 되나요?",
+  "tries": 2,
+  "match": {
+   "딱맞음": 4,
+   "비슷함": 5,
+   "대체": 0
+  },
+  "alt": [],
+  "imgs": [
+   "J06",
+   "A24",
+   "A17",
+   "B07",
+   "C01",
+   "B02",
+   "A15",
+   "D01",
+   "L03"
+  ],
+  "sec": 104,
+  "mb": 7.2,
+  "minutes": 5,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261123_r1/20261123_r1_202611241020.mp4",
+  "youtube": "https://youtu.be/pSQbqev0sL8",
+  "ytNote": "",
+  "fails": 0
+ },
+ "20261123_r3": {
+  "postId": "20261123_r3",
+  "row": 200,
+  "blogTitle": "5060 개인사업자가 부가세 납부 시 꼭 확인해야 할 매입세액 공제 기준",
+  "blogLink": "https://blog.naver.com/newcp2024/224488350618?fromRss=true&trackingCode=rss",
+  "made": "202611241020",
+  "status": "만듦",
+  "title": "카드로 낸 돈, 전부 부가세 공제될까요?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 1,
+   "비슷함": 5,
+   "대체": 3
+  },
+  "alt": [
+   "2번 장면: 원한 그림 \"영수증을 챙기며 설명하는 사장님\" → 쓴 그림 A04 엄지 척",
+   "3번 장면: 원한 그림 \"부부가 카드 결제 내역 확인\" → 쓴 그림 J07 장보기",
+   "5번 장면: 원한 그림 \"승용차 유지비 영수증 확인\" → 쓴 그림 A05 깜짝 놀람"
+  ],
+  "imgs": [
+   "F01",
+   "A04",
+   "J07",
+   "B10",
+   "A05",
+   "F06",
+   "F10",
+   "F02",
+   "A07"
+  ],
+  "sec": 118,
+  "mb": 7.5,
+  "minutes": 4,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261123_r3/20261123_r3_202611241020_2.mp4",
+  "note": "릴리스 2번째에 올라감 (앞 실패: 네트워크 오류 EPIPE)",
+  "youtube": "",
+  "ytNote": "대체 그림 3장 — 올리지 않음",
+  "fails": 0
  }
 }
