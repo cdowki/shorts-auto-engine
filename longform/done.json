@@ -1172,5 +1172,41 @@
   "youtube": "",
   "ytNote": "대체 그림 3장 — 올리지 않음",
   "fails": 0
+ },
+ "20261124_r3": {
+  "postId": "20261124_r3",
+  "row": 202,
+  "blogTitle": "5060 직장인이 퇴직연금 DB형을 선택했을 때 예상 수령액 산정 방식과 중간정산 허용 사유",
+  "blogLink": "https://blog.naver.com/newcp2024/224490586798?fromRss=true&trackingCode=rss",
+  "made": "202611251020",
+  "status": "만듦",
+  "title": "DB형 퇴직연금, 얼마 받고 미리 쓸 수 있을까요?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 4,
+   "비슷함": 4,
+   "대체": 1
+  },
+  "alt": [
+   "2번 장면: 원한 그림 \"퇴직연금 급여 기준을 확인하는 모습\" → 쓴 그림 D10 연금 앱 조회"
+  ],
+  "imgs": [
+   "D09",
+   "D10",
+   "B01",
+   "A18",
+   "A11",
+   "G03",
+   "L07",
+   "B05",
+   "L02"
+  ],
+  "sec": 110,
+  "mb": 7.2,
+  "minutes": 3.3,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261124_r3/20261124_r3_202611251020.mp4",
+  "youtube": "https://youtu.be/G2yUkJlhD2Q",
+  "ytNote": "",
+  "fails": 0
  }
 }
