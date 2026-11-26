@@ -1208,5 +1208,79 @@
   "youtube": "https://youtu.be/G2yUkJlhD2Q",
   "ytNote": "",
   "fails": 0
+ },
+ "20261125_r1": {
+  "postId": "20261125_r1",
+  "row": 204,
+  "blogTitle": "5060 비자발적 퇴사 후 구직활동 중이라면 꼭 알아야 할 180일 요건과 실업급여 수급 자격 확인",
+  "blogLink": "https://blog.naver.com/newcp2024/224491376130?fromRss=true&trackingCode=rss",
+  "made": "202611261020",
+  "status": "만듦",
+  "title": "비자발적 퇴사 후 실업급여, 180일 요건 확인하셨나요?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 3,
+   "비슷함": 4,
+   "대체": 2
+  },
+  "alt": [
+   "4번 장면: 원한 그림 \"근로계약서와 급여명세서 살피기\" → 쓴 그림 F03 영수증 정리",
+   "5번 장면: 원한 그림 \"퇴사 사유가 인정되어 안도하는 모습\" → 쓴 그림 B04 하이파이브"
+  ],
+  "imgs": [
+   "A02",
+   "A13",
+   "B09",
+   "F03",
+   "B04",
+   "C13",
+   "D07",
+   "A20",
+   "A12"
+  ],
+  "sec": 110,
+  "mb": 7.2,
+  "minutes": 4,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261125_r1/20261125_r1_202611261020.mp4",
+  "youtube": "",
+  "ytNote": "대체 그림 2장 — 올리지 않음",
+  "fails": 0
+ },
+ "20261125_r2": {
+  "postId": "20261125_r2",
+  "row": 203,
+  "blogTitle": "사업장에서 안전 수칙을 지키지 않아 사고가 났을 때 경영 책임자가 알아야 할 처벌 기준과 안전보건 관리 체계",
+  "blogLink": "https://blog.naver.com/newcp2024/224491418139?fromRss=true&trackingCode=rss",
+  "made": "202611261020",
+  "status": "만듦",
+  "title": "사업장 사고가 나면 경영책임자는 어떤 처벌을 받나요?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 2,
+   "비슷함": 6,
+   "대체": 1
+  },
+  "alt": [
+   "1번 장면: 원한 그림 \"사고를 걱정하는 사업주와 안전\" → 쓴 그림 K03 지갑 자물쇠"
+  ],
+  "imgs": [
+   "K03",
+   "L05",
+   "K04",
+   "F09",
+   "B06",
+   "I03",
+   "L03",
+   "A14",
+   "C02"
+  ],
+  "sec": 118,
+  "mb": 7.7,
+  "minutes": 4.3,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261125_r2/20261125_r2_202611261020_2.mp4",
+  "note": "릴리스 2번째에 올라감 (앞 실패: 네트워크 오류 EPIPE)",
+  "youtube": "https://youtu.be/VMwZoFv6NVI",
+  "ytNote": "",
+  "fails": 0
  }
 }
