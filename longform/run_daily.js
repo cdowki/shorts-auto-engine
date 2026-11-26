@@ -12,6 +12,8 @@
 //   6) 기록: done.json(만든 글) · 창고_사용기록.json · 창고_부족기록.json · jobs/<글>/scenes.json — 저장소 저장은 워크플로가 함
 //
 // 실행: node longform/run_daily.js [--only 20261105_r1] [--max 4] [--no-mail]
+// 손 올리기(11/26 추가, 마무리 #4): UPLOAD_IDS=20261109_r1,20261121_r3 — 이미 만든 영상(릴리스 longform-<글번호>)을 내려받아
+//   막는 조건(대체 그림 등) 없이 유튜브에 올림. 비광도기님이 화면으로 보고 고른 글만 넣음. 새로 만들지 않음
 // 부르는 곳(11/5~): 쇼츠 GAS가 매일 10시대 repository_dispatch "longform_daily" · 예비로 깃허브 예약 11:37 KST(할 일 없으면 메일 없음)
 // 비밀값(환경 변수): CALLBACK_URL · CALLBACK_SECRET · TTS_API_KEY · CLAUDE_CODE_OAUTH_TOKEN · GH_TOKEN · GH_REPOSITORY
 //   + 유튜브(yt_upload.py): GOOGLE_OAUTH_CLIENT_ID · GOOGLE_OAUTH_CLIENT_SECRET · YOUTUBE_REFRESH_TOKEN
@@ -33,6 +35,7 @@ const pickArg = (name, def) => {
 const ONLY = pickArg('--only', process.env.ONLY_POST || '') || '';
 const MAX_POSTS = Number(pickArg('--max', process.env.MAX_POSTS || '4')) || 4;
 const NO_MAIL = argv.includes('--no-mail');
+const UPLOAD_IDS = String(pickArg('--upload', process.env.UPLOAD_IDS || '') || '').split(/[\s,]+/).filter((x) => /^\d{8}_r\d+$/.test(x));   // 손 올리기 (11/26)
 const RUN_EVENT = process.env.RUN_EVENT || '';                 // schedule = 예비 예약 실행 (11/5 — 본 실행은 GAS가 부름)
 const START_ID = process.env.START_ID || '20261105';     // 이 날짜(글 번호 앞 8자리)부터 만듦 — 그 앞 밀린 글은 건너뜀 (11/4 비광도기님 확인)
 const VOICE = 'ko-KR-Chirp3-HD-Algieba';
@@ -240,6 +243,70 @@ async function makeOne(job, prev) {
   return out;
 }
 
+// ── 손 올리기 (11/26, 마무리 #4) ─────────────────────────
+// 릴리스에 남아 있는 영상 중 가장 최근 mp4를 내려받아 유튜브에 올림. 저장소가 공개라 내려받기에는 열쇠가 필요 없음
+async function uploadOnly() {
+  log(`=== 손 올리기 · ${kstNow()} KST · ${UPLOAD_IDS.join(', ')} · 유튜브 ${YT_MODE} ===`);
+  const done = readJson(DONE_FILE, {});
+  let jobs = [];
+  try {
+    const data = await gas({ action: 'longform_jobs' }, GAS_TIMEOUT_MS);
+    jobs = Array.isArray(data.jobs) ? data.jobs : [];
+  } catch (e) {
+    log(`쇼츠 제목 목록을 못 받음: ${e.message}`);
+  }
+  const repo = process.env.GH_REPOSITORY;
+  const api = `${process.env.GH_API || 'https://api.github.com'}/repos/${repo}`;
+  const L = [`긴 영상 손 올리기 ${kstNow()} KST — 유튜브 ${YT_MODE === '1' ? '올림' : YT_MODE === 'dry' ? '시험(열쇠만 확인, 올리지 않음)' : '꺼짐'}`, ''];
+  let nUp = 0;
+  let nFail = 0;
+  for (const id of UPLOAD_IDS) {
+    const prev = done[id] || {};
+    const job = jobs.find((j) => String(j.postId) === id) || {};
+    const line = (t) => { L.push(`■ ${id} · ${t}`); log(`— ${id}: ${t}`); };
+    if (!done[id]) { line('만든 기록(done.json)이 없음 — 건너뜀'); nFail += 1; continue; }
+    if (prev.youtube) { line(`이미 올린 글 — ${prev.youtube}`); continue; }
+    if (!String(job.shortsTitle || '').trim()) { line('쇼츠 제목(시트 D열)을 못 찾음 — 건너뜀'); nFail += 1; continue; }
+    if (!YT_ON) { line('유튜브 스위치가 꺼져 있음 — 건너뜀'); continue; }
+    if (ytSent >= YT_MAX) { line(`한 번에 ${YT_MAX}편까지(유튜브 하루 한도) — 다음 손 올리기로`); continue; }
+    // eslint-disable-next-line no-await-in-loop
+    const rel = await gh('GET', `${api}/releases/tags/longform-${id}`);
+    const assets = (rel.data && Array.isArray(rel.data.assets) ? rel.data.assets : []).filter((a) => /\.mp4$/.test(a.name)).sort((a, b) => String(b.created_at).localeCompare(String(a.created_at)));
+    if (rel.status >= 300 || !assets.length) { line(`릴리스에 영상이 없음 [${rel.status}] — 건너뜀`); nFail += 1; continue; }
+    fs.mkdirSync(path.join(HERE, 'out'), { recursive: true });
+    fs.mkdirSync(path.join(HERE, 'jobs', id), { recursive: true });
+    const mp4 = path.join(HERE, 'out', `${id}.mp4`);
+    try {
+      // eslint-disable-next-line no-await-in-loop
+      const res = await fetch(assets[0].browser_download_url, { redirect: 'follow', signal: AbortSignal.timeout(5 * 60 * 1000) });
+      if (!res.ok) throw new Error(`[${res.status}]`);
+      // eslint-disable-next-line no-await-in-loop
+      fs.writeFileSync(mp4, Buffer.from(await res.arrayBuffer()));
+    } catch (e) {
+      line(`영상 내려받기 실패 ${e.message} — 건너뜀`); nFail += 1; continue;
+    }
+    log(`${id} 내려받음 ${assets[0].name} · ${Math.round(fs.statSync(mp4).size / 104857.6) / 10}MB · ${duration(mp4)}초`);
+    const yt = ytUpload(mp4, { postId: id, shortsTitle: job.shortsTitle });
+    if (yt.url) {
+      nUp += 1;
+      done[id] = { ...prev, youtube: yt.url, ytNote: `손 올리기 ${RUN} (전: ${prev.ytNote || ''})` };
+      fs.writeFileSync(DONE_FILE, JSON.stringify(done, null, 1), 'utf8');
+      line(`유튜브 올림 ${yt.url} · 제목 ${job.shortsTitle}`);
+    } else {
+      if (!/시험 통과/.test(yt.note)) nFail += 1;
+      line(`${yt.note} · 영상 ${assets[0].name}`);
+    }
+  }
+  const subject = `손 올리기 ${kstNow().slice(0, 10)} — ${YT_MODE === 'dry' ? '시험 ' : ''}유튜브 ${nUp}편 · 못 올림 ${nFail}편`;
+  const text = L.join('\n');
+  console.log(`\n----- 메일 -----\n${subject}\n${text}\n----------------`);
+  if (!NO_MAIL) {
+    try { await gas({ action: 'longform_result', subject, text }, 60 * 1000); log('결과 메일 보냄'); } catch (e) { log(`결과 메일 실패: ${e.message}`); }
+  }
+  log(`=== 손 올리기 끝 — 올림 ${nUp} · 못 올림 ${nFail} ===`);
+  process.exit(nFail ? 1 : 0);
+}
+
 function mailText(results, skipped, info) {
   const L = [];
   const mode = YT_MODE === '1' ? '유튜브 자동 업로드 켬' : YT_MODE === 'dry' ? '유튜브 시험(열쇠만 확인, 올리지 않음)' : '그림자 운행(유튜브에 올리지 않음)';
@@ -269,6 +336,7 @@ function mailText(results, skipped, info) {
 }
 
 (async () => {
+  if (UPLOAD_IDS.length) { await uploadOnly(); return; }
   log(`=== run_daily · ${kstNow()} KST · 시작일 ${START_ID} · 한 번에 ${MAX_POSTS}편까지${ONLY ? ` · 이 글만 ${ONLY}` : ''} ===`);
   let jobs;
   try {
