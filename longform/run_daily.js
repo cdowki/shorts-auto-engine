@@ -7,7 +7,7 @@
 //   4) 영상은 이 저장소 릴리스(longform-<글번호>)에 올려 주소를 만듦
 //   4-b) 유튜브 업로드 (11/5 추가) — 스위치 YT_UPLOAD: '1' 켬 · 'dry' 시험(열쇠만 확인, 올리지 않음) · 그 밖 끔(그림자 운행)
 //        제목 = 같은 글의 쇼츠 제목(시트 D열, 9/14 규칙을 거친 것) · 바로 공개 · AI 표시 켬 (11/5 비광도기님 결정)
-//        막는 조건: 장면표가 3번째 시도에야 통과(11/9부터 — 2번째까지는 올림) · 대체 그림 2장 이상 · 쇼츠 제목 없음 · 이미 올린 글 · 한 번에 YT_MAX편 넘음
+//        막는 조건: 장면표가 3번째 시도에야 통과(11/9부터 — 2번째까지는 올림) · 그림 분위기 검사(11/26 — 대체 그림 2장 막기 대신) · 쇼츠 제목 없음 · 이미 올린 글 · 한 번에 YT_MAX편 넘음
 //   5) 결과를 GAS longform_result로 보내 "[긴 영상] …" 메일 한 통
 //   6) 기록: done.json(만든 글) · 창고_사용기록.json · 창고_부족기록.json · jobs/<글>/scenes.json — 저장소 저장은 워크플로가 함
 //
@@ -157,6 +157,23 @@ function duration(file) {
   return Math.round(Number(String(r.stdout).trim()) || 0);
 }
 
+// ── 그림 분위기 검사 (11/26, 마무리 #4) ─────────────────────
+// "대체 그림 2장 이상이면 막기"를 없애는 대신: 기쁜 그림이 사고·처벌 같은 내용에, 무거운 그림(응급실·압류 등)이 맞지 않는 내용에 붙으면 막음.
+// 지난 36편으로 맞춰 봄(11/26) — 걸린 것 1편(11/14 r2 수술실 앞 기다림 = 심사 결과 기다림)
+const HAPPY = { A04: '엄지 척', A10: 'OK 손', B03: '벤치 미소', B04: '하이파이브', B15: '나란히 엄지 척', D01: '통장 입금 미소', D09: '퇴직 꽃다발', F08: '환급 웃음', J03: '자녀 결혼 축하', K06: '복권 긁기', L08: '박수' };
+const BAD_WORDS = /사망|숨지|숨진|중대재해|사고|처벌|징역|벌금|해고|압류|사기|파산|폭언|협박|질병|연체/;
+const HEAVY = { E04: /입원|병원|요양|치료|질병|간병/, E05: /응급|사고|119/, E11: /수술|입원|의료비|요양|치료/, K05: /압류|체납|빚|채무|연체/, C11: /경찰|신고|고소|범죄|사기|진술|징역|처벌|협박|폭언|피해/, I08: /폐업|가게|자영업|사업|소상공/, J13: /혼자|고독|외로|1인|독거|소득|공백|비게|끊/ };
+const HEAVY_NAME = { E04: '병상 입원', E05: '응급실', E11: '수술실 앞 기다림', K05: '압류 서류 걱정', C11: '경찰 진술', I08: '문 닫은 가게', J13: '혼자 쓸쓸히' };
+function toneCheck(scenes) {
+  const bad = [];
+  (scenes || []).forEach((s) => {
+    const n = String(s.narration || '');
+    if (HAPPY[s.img] && BAD_WORDS.test(n)) bad.push(`${s.no}번 장면 기쁜 그림(${HAPPY[s.img]})에 "${(n.match(BAD_WORDS) || [''])[0].trim()}" 내용`);
+    if (HEAVY[s.img] && !HEAVY[s.img].test(n)) bad.push(`${s.no}번 장면 무거운 그림(${HEAVY_NAME[s.img]})이 내용과 안 맞음`);
+  });
+  return bad.length ? `그림 분위기 검사 걸림 — ${bad.join(' · ')} — 올리지 않음` : '';
+}
+
 // ── 유튜브 ──────────────────────────────────────
 function ytBlock(out, job, prev) {
   // 올리지 않을 이유를 돌려줌. 빈 글자면 올림
@@ -164,7 +181,8 @@ function ytBlock(out, job, prev) {
   if (prev && prev.youtube) return `이미 올린 글 — ${prev.youtube}`;
   // 11/9 비광도기님: 2번째 시도 통과까지 올림 — 막힌 3편의 첫 시도 탈락이 모두 표기 실수(연도 줄임·점 날짜·구절 길이)였고, 2번째도 같은 검사 전체를 통과함
   if (!(out.tries >= 1 && out.tries <= 2)) return `장면표가 ${out.tries}번째에야 통과 — 올리지 않음(2번째까지만 올림)`;
-  if ((out.match && out.match.대체) >= 2) return `대체 그림 ${out.match.대체}장 — 올리지 않음`;
+  // 11/26 비광도기님 승인: "대체 그림 2장 이상이면 막기" 없앰 — 막힌 7편을 확인해 보니 대체 그림은 옆 사람 그림뿐이고 숫자 표·자막은 맞았음. 대신 그림 분위기 검사
+  if (out.tone) return out.tone;
   if (!String(job.shortsTitle || '').trim()) return '쇼츠 제목(시트 D열)이 없음 — 올리지 않음';
   if (ytSent >= YT_MAX) return `한 번에 ${YT_MAX}편까지 — 올리지 않음(다음 실행에서도 다시 올리지는 않음, 손 실행 필요)`;
   return '';
@@ -212,6 +230,7 @@ async function makeOne(job, prev) {
   sc.scenes.forEach((s) => { out.match[s.match] = (out.match[s.match] || 0) + 1; });
   out.alt = sc.scenes.filter((s) => s.match === '대체').map((s) => `${s.no}번 장면: 원한 그림 "${s.want}" → 쓴 그림 ${s.img} ${s.img_name}`);
   out.imgs = sc.scenes.map((s) => s.img);
+  out.tone = toneCheck(sc.scenes);
 
   const s2 = step(`${id} 목소리`, 'node', ['tts-make.js', '--scenes', path.join('jobs', id, 'scenes.json'), '--voice', VOICE, '--rate', RATE], { timeoutMs: 15 * 60 * 1000 });
   if (!s2.ok) { out.reason = `목소리 실패\n${lastLogLines('tts_', 6)}`; return out; }
