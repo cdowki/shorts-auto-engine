@@ -392,8 +392,8 @@
   "mb": 7.5,
   "minutes": 5.8,
   "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261108_r1/20261108_r1_202611091020.mp4",
-  "youtube": "",
-  "ytNote": "장면표가 2번째에 통과 — 올리지 않음",
+  "youtube": "https://youtu.be/IpnUv1MgJd0",
+  "ytNote": "손 올리기 202611261853 (전: 장면표가 2번째에 통과 — 올리지 않음)",
   "fails": 0
  },
  "20261108_r2": {
@@ -430,8 +430,8 @@
   "mb": 8.2,
   "minutes": 4.9,
   "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261108_r2/20261108_r2_202611091847.mp4",
-  "youtube": "",
-  "ytNote": "꺼짐(그림자 운행)",
+  "youtube": "https://youtu.be/CaDe2bVJA50",
+  "ytNote": "손 올리기 202611261853 (전: 꺼짐(그림자 운행))",
   "fails": 0
  },
  "20261109_r1": {
@@ -467,8 +467,8 @@
   "mb": 7.2,
   "minutes": 4.3,
   "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261109_r1/20261109_r1_202611101922.mp4",
-  "youtube": "",
-  "ytNote": "대체 그림 2장 — 올리지 않음",
+  "youtube": "https://youtu.be/Bu-zQTQMH78",
+  "ytNote": "손 올리기 202611261853 (전: 대체 그림 2장 — 올리지 않음)",
   "fails": 0
  },
  "20261109_r2": {
