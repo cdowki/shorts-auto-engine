@@ -26,6 +26,10 @@ on:
         description: '유튜브: 비우면 평소 설정 · dry = 열쇠만 확인(올리지 않음) · 0 = 이번엔 끔'
         required: false
         default: ''
+      upload:
+        description: '손 올리기: 이미 만든 영상을 유튜브에 올림 (예: 20261109_r1,20261121_r3). 비우면 평소대로 만들기'
+        required: false
+        default: ''
 
 concurrency:
   group: longform-daily
@@ -78,6 +82,7 @@ jobs:
           MAX_POSTS: ${{ github.event.inputs.max || '4' }}
           START_ID: '20261104'
           RUN_EVENT: ${{ github.event_name }}
+          UPLOAD_IDS: ${{ github.event.inputs.upload }}   # 손 올리기 (11/26 마무리 #4)
           YT_UPLOAD: ${{ github.event.inputs.yt || '1' }}   # 11/6 비광도기님 승인 — 켬(11/7 실행부터 유튜브 자동 업로드)
           GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
           GOOGLE_OAUTH_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
