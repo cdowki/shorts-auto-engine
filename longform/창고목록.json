@@ -1,6 +1,6 @@
 {
  "made": "2026-11-03 쇼츠창",
- "note": "긴 영상 장면 그림 창고 목록. have = 이미 그린 글번호·장면(재사용 후보), drawn = 창고용으로 그린 파일, file = 장면표가 가져다 쓰는 파일(drawn 또는 have 폴더) | 저장소판(11/4): file = warehouse/<번호>.png, pc_file = PC 원래 위치",
+ "note": "긴 영상 장면 그림 창고 목록. have = 이미 그린 글번호·장면(재사용 후보), drawn = 창고용으로 그린 파일, file = 장면표가 가져다 쓰는 파일(drawn 또는 have 폴더) | 저장소판(11/4): file = warehouse/<번호>.png, pc_file = PC 원래 위치 | 11/26 4차 11장(많이 쓰는 그림 두 번째 판, second_of = 원본 번호)",
  "items": [
   {
    "id": "A01",
@@ -2981,6 +2981,237 @@
    "drawn": "out_warehouse_b2_20261103_223923/scene_03.png",
    "file": "warehouse/L10.png",
    "pc_file": "out_warehouse_b2_20261103_223923/scene_03.png"
+  },
+  {
+   "id": "A25",
+   "group": "공통 동작(혼자)",
+   "name": "계산기 2",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "계산",
+    "금액",
+    "얼마"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 거실 소파에 앉아 무릎 위에 올린 작은 계산기를 손가락으로 누르며, 옆 탁자의 메모지를 흘끗 보고 있다. 손에 드는 소품은 실제 크기에 맞게 그린다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 오른쪽 각도, 등장인물은 화면 가로 가운데에 크게",
+   "drawn": "out_warehouse_b4_20261126_190158/scene_01.png",
+   "file": "warehouse/A25.png",
+   "pc_file": "out_warehouse_b4_20261126_190158/scene_01.png",
+   "second_of": "A18"
+  },
+  {
+   "id": "A26",
+   "group": "공통 동작(혼자)",
+   "name": "돋보기 서류 2",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "꼼꼼히",
+    "확인",
+    "약관",
+    "조건"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 창가에 서서 한 손에 서류 한 장을 들고 다른 손의 돋보기로 서류 글자를 꼼꼼히 들여다보고 있다. 손에 드는 소품은 실제 크기에 맞게 그린다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도, 등장인물은 화면 가로 가운데에 크게",
+   "drawn": "out_warehouse_b4_20261126_190158/scene_02.png",
+   "file": "warehouse/A26.png",
+   "pc_file": "out_warehouse_b4_20261126_190158/scene_02.png",
+   "second_of": "A17"
+  },
+  {
+   "id": "A27",
+   "group": "공통 동작(혼자)",
+   "name": "노트북 조회 2",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "홈페이지",
+    "조회",
+    "신청",
+    "인터넷"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 식탁에 앉아 노트북 화면을 보며 한 손 검지로 화면의 한 곳을 가리키고 있다. 식탁 위에 찻잔이 하나 있다. 손에 드는 소품은 실제 크기에 맞게 그린다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도, 등장인물은 화면 가로 가운데에 크게",
+   "drawn": "out_warehouse_b4_20261126_190158/scene_03.png",
+   "file": "warehouse/A27.png",
+   "pc_file": "out_warehouse_b4_20261126_190158/scene_03.png",
+   "second_of": "A20"
+  },
+  {
+   "id": "A28",
+   "group": "공통 동작(혼자)",
+   "name": "검지로 짚기 2",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "중요",
+    "핵심",
+    "포인트",
+    "설명"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 탁자 옆에 서서 탁자 위에 펼친 서류의 한 줄을 검지로 짚으며 화면 쪽을 보고 설명하고 있다. 손에 드는 소품은 실제 크기에 맞게 그린다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도, 등장인물은 화면 가로 가운데에 크게",
+   "drawn": "out_warehouse_b4_20261126_190158/scene_04.png",
+   "file": "warehouse/A28.png",
+   "pc_file": "out_warehouse_b4_20261126_190158/scene_04.png",
+   "second_of": "A03"
+  },
+  {
+   "id": "B17",
+   "group": "부부",
+   "name": "식탁 서류 의논 2",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "의논",
+    "부부",
+    "계산",
+    "상의"
+   ],
+   "have": "",
+   "ref": "49_연금_통장확인.png",
+   "scene": "부부가 거실 낮은 탁자 앞 소파에 나란히 앉아 탁자 위 서류를 함께 보고 있다. 할머니가 서류 한 곳을 손으로 가리키고 할아버지가 고개를 끄덕인다. 손에 드는 소품은 실제 크기에 맞게 그린다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 오른쪽 각도, 등장인물은 화면 가로 가운데에 크게",
+   "drawn": "out_warehouse_b4_20261126_190158/scene_06.png",
+   "file": "warehouse/B17.png",
+   "pc_file": "out_warehouse_b4_20261126_190158/scene_06.png",
+   "second_of": "B01"
+  },
+  {
+   "id": "B18",
+   "group": "부부",
+   "name": "가계부 2",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "생활비",
+    "가계부",
+    "지출",
+    "관리"
+   ],
+   "have": "",
+   "ref": "49_연금_통장확인.png",
+   "scene": "부부가 식탁에 나란히 앉아 할아버지가 공책에 가계부를 적고 할머니가 옆에서 작은 계산기를 누르며 숫자를 불러 주고 있다. 손에 드는 소품은 실제 크기에 맞게 그린다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 약간 위에서 내려다보는 각도, 등장인물은 화면 가로 가운데에 크게",
+   "drawn": "out_warehouse_b4_20261126_190158/scene_07.png",
+   "file": "warehouse/B18.png",
+   "pc_file": "out_warehouse_b4_20261126_190158/scene_07.png",
+   "second_of": "B10"
+  },
+  {
+   "id": "B19",
+   "group": "부부",
+   "name": "걱정과 달램 2",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "걱정",
+    "불안",
+    "위로",
+    "괜찮다"
+   ],
+   "have": "",
+   "ref": "49_연금_통장확인.png",
+   "scene": "할아버지가 소파에 앉아 걱정스러운 얼굴로 이마에 손을 짚고 있고, 옆에 앉은 할머니가 할아버지 등에 손을 얹고 다정하게 웃으며 달래고 있다. 손에 드는 소품은 실제 크기에 맞게 그린다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도, 등장인물은 화면 가로 가운데에 크게",
+   "drawn": "out_warehouse_b4_20261126_190158/scene_08.png",
+   "file": "warehouse/B19.png",
+   "pc_file": "out_warehouse_b4_20261126_190158/scene_08.png",
+   "second_of": "B05"
+  },
+  {
+   "id": "B20",
+   "group": "부부",
+   "name": "함께 서명 2",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "서명",
+    "계약",
+    "신청서",
+    "동의"
+   ],
+   "have": "",
+   "ref": "49_연금_통장확인.png",
+   "scene": "부부가 탁자에 나란히 앉아 할머니가 서류에 펜으로 서명하고 할아버지가 옆에서 서류를 손으로 눌러 잡아 주며 지켜보고 있다. 손에 드는 소품은 실제 크기에 맞게 그린다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 왼쪽 각도, 등장인물은 화면 가로 가운데에 크게",
+   "drawn": "out_warehouse_b4_20261126_190158/scene_09.png",
+   "file": "warehouse/B20.png",
+   "pc_file": "out_warehouse_b4_20261126_190158/scene_09.png",
+   "second_of": "B12"
+  },
+  {
+   "id": "B21",
+   "group": "부부",
+   "name": "함께 통장 보기 2",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "통장",
+    "잔액",
+    "입금",
+    "확인",
+    "부부"
+   ],
+   "have": "",
+   "ref": "49_연금_통장확인.png",
+   "scene": "부부가 식탁에 나란히 앉아 할머니가 펼쳐 든 통장을 할아버지가 몸을 기울여 함께 들여다보며 고개를 끄덕이고 있다. 손에 드는 소품은 실제 크기에 맞게 그린다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도, 등장인물은 화면 가로 가운데에 크게",
+   "drawn": "out_warehouse_b4_20261126_190158/scene_10.png",
+   "file": "warehouse/B21.png",
+   "pc_file": "out_warehouse_b4_20261126_190158/scene_10.png",
+   "second_of": "B07"
+  },
+  {
+   "id": "C15",
+   "group": "상담·창구",
+   "name": "상담원과 부부 2",
+   "couple": true,
+   "board": false,
+   "tags": [
+    "상담",
+    "설명",
+    "가입",
+    "안내"
+   ],
+   "have": "",
+   "ref": "49_연금_통장확인.png",
+   "scene": "부부가 상담 책상 앞 의자 2개에 나란히 앉아 있고, 맞은편의 친절한 상담원(남색 정장의 중년 남성)이 책상 위 서류를 펜으로 가리키며 설명하고 있다. 부부는 서류를 보며 귀 기울인다. 손에 드는 소품은 실제 크기에 맞게 그린다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면에서 약간 오른쪽 각도, 등장인물은 화면 가로 가운데에 크게",
+   "drawn": "out_warehouse_b4_20261126_190158/scene_11.png",
+   "file": "warehouse/C15.png",
+   "pc_file": "out_warehouse_b4_20261126_190158/scene_11.png",
+   "second_of": "C02"
+  },
+  {
+   "id": "L11",
+   "group": "시작·마무리",
+   "name": "큰 느낌표 2",
+   "couple": false,
+   "board": false,
+   "tags": [
+    "정답",
+    "핵심",
+    "결론",
+    "깨달음"
+   ],
+   "have": "",
+   "ref": "43_발표_그래프.png",
+   "scene": "할아버지가 의자에 앉아 있다가 무언가 깨달은 듯 한 손바닥으로 무릎을 탁 치며 활짝 웃고 있다. 할아버지 머리 옆에 커다란 느낌표 모양 판이 세워져 있다. 손에 드는 소품은 실제 크기에 맞게 그린다.",
+   "camera": "무릎 위까지 보이는 중간 거리, 정면 각도, 등장인물은 화면 가로 가운데에 크게",
+   "drawn": "out_warehouse_b4_20261126_190158/scene_12.png",
+   "file": "warehouse/L11.png",
+   "pc_file": "out_warehouse_b4_20261126_190158/scene_12.png",
+   "second_of": "L05"
   }
  ]
 }
