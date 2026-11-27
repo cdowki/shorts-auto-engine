@@ -1282,5 +1282,112 @@
   "youtube": "https://youtu.be/VMwZoFv6NVI",
   "ytNote": "",
   "fails": 0
+ },
+ "20261126_r1": {
+  "postId": "20261126_r1",
+  "row": 207,
+  "blogTitle": "자진퇴사 후 실업급여를 받지 못하는 줄 알았는데 질병이나 부인할 수 없는 사유로 그만둘 때 인정받는 기준",
+  "blogLink": "https://blog.naver.com/newcp2024/224492977918?fromRss=true&trackingCode=rss",
+  "made": "202611271020",
+  "status": "만듦",
+  "title": "자진퇴사해도 실업급여를 받을 수 있을까요?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 3,
+   "비슷함": 6,
+   "대체": 0
+  },
+  "alt": [],
+  "imgs": [
+   "D01",
+   "A10",
+   "C05",
+   "A26",
+   "B19",
+   "A25",
+   "B17",
+   "E02",
+   "B15"
+  ],
+  "tone": "그림 분위기 검사 걸림 — 1번 장면 기쁜 그림(통장 입금 미소)에 \"질병\" 내용 — 올리지 않음",
+  "sec": 114,
+  "mb": 7.9,
+  "minutes": 4.1,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261126_r1/20261126_r1_202611271020.mp4",
+  "youtube": "",
+  "ytNote": "그림 분위기 검사 걸림 — 1번 장면 기쁜 그림(통장 입금 미소)에 \"질병\" 내용 — 올리지 않음",
+  "fails": 0
+ },
+ "20261126_r2": {
+  "postId": "20261126_r2",
+  "row": 206,
+  "blogTitle": "새도약기금 채무조정 신청할 때 5060 본인 재산과 소득으로 심사받는 조건",
+  "blogLink": "https://blog.naver.com/newcp2024/224493024726?fromRss=true&trackingCode=rss",
+  "made": "202611271020",
+  "status": "만듦",
+  "title": "새도약기금, 내 소득과 재산은 어떻게 심사할까요?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 4,
+   "비슷함": 5,
+   "대체": 0
+  },
+  "alt": [],
+  "imgs": [
+   "L04",
+   "A28",
+   "A09",
+   "A27",
+   "B21",
+   "H02",
+   "C15",
+   "H12",
+   "L01"
+  ],
+  "tone": "",
+  "sec": 123,
+  "mb": 7.9,
+  "minutes": 4.3,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261126_r2/20261126_r2_202611271020_2.mp4",
+  "note": "릴리스 2번째에 올라감 (앞 실패: 네트워크 오류 ETIMEDOUT)",
+  "youtube": "https://youtu.be/p2KJFc_EiwY",
+  "ytNote": "",
+  "fails": 0
+ },
+ "20261126_r3": {
+  "postId": "20261126_r3",
+  "row": 205,
+  "blogTitle": "퇴직금 미지급으로 민사소송 제기할 때 5060 근로자가 준비해야 할 임금 체불 증거",
+  "blogLink": "https://blog.naver.com/newcp2024/224493056385?fromRss=true&trackingCode=rss",
+  "made": "202611271020",
+  "status": "만듦",
+  "title": "퇴직금을 못 받았다면 소송 전에 어떤 증거가 필요할까요?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 3,
+   "비슷함": 6,
+   "대체": 0
+  },
+  "alt": [],
+  "imgs": [
+   "D09",
+   "L11",
+   "C04",
+   "B18",
+   "C03",
+   "F04",
+   "C12",
+   "B20",
+   "L10"
+  ],
+  "tone": "",
+  "sec": 115,
+  "mb": 7.9,
+  "minutes": 3.9,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261126_r3/20261126_r3_202611271020_2.mp4",
+  "note": "릴리스 2번째에 올라감 (앞 실패: 네트워크 오류 ETIMEDOUT)",
+  "youtube": "https://youtu.be/cqNBf0n27F0",
+  "ytNote": "",
+  "fails": 0
  }
 }
