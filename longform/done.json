@@ -1389,5 +1389,114 @@
   "youtube": "https://youtu.be/cqNBf0n27F0",
   "ytNote": "",
   "fails": 0
+ },
+ "20261127_r1": {
+  "postId": "20261127_r1",
+  "row": 210,
+  "blogTitle": "중소기업에 취업한 5060 직장인이 알아야 할 소득세 감면 신청 조건과 대상 확인 방법",
+  "blogLink": "https://blog.naver.com/newcp2024/224494499147?fromRss=true&trackingCode=rss",
+  "made": "202611281020",
+  "status": "만듦",
+  "title": "50대 재취업, 소득세 감면 조건은?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 4,
+   "비슷함": 4,
+   "대체": 1
+  },
+  "alt": [
+   "9번 장면: 원한 그림 \"체크표를 확인하며 안심하는 모습\" → 쓴 그림 B08 산책"
+  ],
+  "imgs": [
+   "I02",
+   "F08",
+   "A08",
+   "B13",
+   "A18",
+   "A11",
+   "A14",
+   "B01",
+   "B08"
+  ],
+  "tone": "",
+  "sec": 112,
+  "mb": 7.4,
+  "minutes": 4,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261127_r1/20261127_r1_202611281020.mp4",
+  "youtube": "https://youtu.be/JR2wIu2pGDM",
+  "ytNote": "",
+  "fails": 0
+ },
+ "20261127_r2": {
+  "postId": "20261127_r2",
+  "row": 209,
+  "blogTitle": "사전연명의료의향서를 미리 작성해 둔 5060 본인이 언제든지 철회할 수 있는 절차",
+  "blogLink": "https://blog.naver.com/newcp2024/224494529994?fromRss=true&trackingCode=rss",
+  "made": "202611281020",
+  "status": "만듦",
+  "title": "사전연명의료의향서 철회, 어디서 하나요?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 2,
+   "비슷함": 7,
+   "대체": 0
+  },
+  "alt": [],
+  "imgs": [
+   "L09",
+   "A03",
+   "C01",
+   "A19",
+   "B12",
+   "A13",
+   "A17",
+   "A20",
+   "B03"
+  ],
+  "tone": "",
+  "sec": 110,
+  "mb": 7.4,
+  "minutes": 4.1,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261127_r2/20261127_r2_202611281020_2.mp4",
+  "note": "릴리스 2번째에 올라감 (앞 실패: 네트워크 오류 EPIPE)",
+  "youtube": "https://youtu.be/Hhl5Zxw2sDo",
+  "ytNote": "",
+  "fails": 0
+ },
+ "20261127_r3": {
+  "postId": "20261127_r3",
+  "row": 208,
+  "blogTitle": "혈관성 치매 초기증상을 겪는 5060 본인이 병원 검진에서 꼭 확인해야 할 증상 기준",
+  "blogLink": "https://blog.naver.com/newcp2024/224494548203?fromRss=true&trackingCode=rss",
+  "made": "202611281020",
+  "status": "만듦",
+  "title": "혈관성 치매 초기증상, 검진에서 무엇을 확인할까요?",
+  "tries": 1,
+  "match": {
+   "딱맞음": 2,
+   "비슷함": 7,
+   "대체": 0
+  },
+  "alt": [],
+  "imgs": [
+   "E01",
+   "E16",
+   "A06",
+   "E02",
+   "E03",
+   "E11",
+   "C02",
+   "E12",
+   "B15"
+  ],
+  "tone": "그림 분위기 검사 걸림 — 6번 장면 무거운 그림(수술실 앞 기다림)이 내용과 안 맞음 — 올리지 않음",
+  "sec": 120,
+  "mb": 8.3,
+  "minutes": 4.6,
+  "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261127_r3/20261127_r3_202611281020_2.mp4",
+  "note": "릴리스 2번째에 올라감 (앞 실패: 네트워크 오류 EPIPE)",
+  "youtube": "",
+  "ytNote": "그림 분위기 검사 걸림 — 6번 장면 무거운 그림(수술실 앞 기다림)이 내용과 안 맞음 — 올리지 않음",
+  "fails": 0
  }
 }
