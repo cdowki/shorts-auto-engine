@@ -1169,8 +1169,8 @@
   "minutes": 4,
   "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261123_r3/20261123_r3_202611241020_2.mp4",
   "note": "릴리스 2번째에 올라감 (앞 실패: 네트워크 오류 EPIPE)",
-  "youtube": "",
-  "ytNote": "대체 그림 3장 — 올리지 않음",
+  "youtube": "https://youtu.be/ELdC_3ePRCY",
+  "ytNote": "손 올리기 202611282220 (전: 대체 그림 3장 — 올리지 않음)",
   "fails": 0
  },
  "20261124_r3": {
@@ -1242,8 +1242,8 @@
   "mb": 7.2,
   "minutes": 4,
   "video": "https://github.com/cdowki/shorts-auto-engine/releases/download/longform-20261125_r1/20261125_r1_202611261020.mp4",
-  "youtube": "",
-  "ytNote": "대체 그림 2장 — 올리지 않음",
+  "youtube": "https://youtu.be/kT-MSV7Cgp4",
+  "ytNote": "손 올리기 202611282220 (전: 대체 그림 2장 — 올리지 않음)",
   "fails": 0
  },
  "20261125_r2": {
